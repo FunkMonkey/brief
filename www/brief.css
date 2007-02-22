@@ -36,6 +36,7 @@ h2 {
 #navigation {
     background: #1d272d;
     list-style: none !important;
+    list-style-position: inside;
     margin: 0;
     padding: 5px;
     width: 35em;
