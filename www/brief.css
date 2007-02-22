@@ -1,0 +1,74 @@
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 62.5%;
+}
+
+h2 {
+    background: #fdfdfd url('/images/header-background.png') repeat-x;
+    color: #1d272d;
+    font-size: 1.2em;
+    padding: 3px;
+}
+
+
+
+#brief-icon {
+    float: left;
+}
+
+#project-name {
+    font-family: Arial, sans-serif;
+    font-size: 1.8em;
+    margin: 0;
+    padding: 0 0 0 70px;
+}
+
+
+/* Overview page*/
+
+#features {
+    float: left;
+    width: 63%;
+}
+
+#features li {
+    margin: 3px 0;
+}
+
+#screenshots {
+    float: right;
+    width: 35%;
+}
+
+#screenshots img {
+    border: none;
+}
+
+/*         Navigation          */
+
+#nav-container {
+    border-bottom: 1px solid #1d272d;
+    margin: 0 0 0 70px;
+}
+
+#navigation {
+    background: #1d272d;
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+    width: 35em;
+}
+
+#navigation li {
+    display: inline;
+    padding: 0 10px;
+}
+
+#navigation a {
+    color: #eaeaea;
+    text-decoration: none;
+}
+
+#navigation a:hover {
+    color: #f65200;
+}
