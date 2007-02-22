@@ -35,7 +35,7 @@ h2 {
 
 #navigation {
     background: #1d272d;
-    list-style: none;
+    list-style: none !important;
     margin: 0;
     padding: 5px;
     width: 35em;
@@ -43,8 +43,8 @@ h2 {
 
 #navigation li {
     display: inline;
-    padding: 0 10px;
     margin: 0;
+    padding: 0 10px;
 }
 
 #navigation a {
