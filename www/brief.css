@@ -10,6 +10,9 @@ h2 {
     padding: 3px;
 }
 
+.clear {
+    clear: both;
+}
 
 
 #brief-icon {
@@ -17,7 +20,7 @@ h2 {
 }
 
 #brief-name {
-    color: #ff6000;
+    color: #f14e00;
     font-family: Arial, sans-serif;
     font-size: 2.7em;
     font-weight: bold;
