@@ -57,6 +57,10 @@ h2 {
     color: #f65200;
 }
 
+#footer {
+    border-top: 1px dotted #1d272d;
+    margin-top: 3em;
+}
 
 /* Overview page*/
 
