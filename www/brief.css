@@ -1,6 +1,6 @@
 body {
     font-family: Verdana, sans-serif;
-    font-size: 62.5%;
+    font-size: 62.5% !important;
 }
 
 h2 {
@@ -44,8 +44,11 @@ h2 {
 
 #navigation li {
     display: inline;
+    font-size: 10px !important;
+    line-height: normal;
     margin: 0;
     padding: 0 10px;
+    text-align: start;
 }
 
 #navigation a {
