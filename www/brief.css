@@ -72,10 +72,15 @@ h3 {
 }
 
 #navigation a {
+    border-bottom: none;
     color: #eaeaea;
     font-weight: normal;
     padding: 0 1em;
     text-decoration: none;
+}
+
+#navigation a:visited {
+    color: #eaeaea;
 }
 
 #navigation a:hover {
