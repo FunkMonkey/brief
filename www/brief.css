@@ -21,17 +21,17 @@ h3 {
     clear: both;
 }
 
-#main-content {
+#brief-content {
     text-align: start;
 }
 
-#main-content a {
+#brief-content a {
     border-bottom: 1px solid #f14e00;
     color: #f14e00;
     text-decoration: none;
 }
 
-#main-content a:visited {
+#brief-content a:visited {
     border-bottom-color: #f17c44;
     color: #f17c44;
 }
