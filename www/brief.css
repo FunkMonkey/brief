@@ -4,17 +4,40 @@ body {
 }
 
 h2 {
-    background: #fdfdfd url('/images/header-background.png') repeat-x;
+    background: #fdfdfd url('./images/header-background.png') repeat-x;
     color: #1d272d;
-    font-size: 1.2em;
-    padding: 3px;
+    font-family: Arial, sans-serif;
+    font-size: 1.4em;
+    padding: 3px 3px 3px 2em;
+}
+
+h3 {
+    font-family: Arial, sans-serif;
+    font-size: 1.4em;
+    font-weight: normal;
 }
 
 .clear {
     clear: both;
 }
 
-/*         Navigation          */
+#main-content {
+    text-align: start;
+}
+
+#main-content a {
+    border-bottom: 1px solid #f14e00;
+    color: #f14e00;
+    text-decoration: none;
+}
+
+#main-content a:visited {
+    border-bottom-color: #f17c44;
+    color: #f17c44;
+}
+
+
+/* --------------- Navigation --------------- */
 #brief-icon {
     float: left;
 }
@@ -29,27 +52,29 @@ h2 {
 }
 
 #nav-container {
-    border-bottom: 1px dotted #1d272d;
+    border-bottom: 1px solid #1d272d;
     margin: 0 0 0 70px;
 }
 
 #navigation {
     background: #1d272d;
+    border: 1px black solid;
+    font-size: 1.2em;
     list-style: none;
     margin: 0;
-    padding: 5px;
-    width: 35em;
+    padding: 5px 1em;;
+    width: 39em;
 }
 
 #navigation li {
     display: inline;
     margin: 0;
-    padding: 0 10px;
 }
 
 #navigation a {
     color: #eaeaea;
     font-weight: normal;
+    padding: 0 1em;
     text-decoration: none;
 }
 
@@ -62,7 +87,9 @@ h2 {
     margin-top: 3em;
 }
 
-/* Overview page*/
+
+
+/* --------------- Overview page ---------------  */
 
 #features {
     float: left;
@@ -70,6 +97,7 @@ h2 {
 }
 
 #features li {
+    font-size: 1.2em;
     margin: 3px 0;
 }
 
@@ -80,4 +108,21 @@ h2 {
 
 #screenshots img {
     border: none;
+}
+
+
+/* -------------- Changelog page ----------------- */
+.version {
+    border-top: 1px dotted #1d272d;
+    margin-top: 3em;
+}
+
+.version-number {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.version > h3:before {
+    content: url('./images/brief-icon-16x16.png');
 }
