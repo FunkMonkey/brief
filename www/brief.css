@@ -21,6 +21,11 @@ h3 {
     clear: both;
 }
 
+.name-emphasis {
+    color: #f14e00;
+    font-weight: bold;
+}
+
 #main-content {
     text-align: start;
 }
