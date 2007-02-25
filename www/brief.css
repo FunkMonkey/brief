@@ -131,7 +131,7 @@ pre {
 
 #features {
     float: left;
-    width: 63%;
+    width: 50%;
 }
 
 #features li {
@@ -141,12 +141,12 @@ pre {
 
 #screenshots {
     float: right;
-    width: 35%;
+    width: 48%;
 }
 
 #screenshots img {
     border: none;
-    margin: 6px 6px 0 0;
+    margin: 6px 0 0 6px;
 }
 
 #screenshots a {
