@@ -5,10 +5,12 @@ body {
 
 h2 {
     background: #fdfdfd url('./images/header-background.png') repeat-x;
+    border-top: 1px solid #abb6b9;
     color: #1d272d;
     font-family: Arial, sans-serif;
     font-size: 1.4em;
-    padding: 3px 3px 3px 2em;
+    margin-bottom: 0;
+    padding: 8px 3px 20px;
 }
 
 h3 {
@@ -17,12 +19,15 @@ h3 {
     font-weight: normal;
 }
 
+pre {
+    font-size: 1.2em;
+}
+
 .clear {
     clear: both;
 }
 
 .name-emphasis {
-    color: #f14e00;
     font-weight: bold;
 }
 
@@ -57,13 +62,12 @@ h3 {
 }
 
 #nav-container {
-    border-bottom: 4px double #123d58;
+    border-bottom: 4px double #10364d;
     margin: 0 0 0 70px;
 }
 
 #navigation {
-    background: #123d58;
-    /*border: 1px #1d272d solid;*/
+    background: #10364d;
     font-size: 1.2em;
     list-style: none;
     margin: 0;
@@ -98,8 +102,28 @@ h3 {
 }
 
 
+/* --------------- Home page ------------------- */
+#home {
+    font-size: 1.4em;
+}
 
-/* --------------- Overview page ---------------  */
+#get-brief {
+    background: url("./images/download.png") no-repeat;
+    font-family: Arial, sans-serif;
+    font-size: 1.6em;
+    font-weight: bold;
+    padding-left: 2em;
+}
+
+#get-brief a {
+    border-bottom-width: 2px;
+    }
+
+#get-brief a:visited {
+    color: #f14e00;
+}
+
+/* --------------- Overview page --------------- */
 
 #features {
     float: left;
@@ -108,7 +132,7 @@ h3 {
 
 #features li {
     font-size: 1.2em;
-    margin: 3px 0;
+    margin: 5px 0;
 }
 
 #screenshots {
@@ -117,6 +141,11 @@ h3 {
 }
 
 #screenshots img {
+    border: none;
+    margin: 6px 6px 0 0;
+}
+
+#screenshots a {
     border: none;
 }
 
@@ -135,4 +164,15 @@ h3 {
 
 .version > h3:before {
     content: url('./images/brief-icon-16x16.png');
+}
+
+
+/* ------------- Feedback page -------------------- */
+#feedback {
+    font-size: 1.2em;
+}
+
+/* ------------- Source Code page ----------------- */
+#get-the-src {
+    font-size: 1.2em;
 }
