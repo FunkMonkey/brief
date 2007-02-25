@@ -109,6 +109,7 @@ pre {
 /* --------------- Home page ------------------- */
 #home {
     font-size: 1.4em;
+    max-width: 45em;
 }
 
 #get-brief {
