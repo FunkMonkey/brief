@@ -164,7 +164,7 @@ pre {
 
 /* -------------- Changelog page ----------------- */
 .version {
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 .version-number {
@@ -177,6 +177,9 @@ pre {
     content: url('./images/brief-icon-16x16.png');
 }
 
+.version > ul {
+    font-size: 1.2em;
+}
 
 /* ------------- Feedback page -------------------- */
 #feedback {
