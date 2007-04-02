@@ -3,7 +3,7 @@ body {
     font-size: 62.5%;
 }
 
-h2 {
+#main-content h2 {
     background: #fdfdfd url('./images/header-background.png') repeat-x;
     border-top: 1px solid #abb6b9;
     color: #1d272d;
@@ -13,7 +13,7 @@ h2 {
     padding: 8px 6px 20px;
 }
 
-h3 {
+#main-content h3 {
     font-family: Arial, sans-serif;
     font-size: 1.4em;
     font-weight: normal;
