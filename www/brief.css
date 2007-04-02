@@ -10,13 +10,22 @@ h2 {
     font-family: Arial, sans-serif;
     font-size: 1.4em;
     margin: 0;
-    padding: 8px 3px 20px;
+    padding: 8px 6px 20px;
 }
 
 h3 {
     font-family: Arial, sans-serif;
     font-size: 1.4em;
     font-weight: normal;
+}
+
+li {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+ul {
+    margin-top: 0;
 }
 
 pre {
@@ -44,6 +53,10 @@ pre {
 #main-content a:visited {
     border-bottom-color: #f17c44;
     color: #f17c44;
+}
+
+#main-content {
+    list-style-image: url('./images/list-image2.png');
 }
 
 
@@ -108,9 +121,12 @@ pre {
 
 /* --------------- Home page ------------------- */
 #home {
-    font-size: 1.4em;
-    max-width: 60em;
+    max-width: 85em;
     text-align: justify;
+}
+
+#main-description {
+    font-size: 1.4em;
 }
 
 #home-screenshot {
@@ -121,10 +137,10 @@ pre {
 #get-brief {
     background: url("./images/download.png") no-repeat;
     font-family: Arial, sans-serif;
-    font-size: 1.6em;
+    font-size: 2.0em;
     font-weight: bold;
-    margin: 2em 0 0 5px;
-    padding-left: 1.8em;
+    margin: 2em 0 0 15px;
+    padding: 0 0 1em 2.0em;
 }
 
 #get-brief a {
@@ -135,16 +151,20 @@ pre {
     color: #f14e00;
 }
 
+#whats-new {
+    margin-top: 4em;
+    padding-right: 365px;
+}
+
+#known-issues {
+    margin-top: 2em;
+    padding-right: 365px;
+}
 /* --------------- Overview page --------------- */
 
 #features {
     float: left;
     width: 50%;
-}
-
-#features li {
-    font-size: 1.2em;
-    margin: 5px 0;
 }
 
 #screenshots {
@@ -167,7 +187,13 @@ pre {
     margin-top: 2em;
 }
 
-.version-number {
+.version h3 {
+    border-top: 1px solid #696969;
+    padding-top: 5px;
+    width: 25em;
+}
+
+.version h3 a {
     font-size: 1.1em;
     font-weight: bold;
     margin-left: 3px;
@@ -177,9 +203,11 @@ pre {
     content: url('./images/brief-icon-16x16.png');
 }
 
-.version > ul {
-    font-size: 1.2em;
+.version h4 {
+    font-size: 1.3em;
+    margin: 5px;
 }
+
 
 /* ------------- Feedback page -------------------- */
 #feedback {
@@ -189,4 +217,17 @@ pre {
 /* ------------- Source Code page ----------------- */
 #get-the-src {
     font-size: 1.2em;
+}
+
+/* ------------ New version page ---------------- */
+#new-version {
+    max-width: 70em;
+}
+
+.announcement {
+    color: #10364d;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 2em 0;
+    max-width: 60em;
 }
