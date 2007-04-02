@@ -19,7 +19,7 @@ h3 {
     font-weight: normal;
 }
 
-#main-content li {
+li {
     font-size: 1.2em;
     margin: 5px 0;
 }
@@ -81,7 +81,6 @@ pre {
 
 #navigation {
     background: #10364d;
-    font-size: 1.2em;
     list-style: none;
     margin: 0;
     padding: 5px 1em;
@@ -90,6 +89,7 @@ pre {
 
 #navigation li {
     display: inline;
+    font-size: 1.2em;
     margin: 0;
 }
 
