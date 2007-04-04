@@ -91,13 +91,11 @@ pre {
     list-style: none;
     margin: 0;
     padding: 5px 1em;
-    width: 44em;
 }
 
 #navigation li {
     display: inline;
     font-size: 1.2em;
-    margin: 0;
 }
 
 #navigation a {
@@ -113,7 +111,11 @@ pre {
 }
 
 #navigation a:hover {
-    color: #f65200;
+    color: #ff8d54;
+}
+
+#navigation .nav-selected a {
+    color: #ff8d54;
 }
 
 #footer {
