@@ -5,7 +5,7 @@ body {
 
 #container {
     margin: 10px auto;
-    max-width: 80em;
+    width: 80em;
 }
 
 img {
