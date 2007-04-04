@@ -8,6 +8,10 @@ body {
     max-width: 80em;
 }
 
+img {
+    border: none;
+}
+
 h2 {
     background: #fdfdfd url('./images/header-background.png') repeat-x;
     border-top: 1px solid #abb6b9;
@@ -180,7 +184,6 @@ pre {
 }
 
 #screenshots img {
-    border: none;
     margin: 6px 0 0 6px;
 }
 
