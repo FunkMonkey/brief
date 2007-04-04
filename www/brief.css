@@ -3,7 +3,12 @@ body {
     font-size: 62.5%;
 }
 
-#main-content h2 {
+#container {
+    margin: 10px auto;
+    max-width: 80em;
+}
+
+h2 {
     background: #fdfdfd url('./images/header-background.png') repeat-x;
     border-top: 1px solid #abb6b9;
     color: #1d272d;
@@ -14,7 +19,7 @@ body {
     padding: 8px 6px 20px;
 }
 
-#main-content h3 {
+h3 {
     font-family: Arial, sans-serif;
     font-size: 1.4em;
     font-weight: normal;
@@ -36,7 +41,7 @@ pre {
     text-align: start;
 }
 
-#main-content a {
+#main-content a, #footer a {
     border-bottom: 1px solid #f14e00;
     color: #f14e00;
     text-decoration: none;
@@ -109,7 +114,11 @@ pre {
 
 #footer {
     border-top: 1px dotted #1d272d;
-    margin-top: 15em;
+    clear: both;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin-top: 7em;
+    text-align: center;
 }
 
 #footer p {

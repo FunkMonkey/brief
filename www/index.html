@@ -1,36 +1,75 @@
-<div id="home">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
-    <img id="home-screenshot" src="./images/home-screenshot.png"/>
-    <p id="main-description">
-        <span class="name-emphasis">Brief</span> is a light-weight feed reading extension for Firefox.
-        Designed to be easy to use and streamlined, with exactly the right set of features. <a href="./overview.html">Learn more...</a>
-    </p>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta content="text/css" http-equiv="Content-Style-Type">
+        <link rel="stylesheet" href="./brief.css" type="text/css">
+    </head>
 
-    <div id="get-brief">
-        <a href="http://downloads.mozdev.org/brief/brief-0.6.xpi">Get Brief 0.6</a>
-    </div>
+    <body>
+        <div id="container">
+            <img id="brief-icon" src="./images/brief-icon-64x64.png"/>
+            <h1 id="brief-name">Brief</h1>
 
-    <div id="whats-new">
-        <h2>What's new in Brief 0.6</h2>
-        <ul>
-            <li>Ability to limit number of stored entries</li>
-            <li>Preference to always open entry links in new tabs</li>
-            <li>Context menu option to delete all entries from a feed or a folder</li>
-            <li>Ability to hide the sidebar</li>
-            <li>Favicon on the Brief's tab</li>
-            <li>When viewing many feeds at once, labels are shown telling from which feed each entry comes</li>
-            <li>Tooltips for the toolbar button and the status icon which showing detailed information about the unread feeds</li>
-            <li>Plenty of important bugfixes</li>
-        </ul>
-        <h3><a href="./changelog.html">See full changelog</a></h3>
-    </div>
+            <div id="nav-container">
+                <ul id="navigation">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/overview.html">Overview</a></li>
+                    <li><a href="/changelog.html">Changelog</a></li>
+                    <li><a href="/feedback.html">Feedback</a></li>
+                    <li><a href="/source.html">Source Code</a></li>
+                </ul>
+            </div>
 
-    <div id="known-issues">
-        <h2>Known issues</h2>
-        <ul>
-            <li>NoScript users should add <i>file://</i> to the list of trusted sites in order for Brief to work correctly</li>
-            <li>On Mac OS X options window is broken</li>
-            <li>This is not really an "issue" but remember that the feeds you have in your bookmarks must be Live Bookmarks (not feed addresses saved as regular bookmarks) for Brief see them</li>
-        </ul>
-    </div>
-</div>
+            <div id="main-content">
+
+                <div id="home">
+
+                    <img id="home-screenshot" src="./images/home-screenshot.png"/>
+                    <p id="main-description">
+                        <span class="name-emphasis">Brief</span> is a light-weight feed reading extension for Firefox.
+                        Designed to be easy to use and streamlined, with exactly the right set of features. <a href="./overview.html">Learn more...</a>
+                    </p>
+
+                    <div id="get-brief">
+                        <a href="http://downloads.mozdev.org/brief/brief-0.6.xpi">Get Brief 0.6</a>
+                    </div>
+
+                    <div id="whats-new">
+                        <h2>What's new in Brief 0.6</h2>
+                        <ul>
+                            <li>Ability to limit number of stored entries</li>
+                            <li>Preference to always open entry links in new tabs</li>
+                            <li>Context menu option to delete all entries from a feed or a folder</li>
+                            <li>Ability to hide the sidebar</li>
+                            <li>Favicon on the Brief's tab</li>
+                            <li>When viewing many feeds at once, labels are shown telling from which feed each entry comes</li>
+                            <li>Tooltips for the toolbar button and the status icon which showing detailed information about the unread feeds</li>
+                            <li>Plenty of important bugfixes</li>
+                        </ul>
+                        <h3><a href="./changelog.html">See full changelog</a></h3>
+                    </div>
+
+                    <div id="known-issues">
+                        <h2>Known issues</h2>
+                        <ul>
+                            <li>NoScript users should add <i>file://</i> to the list of trusted sites in order for Brief to work correctly</li>
+                            <li>On Mac OS X options window is broken</li>
+                            <li>This is not really an "issue" but remember that the feeds you have in your bookmarks must be Live Bookmarks (not feed addresses saved as regular bookmarks) for Brief see them</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div id="footer">
+                <p>
+                    Project hosted on <a href="http://www.mozdev.org/">Mozdev.org</a>.<br/> <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2004. All rights reserved. <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a>.
+                </p>
+            </div>
+
+        </div>
+    </body>
+</html>
