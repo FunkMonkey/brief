@@ -20,6 +20,7 @@ h2 {
     font-size: 1.6em;
     font-weight: bold;
     margin: 0;
+    max-width: 30em;
     padding: 8px 6px 20px;
 }
 
