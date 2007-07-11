@@ -243,3 +243,18 @@ pre {
     margin: 0 0 1em;
     max-width: 60em;
 }
+
+/* ---------- Style page--------------- */
+#styles h2 {
+    margin-top: 20px;
+}
+
+#styles p {
+    font-size: 1.2em;
+}
+
+#styles pre {
+    font-size: 1.5em;
+    border: 1px dashed black;
+    padding: 5px;
+}
