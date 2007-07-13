@@ -198,3 +198,17 @@ body {
   font-family: "Courier New", Courier, monospace;
   font-size: 1em;
   }
+
+/* Don't touch these rules. They will be removed in future versions, but for now you
+   have to just copy them over. */
+.article-container {
+  -moz-binding: url('chrome://brief/content/bindings.xml#feedentry');
+}
+
+#feed-content[trash] .delete-entry {
+  display: none;
+  }
+
+#feed-content:not([trash]) .restore-entry {
+  display: none;
+  }
