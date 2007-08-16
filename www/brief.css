@@ -271,6 +271,10 @@ h4.see-more {
     margin: 15px 5px 5px;
 }
 
+#new-version h4.see-more {
+    font-size: 14px;
+}
+
 /* ---------- Style page--------------- */
 #styles {
     max-width: 800px;
