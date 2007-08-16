@@ -16,68 +16,105 @@
 
             <div id="nav-container">
                 <ul id="navigation">
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/overview.html">Overview</a></li>
-                    <li class="nav-selected"><a href="/changelog.html">Changelog</a></li>
-                    <li><a href="/feedback.html">Feedback</a></li>
-                    <li><a href="/source.html">Source Code</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./overview.html">Overview</a></li>
+                    <li><li><a href="./customize.html">Customize</a></li>
+                    <li class="nav-selected"><a href="./changelog.html">Changelog</a></li>
+                    <li><a href="./source.html">Source Code</a></li>
                 </ul>
             </div>
 
-            <div id="main-content">
-
-                <div id="changelog">
-                    <div class="version">
-                        <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.6.xpi">Brief 0.6</a></h3>
-                        <h4>New features:</h4>
-                        <ul>
-                            <li>Ability to limit number of stored entries per feed.</li>
-                            <li>Context menu option to delete all entries from a feed or a folder.</li>
-                            <li>Option in the context menu to restore all trashed entries.</li>
-                            <li>A bar on the left edge of the screen allowing to toggle the sidebar.</li>
-                            <li>Favicon is shown on the Brief's tab.</li>
-                            <li>When viewing many feeds at once, labels are shown telling from which feed each entry comes.</li>
-                            <li>Tooltips for the toolbar button and the status icon which show detailed information about the unread feeds.</li>
-                            <li>Preference whether double-clicking should an entry should mark it as read.</li>
-                            <li>Preference to open entry links in new tabs.</li>
-                            <li>Hidden preference to specify the fetch delay (normally you shouldn't need to touch this).</li>
-                        </ul>
-                        <h4>Changes:</h4>
-                        <ul>
-                            <li>Autoupdate interval is now counted since last update, not since startup.</li>
-                            <li>Manually updating all feeds resets the autoupdate timer.</li>
-                            <li>Removed the drop-down menu in feed entries in favour of separate buttons.</li>
-                            <li>The header in the feed view is now shown also when displaying folders.</li>
-                            <li>Rearranged the options window to accomodate the new preferences.</li>
-                            <li>When entries are removed from the feed view refreshing is much smoother.</li>
-                        </ul>
-                        <h4>Fixed bugs:</h4>
-                        <ul>
-                            <li>"Mark currently viewed entries as read" button affects all the entries, not only the filtered ones, when performing a search.</li>
-                            <li>"Invalid Date" sometimes shown as the entry date.</li>
-                            <li>Feed view sometimes scrolls to the top when marking entry as read or starring it.</li>
-                            <li>Folders in the feed list don't retain the open/closed state.</li>
-                            <li>If entry title contains HTML tags then they are displayed in plain text as part of it.</li>
-                            <li>Feed view sometimes fails to load when there are non-ASCII characters in the user's profile path.</li>
-                            <li>Brief does not work on Mac OS X - attempting to update feeds fails.</li>
-                            <li>Feed list is empty when Brief is opened as the homepage.</li>
-                        </ul>
-                    </div>
-                    <div class="version">
-                        <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.2.xpi">Brief 0.5.2</a></h3>
-                        <ul>
-                            <li>Fixed an error with feeds sometimes failing to display.</li>
-                        </ul>
-                    </div>
-                    <div class="version">
-                        <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.1.xpi">Brief 0.5.1</a></h3>
-                        <ul>
-                            <li>Fixed an issue with Location Bar rendered unusable at first start after installing Brief.</li>
-                        </ul>
-                    </div>
-                    <div class="version">
-                        <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.xpi">Brief 0.5</a> - first public release</h3>
-                    </div>
+            <div id="changelog" class="main-content">
+                <div class="version">
+                    <a name="0.7"></a>
+                    <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.7.xpi">Brief 0.7</a></h3>
+                    <h4>New features:</h4>
+                    <ul>
+                        <li>Arrows next to folders in the sidebar to fold and expand their content</li>
+                        <li><em>Delete feed</em>, <em>Delete Folder</em>, and <em>Update Folder</em> items in the sidebar context menu</li>
+                        <li>Load the <em>Unread</em> view as the homepage when opening Brief</li>
+                        <li>Show progress of checking for updates next to the statusbar icon (if Brief isn't open)</li>
+                        <li>An option to display authors of entries</li>
+                        <li>When checking for updates is in progress, show a button to stop</li>
+                        <li><em>Mark All Feeds As Read</em> in the statusbar icon context menu</li>
+                        <li>An option to display only headlines of the entries while making it easy to view them in full</li>
+                        <li>Button in the options window to empty all feeds</li>
+                        <li>Feed Properties dialog enabling per-feed preferences such as how often to check for updates and how many entries to remember</li>
+                    </ul>
+                    <h4>Changes and improvements:</h4>
+                    <ul>
+                        <li>Improve performance, especially with a large number of entries (turn on database indexing, optimize refreshing of the feed content display)</li>
+                        <li>When the user adds, modifies, or deletes Live Bookmarks, reflect the changes immediately (previously Brief had be reopened to pick up the changes)</li>
+                        <li>Always open Brief in the current tab if it's blank</li>
+                        <li>When opening entries, respect the Firefox's preferences whether to open links in new tabs or new windows</li>
+                        <li>Improved default style of the feed content view</li>
+                        <li>Ability to pick the unit (minutes/hours/days) of how often to check for updates</li>
+                    </ul>
+                    <h4>Fixed bugs:</h4>
+                    <ul>
+                        <li>The context menu in the feed content view is broken, doesn't include the right items for the element which was clicked</li>
+                        <li>Entry titles sometimes contain garbage like &# 8217; (HTML entities not resolved)</li>
+                        <li>Unpressing the Brief's button doesn't close Brief when the tab bar is hidden</li>
+                        <li>Feeds keep loading indefinitely when the server isn't responding</li>
+                        <li>Very rarely the Brief's button doesn't look pressed even though Brief is open</li>
+                        <li>MediaWiki feeds don't work very well, many entries aren't downloaded</li>
+                        <li>Unread feeds in the tooltip are listed in a different order than in the sidebar</li>
+                    </ul>
+                </div>
+                <div class="version">
+                    <a name="0.6"></a>
+                    <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.6.xpi">Brief 0.6</a></h3>
+                    <h4>New features:</h4>
+                    <ul>
+                        <li>Ability to limit number of stored entries per feed.</li>
+                        <li>Context menu option to delete all entries from a feed or a folder.</li>
+                        <li>Option in the context menu to restore all trashed entries.</li>
+                        <li>A bar on the left edge of the screen allowing to toggle the sidebar.</li>
+                        <li>Favicon is shown on the Brief's tab.</li>
+                        <li>When viewing many feeds at once, labels are shown telling from which feed each entry comes.</li>
+                        <li>Tooltips for the toolbar button and the status icon which show detailed information about the unread feeds.</li>
+                        <li>Preference whether double-clicking should an entry should mark it as read.</li>
+                        <li>Preference to open entry links in new tabs.</li>
+                        <li>Hidden preference to specify the fetch delay (normally you shouldn't need to touch this).</li>
+                    </ul>
+                    <h4>Changes and improvements:</h4>
+                    <ul>
+                        <li>Autoupdate interval is now counted since last update, not since startup.</li>
+                        <li>Manually updating all feeds resets the autoupdate timer.</li>
+                        <li>Removed the drop-down menu in feed entries in favour of separate buttons.</li>
+                        <li>The header in the feed view is now shown also when displaying folders.</li>
+                        <li>Rearranged the options window to accomodate the new preferences.</li>
+                        <li>When entries are removed from the feed view refreshing is much smoother.</li>
+                    </ul>
+                    <h4>Fixed bugs:</h4>
+                    <ul>
+                        <li>"Mark currently viewed entries as read" button affects all the entries, not only the filtered ones, when performing a search.</li>
+                        <li>"Invalid Date" sometimes shown as the entry date.</li>
+                        <li>Feed view sometimes scrolls to the top when marking entry as read or starring it.</li>
+                        <li>Folders in the feed list don't retain the open/closed state.</li>
+                        <li>If entry title contains HTML tags then they are displayed in plain text as part of it.</li>
+                        <li>Feed view sometimes fails to load when there are non-ASCII characters in the user's profile path.</li>
+                        <li>Brief does not work on Mac OS X - attempting to update feeds fails.</li>
+                        <li>Feed list is empty when Brief is opened as the homepage.</li>
+                    </ul>
+                </div>
+                <div class="version">
+                    <a name="0.5.2"></a>
+                    <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.2.xpi">Brief 0.5.2</a></h3>
+                    <ul>
+                        <li>Fixed an error with feeds sometimes failing to display.</li>
+                    </ul>
+                </div>
+                <div class="version">
+                    <a name="0.5.1"></a>
+                    <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.1.xpi">Brief 0.5.1</a></h3>
+                    <ul>
+                        <li>Fixed an issue with Location Bar rendered unusable at first start after installing Brief.</li>
+                    </ul>
+                </div>
+                <div class="version">
+                    <a name="0.5"></a>
+                    <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.xpi">Brief 0.5</a> - first public release</h3>
                 </div>
 
                 <div class="clear"></div>

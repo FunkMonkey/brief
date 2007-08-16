@@ -1,16 +1,12 @@
-html {
-    background-color: #ffffff;
-}
-
 body {
     background: #ffffff;
-    font-family: Verdana, sans-serif;
-    font-size: 62.5%;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+    font-size: 12px;
 }
 
 #container {
     margin: 10px auto;
-    width: 80em;
+    width: 70em;
 }
 
 img {
@@ -21,54 +17,74 @@ h2 {
     background: #fdfdfd url('./images/header-background.png') repeat-x;
     border-top: 1px solid #abb6b9;
     color: #1d272d;
-    font-family: Arial, sans-serif;
-    font-size: 1.6em;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
     font-weight: bold;
     margin: 0;
-    max-width: 30em;
-    padding: 8px 6px 20px;
+    padding: 8px 6px 15px;
 }
 
 h3 {
-    font-family: Arial, sans-serif;
-    font-size: 1.4em;
-    font-weight: normal;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-pre {
-    font-size: 1.2em;
+h4 {
+    font-family: "Lucida Grande", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+h4.see-more {
+    text-align: right;
+    padding-right: 1em;
 }
 
 .clear {
     clear: both;
 }
 
-.name-emphasis {
+.announcement {
+    color: #007335;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
     font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
 }
 
-#main-content {
+.announcement a {
+    color: #007335 !important;
+}
+
+.main-content {
+    width: 870px;
     text-align: start;
 }
 
-#main-content a, #footer a {
-    border-bottom: 1px solid #f14e00;
-    color: #f14e00;
-    text-decoration: none;
+.main-content p {
+    line-height: 130%;
 }
 
-#main-content a:visited {
+.main-content a, #footer a {
+    color: #f14e00;
+}
+
+.main-content a:visited {
     border-bottom-color: #f17c44;
     color: #f17c44;
 }
 
-#main-content ul {
+.main-content ul {
     list-style-image: url('./images/list-image2.png');
-    margin-top: 0;
+    padding-left: 40px;
+    margin: 12px 0;
 }
 
-#main-content li {
-    font-size: 1.2em;
+.main-content li {
+    line-height: 130%;
     margin: 5px 0;
 }
 
@@ -81,13 +97,14 @@ pre {
 #brief-name {
     color: #f14e00;
     font-family: Arial, sans-serif;
-    font-size: 2.7em;
+    font-size: 27px;
     font-weight: bold;
     margin: 0;
     padding: 0 0 0 70px;
 }
 
 #nav-container {
+    font-family: Verdana, sans-serif;
     border-bottom: 4px double #10364d;
     margin: 0 0 2em 70px;
 }
@@ -101,11 +118,9 @@ pre {
 
 #navigation li {
     display: inline;
-    font-size: 1.2em;
 }
 
 #navigation a {
-    border-bottom: none;
     color: #eaeaea;
     font-weight: normal;
     padding: 0 1em;
@@ -127,7 +142,6 @@ pre {
 #footer {
     border-top: 1px dotted #1d272d;
     clear: both;
-    font-size: 1.2em;
     line-height: 1.5em;
     margin-top: 7em;
     text-align: center;
@@ -140,25 +154,28 @@ pre {
 
 /* --------------- Home page ------------------- */
 #home {
-    max-width: 85em;
     text-align: justify;
 }
 
-#main-description {
-    font-size: 1.4em;
+
+.home-right-col {
+    float: right;
+    width: 360px;
 }
 
-#home-screenshot {
-    float: right;
-    margin-left: 10px;
+.home-left-col {
+    width: 480px;
+}
+
+#main-description {
+    font-size: 14px;
 }
 
 #get-brief {
     background: url("./images/download.png") no-repeat;
-    font-family: Arial, sans-serif;
-    font-size: 2.0em;
+    font-size: 20px;
     font-weight: bold;
-    margin: 2em 0 0 15px;
+    margin: 1em 0 0 15px;
     padding: 0 0 1em 2.0em;
 }
 
@@ -171,48 +188,65 @@ pre {
 }
 
 #whats-new {
-    margin-top: 4em;
-    padding-right: 365px;
+    margin-top: 2em;
 }
 
-#known-issues {
-    margin-top: 2em;
-    padding-right: 365px;
+#feedback p {
+    line-height: 150%;
 }
+
+#feedback h3 {
+    margin-top: 0;
+}
+
 /* --------------- Overview page --------------- */
 
-#features {
+#overview {
+    padding-top: 20px;
+}
+
+.showcase-item {
+    display: block;
     float: left;
-    width: 50%;
+    margin: 0 20px 10px 0;
+    padding: 10px 10px 0 10px;
+    width: 250px;
+    text-decoration: none;
+    color: #000000 !important;
 }
 
-#screenshots {
-    float: right;
-    width: 48%;
+.showcase-item img {
+    opacity: 0.8;
 }
 
-#screenshots img {
-    margin: 6px 0 0 6px;
+.showcase-item:hover img {
+    opacity: 1;
 }
 
-#screenshots a {
-    border: none;
+.showcase-item p {
+    margin-top: 0;
+    text-align: justify;
+}
+
+.showcase-item img {
+    display: block;
+    margin: 0 auto 10px auto;
+    border: 1px solid #abb6b9;
 }
 
 
 /* -------------- Changelog page ----------------- */
-.version {
-    margin-top: 2em;
+#changelog {
+    max-width: 60em;
 }
 
-.version h3 {
-    border-top: 1px solid #696969;
-    padding-top: 5px;
-    width: 25em;
+.version {
+    border-bottom: 1px solid #696969;
+    margin-top: 1.5em;
 }
 
 .version h3 a {
-    font-size: 1.1em;
+    font-size: 16px;
     font-weight: bold;
     margin-left: 3px;
 }
@@ -222,45 +256,29 @@ pre {
 }
 
 .version h4 {
-    font-size: 1.3em;
-    margin: 5px;
+    font-size: 13px;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+    margin: 15px 5px 5px;
 }
 
-
-/* ------------- Feedback page -------------------- */
-#feedback {
-    font-size: 1.2em;
-}
-
-/* ------------- Source Code page ----------------- */
-#get-the-src {
-    font-size: 1.2em;
-}
 
 /* ------------ New version page ---------------- */
 #new-version {
-    max-width: 70em;
-}
-
-.announcement {
-    color: #10364d;
-    font-size: 1.3em;
-    font-weight: bold;
-    margin: 0 0 1em;
-    max-width: 60em;
+    max-width: 52em;
 }
 
 /* ---------- Style page--------------- */
-#styles h2 {
-    margin-top: 20px;
+#styles {
+    max-width: 800px;
 }
 
 #styles p {
-    font-size: 1.2em;
+    max-width: 600px;
 }
 
 #styles pre {
-    font-size: 1.5em;
+    background: #fafafc;
+    font-size: 15px;
     border: 1px dashed black;
     padding: 5px;
 }

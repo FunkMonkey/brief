@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+    <head>
+        <title>Brief - a feed reading extension for Firefox</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta content="text/css" http-equiv="Content-Style-Type">
+        <link rel="icon" href="./favicon.png" type="image/png">
+        <link rel="stylesheet" href="./brief.css" type="text/css">
+    </head>
+
+    <body>
+        <div id="container">
+            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo">
+            <h1 id="brief-name">Brief</h1>
+
+            <div id="nav-container">
+                <ul id="navigation">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./overview.html">Overview</a></li>
+                    <li class="nav-selected"><a href="./customize.html">Customize</a></li>
+                    <li><a href="./changelog.html">Changelog</a></li>
+                    <li><a href="./source.html">Source Code</a></li>
+                </ul>
+            </div>
+
+            <div id="styles" class="main-content">
+
+                <h2 style="width: 60%;">Customizing Brief's look</h2>
+                <p>You can customize Brief's look using CSS stylesheets, just like a normal webpage. Use the Display tab in Options to select the CSS file.</p>
+
+                <p>The easiest way to create your own style is to take the <a href="./example-style.css">default style</a> and start from there. It's got some useful comments which should help you get going. The structure of the page looks like this:</p>
+                <pre>
+&lt;body&gt;
+    &lt;div id="container"&gt;
+
+        &lt;a id="header"&gt;
+            &lt;img id="feed-image"/&gt;
+            &lt;div id="feed-title"/&gt;
+            &lt;div id="feed-subtitle"/&gt;
+            &lt;div id="clear"/&gt;
+        &lt;/a&gt;
+
+        &lt;div id="feed-content"&gt;
+
+            &lt;!-- Articles go here. Each of them has the following structure: --&gt;
+            &lt;div class="article-container"&gt;
+                &lt;div class="article-header"&gt;
+
+                    &lt;div class="expand-button"/&gt;
+
+                    &lt;div class="star-container"&gt;
+                        &lt;xul:image class="star-image"/&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="article-controls"&gt;
+                        &lt;xul:button class="mark-read"/&gt;
+                        &lt;xul:button class="delete-entry"/&gt;
+                        &lt;xul:button class="restore-entry"/&gt;
+                    &lt;/div&gt;
+
+                    &lt;a class="article-title-link"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="article-subheader"&gt;
+                    &lt;div class="article-date"/&gt;
+                    &lt;div class="article-authors"/&gt;
+                    &lt;div class="feed-name"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="article-content"/&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;</pre>
+                <p>There are also some <a href="./common-style.css">common style rules</a> which are additional applied and set the images of the buttons. They are separated, so that they don't clutter the default style, because you probably won't need to change those. You can still overwrite them using the <em>!important</em> rule if you want.</p>
+
+                <p class="announcement" style="width: 450px;">I plan to put up a gallery of users' styles, so once you create one yourself, please <a href="./index.html#feedback">let me know!</a></p>
+
+                <div class="clear"></div>
+            </div>
+
+            <div id="footer">
+                <p>
+                    <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" style="float: right;"></a>
+                    <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="float: left; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
+                    Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>.<br/> <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2004. All rights reserved. <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a>.
+                </p>
+            </div>
+
+        </div>
+    </body>
+</html>
