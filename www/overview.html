@@ -3,51 +3,64 @@
 <html>
     <head>
         <title>Brief - a feed reading extension for Firefox</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <meta content="text/css" http-equiv="Content-Style-Type">
-        <link rel="icon" href="./favicon.png" type="image/png">
-        <link rel="stylesheet" href="./brief.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <meta content="text/css" http-equiv="Content-Style-Type"/>
+        <link rel="icon" href="./favicon.png" type="image/png" />
+        <link rel="stylesheet" href="./brief.css" type="text/css" />
+        <link rel="stylesheet" href="./slimbox/slimbox.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="./slimbox/mootools.v1.11.js"></script>
+        <script type="text/javascript" src="./slimbox/slimbox.js"></script>
     </head>
 
     <body>
         <div id="container">
-            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo">
+            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"/>
             <h1 id="brief-name">Brief</h1>
 
             <div id="nav-container">
                 <ul id="navigation">
-                    <li><a href="/index.html">Home</a></li>
-                    <li class="nav-selected"><a href="/overview.html">Overview</a></li>
-                    <li><a href="/changelog.html">Changelog</a></li>
-                    <li><a href="/feedback.html">Feedback</a></li>
-                    <li><a href="/source.html">Source Code</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li class="nav-selected"><a href="./overview.html">Overview</a></li>
+                    <li><a href="./customize.html">Customize</a></li>
+                    <li><a href="./changelog.html">Changelog</a></li>
+                    <li><a href="./source.html">Source Code</a></li>
                 </ul>
             </div>
 
-            <div id="main-content">
+            <div id="overview" class="main-content">
 
-                <div id="screenshots">
-                    <h2 id="screenshots-header">Screenshots</h2>
-                    <a href="./images/screenshot-1.png"><img src="./images/screenshot-1-small.png" alt="Screenshot of Brief main window - 1"></a>
-                    <a href="./images/screenshot-2.png"><img src="./images/screenshot-2-small.png" alt="Screenshot of Brief main window - 2"></a>
-                    <a href="./images/screenshot-3.png"><img src="./images/screenshot-3-small.png" alt="Screenshot of Brief main window - 3"></a>
-                    <a href="./images/screenshot-4.png"><img src="./images/screenshot-4-small.png" alt="Screenshot of Brief main window - 4"></a>
-                    <a href="./images/screenshot-5.png"><img src="./images/screenshot-5-small.png" alt="Screenshot of Brief options window - 1"></a>
-                    <a href="./images/screenshot-6.png"><img src="./images/screenshot-6-small.png" alt="Screenshot of Brief options window - 2"></a>
-                </div>
-
-                <div id="features">
-                    <ul>
-                        <li>Integration with Live Bookmarks.</li>
-                        <li>Articles permanently stored in a database.</li>
-                        <li>Easily mark articles as read, star the interesting ones.</li>
-                        <li>Streamlined display of feed content.</li>
-                        <li>Browse your feeds anyway you want - view unread or starred articles, display a single feed or a folder. </li>
-                        <li>Full text search-as-you-type.</li>
-                        <li>Statusbar display showing number of unread articles.</li>
-                        <li>Feeds automatically updated in the background.</li>
-                    </ul>
-                </div>
+                <a href="./images/live-bookmarks-big.png" rel="lightbox[showcase]" class="showcase-item">
+                    <img src="./images/live-bookmarks.png" alt="Integration with Live Bookmarks"/>
+                    <p>Brief integrates with Live Bookmarks. All you need to do is to select the folder containing your feeds.</p>
+                </a>
+                <a href="./images/sidebar-big.png" rel="lightbox[showcase]" class="showcase-item">
+                    <img src="./images/sidebar.png" alt="Sidebar showing list of feeds"/>
+                    <p>The list of feeds is displayed in a sidebar. You can click on a single feed or on a whole folder to view it.</p>
+                </a>
+                <a href="./images/feedview-big.png" rel="lightbox[showcase]" class="showcase-item">
+                    <img src="./images/feedview.png" alt="View of feed's content"/>
+                    <p>The content is displayed on a seamless page. The unread items are highlighted and there are some handy buttons on each entry to mark it as read, star it, or delete it.</p>
+                </a>
+                <a href="./images/feedview2-big.png" rel="lightbox[showcase]" class="showcase-item" style="clear: both;">
+                    <img src="./images/feedview2.png" alt="Headlines-only view"/>
+                    <p>You may decide to view only headlines and unfold the entries you want to read in full. You can also choose to display only the unread items, or the starred ones.</p>
+                </a>
+                <a href="./images/feedview3-big.png" rel="lightbox[showcase]" class="showcase-item">
+                    <img src="./images/feedview3.png" alt="Viewing a webpage"/>
+                    <p>Click on entry's title to open the related webpage.</p>
+                </a>
+                <a href="./images/searchbar-big.png" rel="lightbox[showcase]" class="showcase-item">
+                    <img src="./images/searchbar.png" alt="Using searchbar"/>
+                    <p>Use the search box to quickly find a piece of news. Because entries are stored in a database, you have a record of everything you've read.</p>
+                </a>
+                <a href="./images/statusbar-icon-big.png" rel="lightbox[showcase]" class="showcase-item" style="clear: both;">
+                    <img src="./images/statusbar-icon.png" alt="Statusbar icon with tooltip"/>
+                    <p>Brief checks feeds for updates in the background and notifies you about new entries. The statusbar icon shows the number of unread entries.</p>
+                </a>
+                <a href="./images/options-big.png" rel="lightbox[showcase]" class="showcase-item">
+                    <img src="./images/options.png" alt="Option window"/>
+                    <p>You can select how often to check for updates and how long to keep the downloaded entries. You may even have separate settings for each feed, if you need.</p>
+                </a>
 
                 <div class="clear"></div>
             </div>
