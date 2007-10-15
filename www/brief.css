@@ -290,3 +290,21 @@ h4.see-more {
     border: 1px dashed black;
     padding: 5px;
 }
+
+/*-------- Shortcuts page ----------- */
+#shortcuts-table {
+    border-spacing: 0;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+#shortcuts-table td {
+    padding: 3px 10px;
+    border-bottom: 1px solid gray;
+}
+
+.shortcut-key {
+    border-right: 1px solid black;
+    font-weight: bold;
+    text-align: center;
+}
