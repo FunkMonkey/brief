@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+    <head>
+        <title>Brief - a feed reading extension for Firefox</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta content="text/css" http-equiv="Content-Style-Type">
+        <link rel="icon" href="../favicon.png" type="image/png">
+        <link rel="stylesheet" href="../brief.css" type="text/css">
+        <link rel="stylesheet" href="../jquery/thickbox.css" type="text/css" media="screen">
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            _uacct = "UA-2432918-1";
+            urchinTracker();
+
+            function showShortcuts(aEvent) {
+                if (aEvent.charCode == '?'.charCodeAt(0))
+                    tb_show('Shortcut keys:', document.location + '#TB_inline?height=600&inlineId=keyboardSortcuts', false);
+            }
+            document.addEventListener('keypress', showShortcuts, false);
+        </script>
+        <script type="text/javascript" src="../jquery/jquery.js"></script>
+        <script type="text/javascript" src="../jquery/thickbox.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <img id="brief-icon" src="../images/brief-icon-64x64.png" alt="Brief logo">
+            <h1 id="brief-name">Brief</h1>
+
+            <div id="nav-container">
+                <ul id="navigation">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../overview.html">Overview</a></li>
+                    <li><a href="../customize.html">Customize</a></li>
+                    <li><a href="../changelog.html">Changelog</a></li>
+                    <li><a href="../source.html">Source Code</a></li>
+                </ul>
+            </div>
+
+            <div id="new-version" class="main-content">
+                <div id="new-version-changes">
+                    <h2>What's new in Brief 0.8</h2>
+                    <ul>
+                        <li>
+                            <div id="keyboard-shortcuts">
+                                <a id="shortcuts-link-image" href="#TB_inline?height=600&inlineId=keyboardSortcuts" class="thickbox">
+                                    <img src="../images/keys.png">
+                                </a><br>
+                                <a id="shortcuts-link" href="#TB_inline?height=600&inlineId=keyboardSortcuts" class="thickbox">
+                                    See shortcut keys
+                                </a>
+                            </div>
+                            <strong>Support for keyboard navigation and other shortcuts</strong> - you can press <strong style="font-size: 14px;">?</strong> to see the list of shortcuts at any time.
+                        </li>
+                        <li>Searchbar now searches for separate words instead of the whole string.</li>
+                        <li>When newer versions of entries are available (e.g. when blog posts are edited), Brief updates the entries and marks them as unread again.</li>
+                        <li>Pressing Escape clears the searchbox and ends the search.</li>
+                        <li>Improve the way the Live Bookmars folder is chosen on the first run, by allowing to select it straight from the sidebar.</li>
+                    </ul>
+                    <h4>Fixed bugs:</h4>
+                    <ul>
+                        <li>Toolbar button doesn't stay pressed when opening Brief in a new tab.</li>
+                        <li>Entries are sometimes randomly duplicated when updating feeds.</li>
+                        <li>Added a hidden preference <em>extensions.brief.database.disableVacuum</em> to disable compacting of the database (for people with extremely large amounts of entries compacting caused Firefox to take ages to shut down).
+                        <li>Other minor bugfixes.</li>
+                    </ul>
+                </div>
+
+                <p class="announcement">You can customize Brief's look. <a href="../customize.html">Create</a> your own style and <a href="../feedback.html">share it!</a></p>
+
+                <div id="keyboardSortcuts" style="display: none;">
+                    <table id="shortcuts-table">
+                        <tr>
+                            <td colspan="2" class="shortucts-header">Navigation</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">K <span class="shortcuts-plain">or</span> Space</td>
+                            <td>Select next entry</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">J <span class="shortcuts-plain">or</span> Backspace</td>
+                            <td>Select previous entry</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Alt + K</td>
+                            <td>Show next page</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Alt + J</td>
+                            <td>Show previous page</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Enter</td>
+                            <td>Open entry</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + Enter</td>
+                            <td>Open entry in new tab</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">N</td>
+                            <td>Unfold or fold selected entry (when in headlines view)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="shortucts-header">Entries</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">M</td>
+                            <td>Mark selected entry as read or unread</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">B</td>
+                            <td>Star or unstar selected entry</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">T</td>
+                            <td>Move selected entry to Trash</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">R</td>
+                            <td>Restore selected entry (when in Trash)</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + M</td>
+                            <td>Mark all viewed entries as read</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Tab</td>
+                            <td>Deselect any entries</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="shortucts-header">View</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">A</td>
+                            <td>Show all entries</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">S</td>
+                            <td>Show starred entries</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">D</td>
+                            <td>Show unread entries</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">F</td>
+                            <td>Toggle headlines view</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">/</td>
+                            <td>Focus searchbox</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">?</td>
+                            <td>Display list of shortcuts keys</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div id="footer">
+                <p>
+                    <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" style="float: right;"></a>
+                    <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="float: left; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
+                    Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>. <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2004. All rights reserved. <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a><br/>Keyboard image by <a href="http://alanwho.com/">Alan Who?</a>.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
