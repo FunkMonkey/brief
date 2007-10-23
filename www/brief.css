@@ -6,7 +6,7 @@ body {
 
 #container {
     margin: 10px auto;
-    max-width: 70em;
+    max-width: 870px;
 }
 
 img {
@@ -60,7 +60,6 @@ h4.see-more {
 }
 
 .main-content {
-    width: 870px;
     text-align: start;
 }
 
@@ -212,6 +211,7 @@ h4.see-more {
     margin: 0 20px 10px 0;
     padding: 10px 10px 0 10px;
     width: 250px;
+    height: 300px;
     text-decoration: none;
     color: #000000 !important;
 }
@@ -226,7 +226,7 @@ h4.see-more {
 
 .showcase-item p {
     margin-top: 0;
-    text-align: justify;
+    text-align: center;
 }
 
 .showcase-item img {
