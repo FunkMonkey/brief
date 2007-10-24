@@ -161,6 +161,7 @@ h4.see-more {
 .home-right-col {
     float: right;
     width: 360px;
+    margin-left: 10px;
 }
 
 .home-left-col {
