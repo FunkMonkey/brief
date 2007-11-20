@@ -301,8 +301,9 @@ h4.see-more {
 }
 
 #styles pre {
+    font-family: Courier New, sans-serif;
     background: #fafafc;
-    font-size: 15px;
+    font-size: 13px;
     border: 1px dashed black;
     padding: 5px;
 }

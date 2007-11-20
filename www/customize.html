@@ -36,7 +36,7 @@
 
                 <p>The easiest way to create your own style is to take the <a href="./example-style.css">default style</a> and start from there. It's got some useful comments which should help you get going. The structure of the page looks like this:</p>
                 <pre>
-&lt;body&gt;
+<span style="color: #009400;">&lt;body&gt;
     &lt;div id="container"&gt;
 
         &lt;a id="header"&gt;
@@ -46,43 +46,53 @@
             &lt;div id="clear"/&gt;
         &lt;/a&gt;
 
-        &lt;div id="feed-content"&gt;
+        &lt;div id="feed-content"&gt;</span>
 
-            &lt;!-- Articles go here. Each of them has the following structure: --&gt;
-            &lt;div class="article-container"&gt;
-                &lt;div class="article-header"&gt;
+            <strong>&lt;!-- Articles go here. --&gt;</strong>
 
+            <strong>&lt;!-- Structure of a full article: --&gt;</strong>
+            <span style="color: #eb0000;">&lt;div class="article-container"&gt;</span>
+
+                <span style="color: blue;">&lt;div class="article-header"&gt;
                     &lt;div class="expand-button"/&gt;
-
-                    &lt;div class="star-container"&gt;
-                        &lt;xul:image class="star-image"/&gt;
-                    &lt;/div&gt;
-
-                    &lt;div class="article-controls"&gt;
-                        &lt;xul:button class="mark-read"/&gt;
-                        &lt;xul:button class="delete-entry"/&gt;
-                        &lt;xul:button class="restore-entry"/&gt;
-                    &lt;/div&gt;
-
+                    &lt;div class="star-container"/&gt;
+                    &lt;div class="article-controls"/&gt;
                     &lt;a class="article-title-link"/&gt;
-                &lt;/div&gt;
+                &lt;/div&gt;</span>
 
-                &lt;div class="article-subheader"&gt;
+                <span style="color: #7d0094;">&lt;div class="article-subheader"&gt;
                     &lt;div class="article-date"/&gt;
                     &lt;div class="article-authors"/&gt;
                     &lt;div class="feed-name"/&gt;
-                &lt;/div&gt;
+                &lt;/div&gt;</span>
 
-                &lt;div class="article-content"/&gt;
-            &lt;/div&gt;
+                <span style="color: #b68900;">&lt;div class="article-content"/&gt;</span>
 
-        &lt;/div&gt;
+            <span style="color: #eb0000;">&lt;/div&gt;</span>
+
+            <strong>&lt;!-- Structure of a collapsed article: --&gt;</strong>
+            <span style="color: #eb0000;">&lt;div class="article-container"&gt;</span>
+
+                <span style="color: blue;">&lt;div class="article-header"&gt;
+                    &lt;div class="expand-button"/&gt;
+                    &lt;div class="star-container"/&gt;
+                    &lt;div class="article-controls"/&gt;
+                    &lt;div class="feed-name"/&gt;
+                    &lt;div class="article-date"/&gt;
+                    &lt;a class="article-title-link"/&gt;
+                &lt;/div&gt;</span>
+
+                <strong>&lt;!-- article-subheader and article-content are hidden --&gt;</strong>
+
+            <span style="color: #eb0000;">&lt;/div&gt;</span>
+
+        <span style="color: #009400;">&lt;/div&gt;
 
     &lt;/div&gt;
-&lt;/body&gt;</pre>
-                <p>There are also some <a href="./common-style.css">common style rules</a> which are additional applied and set the images of the buttons. They are separated, so that they don't clutter the default style, because you probably won't need to change those. You can still overwrite them using the <em>!important</em> rule if you want.</p>
+&lt;/body&gt;</span></pre>
+                <p>There are also some <a href="./common-style.css">common style rules</a> which are separated, because you rarely need to change them. You can still overwrite them using the <em>!important</em> rule if necessary.</p>
 
-                <p class="announcement" style="width: 450px;">I plan to put up a gallery of users' styles, so once you create one yourself, please <a href="./index.html#feedback">let me know!</a></p>
+                <p class="announcement" style="width: 450px;">Once you create your one style, please <a href="http://brief.mozdev.org/drupal/forum">share it with others!</a></p>
 
                 <div class="clear"></div>
             </div>

@@ -30,6 +30,41 @@
             </div>
 
             <div id="changelog" class="main-content">
+
+                <div class="version">
+                    <a name="1.0"></a>
+                    <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.0.xpi">Brief 1.0</a></h3>
+                    <h4>New features and improvements:</h4>
+                    <ul>
+                        <li>Rearranged buttons on the main toolbar.</li>
+                        <li>Item date displayed in a more friendly format - use Today, Yesterday, days of the week etc.</li>
+                        <li>Added is label indicating when an item was changed (for example when a blog post was edited). Additionally, such item is marked back as unread.</li>
+                        <li>Show a short description when a view is empty instead of just a blank page.</li>
+                        <li>Put a button in options to show keyboard shortcuts in order to make them more discoverable.</li>
+                        <li>Make keyboard shortcuts customizable by extensions like keyconfig. This doesn't include Backspace, Space, and Tab which therefore can be disabled by a hidden pref extension.brief.assumeStandardKeys.</li>
+                        <li>Added Next/Previous buttons to the feed properties window.</li>
+                        <li>Visual changes to the default style.</li>
+                        <li>Revamped headlines view.</li>
+                        <li>Added accesskeys to Brief's windows where necessary.</li>
+                        <li>List of keyboard shortcuts is now localizable.</li>
+                        <li>Changed naming of a few things and improved wording in various places.</li>
+                        <li>Again improved performance of displaying feeds, especially with large amounts of items</li>
+                    </ul>
+                    <h4>Fixed bugs:</h4>
+                    <ul>
+                        <li>Brief's favicon sometimes isn't shown on the tab.</li>
+                        <li>Scroll position and selected entry aren't remembered when refreshing the view.</li>
+                        <li>Sorting, removing, or adding many Live Bookmarks at once aren't reflected in the sidebar.</li>
+                        <li>When a feed is deleted, the feed content view is not refreshed immediately and it may still contain some items from the deleted feed.</li>
+                        <li>When home folder is removed from bookmarks, the sidebar isn't emptied.</li>
+                        <li>Regression: sidebar has too big minimum width.</li>
+                        <li>Brief sometimes causes Firefox take a very long time to shut down. Fixed by disabling automatic compacting of the database. User may now choose to compact it when emptying Trash folder.</li>
+                        <li>List of shortcut keys is cut off if window is too small.</li>
+                        <li>"About Brief" window is too tall.</li>
+                        <li>Some other minor bugs.</li>
+                    </ul>
+                </div>
+
                 <div class="version">
                     <a name="0.8"></a>
                     <h3><a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.8.xpi">Brief 0.8</a></h3>
@@ -39,7 +74,7 @@
                         <li>Searchbar now searches for separate words instead of the whole string.</li>
                         <li>When newer versions of entries are available (e.g. when blog posts are edited), Brief updates the entries.</li>
                         <li>Pressing Escape clears the searchbox and ends the search.</li>
-                        <li>Improve the way the Live Bookmars folder is chosen on the first run, by allowing to select it straight from the sidebar.</li>
+                        <li>Improve the way the Live Bookmarks folder is chosen on the first run, by allowing to select it straight from the sidebar.</li>
                     </ul>
                     <h4>Fixed bugs:</h4>
                     <ul>
@@ -108,7 +143,7 @@
                         <li>Manually updating all feeds resets the autoupdate timer.</li>
                         <li>Removed the drop-down menu in feed entries in favour of separate buttons.</li>
                         <li>The header in the feed view is now shown also when displaying folders.</li>
-                        <li>Rearranged the options window to accomodate the new preferences.</li>
+                        <li>Rearranged the options window to accommodate the new preferences.</li>
                         <li>When entries are removed from the feed view refreshing is much smoother.</li>
                     </ul>
                     <h4>Fixed bugs:</h4>
@@ -148,7 +183,7 @@
             <div id="footer">
                 <p>
                     <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" style="float: right;"></a>
-                    <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="float: left; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
+                    <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the Mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="float: left; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
                     Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>.<br/> <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2004. All rights reserved. <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a>.
                 </p>
             </div>
