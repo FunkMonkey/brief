@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+    <head>
+        <title>Brief - a feed reading extension for Firefox</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta content="text/css" http-equiv="Content-Style-Type">
+        <link rel="icon" href="../favicon.png" type="image/png">
+        <link rel="stylesheet" href="../brief.css" type="text/css">
+        <link rel="stylesheet" href="../jquery/thickbox.css" type="text/css" media="screen">
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            _uacct = "UA-2432918-1";
+            urchinTracker();
+
+            function showShortcuts(aEvent) {
+                if (aEvent.charCode == '?'.charCodeAt(0))
+                    tb_show('Shortcut keys:', document.location + '#TB_inline?height=600&inlineId=keyboardSortcuts', false);
+            }
+            document.addEventListener('keypress', showShortcuts, false);
+        </script>
+        <script type="text/javascript" src="../jquery/jquery.js"></script>
+        <script type="text/javascript" src="../jquery/thickbox.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <img id="brief-icon" src="../images/brief-icon-64x64.png" alt="Brief logo">
+            <h1 id="brief-name">Brief</h1>
+
+            <div id="nav-container">
+                <ul id="navigation">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../overview.html">Overview</a></li>
+                    <li><a href="./drupal/forum">Forum</a></li>
+                    <li><a href="../customize.html">Customize</a></li>
+                    <li><a href="../changelog.html">Changelog</a></li>
+                </ul>
+            </div>
+
+            <div id="new-version" class="main-content">
+                <div id="new-version-changes">
+                    <h2>What's new in Brief 1.0?</h2>
+                    <h4>New features and improvements:</h4>
+                    <ul>
+                        <li>Rearranged buttons on the main toolbar.</li>
+                        <li>Item date displayed in a more friendly format - use Today, Yesterday, days of the week etc.</li>
+                        <li>There is label indicating when an item was changed (for example when a blog post was edited). Such item is also marked as unread again.</li>
+                        <li>Added Next/Previous buttons to the feed properties window.</li>
+                        <li>Visual changes to the default style.</li>
+                        <li>Revamped headlines view.</li>
+                    </ul>
+                    <h4>Fixed bugs:</h4>
+                    <ul>
+                        <li>Brief's favicon sometimes isn't shown on the tab.</li>
+                        <li>Scroll postion and selected entry aren't remembered when refreshing the view.</li>
+                        <li>Sorting, removing, or adding many Live Bookmarks at once aren't reflected in the sidebar.</li>
+                        <li>Regression: sidebar has too big minimum width.</li>
+                        <li>Brief sometimes causes Firefox take a very long time to shut down. Fixed by disabling automatic compacting of the database. User may now choose to compact it when emptying Trash folder.</li>
+                        <li>List of shortcut keys is cut off if window is too small.</li>
+                    </ul>
+                    <h4 class="see-more"><a href="../changelog.html#1.0">See full changelog...</a></h4>
+                </div>
+
+                <p class="announcement">You can customize Brief's look. <a href="../customize.html">Create</a> your own style and <a href="http://brief.mozdev.org/drupal/forum">share it!</a></p>
+
+                <div class="clear"></div>
+            </div>
+
+            <div id="footer" style="border-top: none;">
+                <p>
+                    Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>.<br>
+                    <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="margin-top: 5px; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
