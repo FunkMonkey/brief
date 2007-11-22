@@ -248,13 +248,22 @@ h4.see-more {
 }
 
 .version h3 {
-    font-size: 16px;
-    font-weight: bold;
     margin-left: 3px;
 }
 
 .version > h3:before {
     content: url('./images/brief-icon-16x16.png');
+}
+
+.version-number {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.version-date {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 13px;
 }
 
 .version h4 {
