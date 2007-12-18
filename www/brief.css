@@ -160,7 +160,6 @@ h4.see-more {
 
 .home-right-col {
     float: right;
-    clear: right;
     width: 360px;
     margin-left: 10px;
 }
@@ -191,6 +190,10 @@ h4.see-more {
 
 #whats-new {
     margin-top: 2em;
+}
+
+#more-info {
+    clear: both;
 }
 
 #feedback p {
