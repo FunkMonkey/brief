@@ -49,9 +49,9 @@ h4.see-more {
 .announcement {
     color: #007335;
     font-family: Verdana, sans-serif;
-    font-size: 13px;
+    font-size: 14px !important;
     font-weight: bold;
-    text-align: center;
+    text-align: center !important;
     margin: 20px auto;
 }
 
@@ -121,7 +121,8 @@ h4.see-more {
 
 #navigation a {
     color: #eaeaea;
-    font-weight: normal;
+    font-weight: bold;
+    font-size: 13px;
     padding: 0 1em;
     text-decoration: none;
 }
@@ -172,12 +173,21 @@ h4.see-more {
     font-size: 14px;
 }
 
+#get-brief-box {
+    margin: 1em 0 0 15px;
+}
+
 #get-brief {
+    font-family: Verdana, sans-serif;
     background: url("./images/download.png") no-repeat;
     font-size: 20px;
     font-weight: bold;
-    margin: 1em 0 0 15px;
-    padding: 0 0 1em 2.0em;
+    padding: 0 0 20px 40px;
+}
+
+#compatibility-info {
+    font-size: 11px;
+    padding-left: 40px;
 }
 
 #get-brief a {
@@ -189,7 +199,7 @@ h4.see-more {
 }
 
 #whats-new {
-    margin-top: 2em;
+    margin-top: 30px;
 }
 
 #more-info {
@@ -251,6 +261,10 @@ h4.see-more {
     margin-top: 1.5em;
 }
 
+.version li {
+    text-align: justify;
+}
+
 .version h3 {
     margin-left: 3px;
 }
@@ -310,7 +324,9 @@ h4.see-more {
 }
 
 #styles p {
+    font-size: 13px;
     max-width: 600px;
+    text-align: justify;
 }
 
 #styles pre {

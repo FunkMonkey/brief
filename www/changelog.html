@@ -32,6 +32,63 @@
             <div id="changelog" class="main-content">
 
                 <div class="version">
+                    <a name="1.2"></a>
+                    <h3>
+                        <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.xpi">Brief 1.2</a>
+                        <span class="version-date">16 June 2007</span>
+                    </h3>
+                    <h4>New features and improvements:</h4>
+                    <ul>
+                        <li>Integration with the new bookmarks system in Firefox 3: starred items are now simply bookmarks.
+                            The star in the left corner of an item brings up Edit Bookmark panel, just like the one in the Location Bar.
+                            You can browse and search items by their tags.</li>
+                        <li>Improved performance. Switching pages and deleting items is a lot faster.</li>
+                        <li>Optimized checking feeds for updates, doesn't lock up Firefox anymore.</li>
+                        <li>Searching faster, matches only full words and provides Google-like syntax, for example: mozilla OR "firefox extension" -tabs.</li>
+                        <li>Search matches are highlighted in the feed content.</li>
+                        <li>New way of customizing appearance of feeds. You no longer have to provide a complete replacement for the
+                            default CSS style, instead you can add rules in addition to the default style. There is a simple built-in
+                            editor available in the Options window.</li>
+                        <li>A feed-specific setting not to mark changed items back as unread.</li>
+                        <li>Reorganized Options window.</li>
+                        <li>Option to sort oldest items first in unread view.</li>
+                        <li>Tweaks to the default style of feeds.</li>
+                        <li>Option to always highlight the current item, so that you can edit it using keyboard shortcuts.</li>
+                        <li>Spacebar/backspace always scroll to the next/previous item.</li>
+                        <li>Shortucts to show next/previous item (K/J) were swapped to match the common layout among most applications.</li>
+                        <li>You can hold Ctrl when clicking "Mark all items as read" button to mark only the current page.</li>
+                        <li>When a web page is displayed, clicking the currently selected feed in the sidebar restores the feed view.</li>
+                        <li>Keyboard shortcut to open Brief: <em>Ctrl + Shift + A</em>.</li>
+                        <li>The feed-specific setting to specify the maximum number of stored items was removed. The global option is
+                            still available. See <a href="http://brief.mozdev.org/drupal/node/166">this topic</a> for background.</li>
+                        <li>When an item has no title, the URL is shown as the title.</li>
+                        <li>Network security dialogs, for example warnings about invalid certificates, are suppressed to avoid annoying
+                            users. This also includes authentication prompts, so if you subscribe to authenticated feeds, you can flip
+                            a hidden preference to restore the old behaviour: <em>extensions.brief.update.suppressSecurityDialogs</em>.</li>
+                        <li>Progress bar is always shown when checking feeds for updates, instead of only when it was manually initiated by the user.</li>
+                        <li>Spinbuttons (these tiny arrows) were added to textboxes in options for entering numbers.</li>
+                        <li>Smooth scrolling was tweaked, so that it doesn't take too much time to scroll past long items.</li>
+                    </ul>
+                    <h4>Fixed bugs:</h4>
+                    <ul>
+                        <li>Brief works better with NoScript extension. You no longer have to add all file:// URLs to the whitelist, Brief has its own resource:// URL.</li>
+                        <li>OPML importing was significantly improved. Brief handles more kinds of files and deals with errors better (thanks to DG for providing samples of various problematic OMPL files).</li>
+                        <li>Exceptions in the Error Console when the sidebar is hidden.</li>
+                        <li>Double-clicking Mark Read button in the Unread view results in infinite stream of exceptions in the Error Console (thanks to Ngamer for reporting)</li>
+                        <li>After opening an item in unread view and then going back, marking items as read doesn't work anymore</li>
+                        <li>Firefox's shortcut for switching tabs (Ctrl+Tab) accidentally toggles highlighting of the current item.</li>
+                        <li>In headlines view, when unfolding an item taller than the window height, the scroll position lines up with the bottom of the item instead of the top</li>
+                        <li>Sometimes feeds are skipped when updating multiple feeds.</li>
+                        <li>Feed content flickers when refreshed.</li>
+                        <li>Favicons in the list of feeds sometimes are mixed up.</li>
+                        <li>Contents of items are now a displayed like any normal elements in web pages, which fixes various things
+                            that didn't with the special way Brief used to serve the contents. This includes tooltips (floating titles
+                            of elements), Firefox extensions that interact with contents of web pages, and potentially some other stuff.</li>
+                    </ul>
+                </div>
+
+
+                <div class="version">
                     <a name="1.1"></a>
                     <h3>
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.1.xpi">Brief 1.1</a>
@@ -104,7 +161,7 @@
                         <li>Put a button in options to show keyboard shortcuts in order to make them more discoverable.</li>
                         <li>Make keyboard shortcuts customizable by extensions like keyconfig. This doesn't include Backspace, Space, and Tab which therefore can be disabled by a hidden pref extension.brief.assumeStandardKeys.</li>
                         <li>Added Next/Previous buttons to the feed properties window.</li>
-                        <li>Visual changes to the default style.</li>
+                        <li>Changes to the appearance of feeds.</li>
                         <li>Revamped headlines view.</li>
                         <li>Added accesskeys to Brief's windows where necessary.</li>
                         <li>List of keyboard shortcuts is now localizable.</li>
