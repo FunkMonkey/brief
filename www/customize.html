@@ -31,57 +31,58 @@
 
             <div id="styles" class="main-content">
 
-                <h2 style="width: 60%;">Customizing Brief's look</h2>
-                <p>You can customize Brief's look using CSS stylesheets, just like a normal webpage. Use the Display tab in Options to select the CSS file.</p>
+                <h2 style="width: 60%;">Customizing apperance of feeds</h2>
+                <p>
+                    Brief lets you change the appearance of feeds using CSS. To add custom style rules, open Brief's options,
+                    select the <strong>Display</strong> tab and click <strong>Customize</strong>.
+                    You can also edit the CSS file directly, it is stored under <em>/chrome/brief-custom-style.css</em> in your
+                    <a href="http://support.mozilla.com/en-US/kb/Profiles">profile</a>.
+                </p>
 
-                <p>The easiest way to create your own style is to take the <a href="./example-style.css">default style</a> and start from there. It's got some useful comments which should help you get going. The structure of the page looks like this:</p>
+                <p>
+                    Rules which you define are applied in addition to the <a href="./example-style.css">default style</a>.
+                </p>
+
+                <p>This is the structure of the page used to display feeds:</p>
                 <pre>
 <span style="color: #009400;">&lt;body&gt;
     &lt;div id="container"&gt;
 
-        &lt;a id="header"&gt;
+        &lt;div id="header"&gt;
             &lt;img id="feed-image"/&gt;
-            &lt;div id="feed-title"/&gt;
+            &lt;a id="feed-title"/&gt;
             &lt;div id="feed-subtitle"/&gt;
-        &lt;/a&gt;
+        &lt;/div&gt;
 
         &lt;div id="feed-content"&gt;</span>
 
             <strong>&lt;!-- Articles go here. --&gt;</strong>
 
-            <strong>&lt;!-- Structure of a full article: --&gt;</strong>
+            <strong>&lt;!-- Structure of a single article: --&gt;</strong>
             <span style="color: #eb0000;">&lt;div class="article-container"&gt;</span>
 
                 <span style="color: blue;">&lt;div class="article-header"&gt;
                     &lt;div class="expand-button"/&gt;
                     &lt;div class="star-container"/&gt;
-                    &lt;div class="article-controls"/&gt;
-                    &lt;a class="article-title-link"/&gt;
-                &lt;/div&gt;</span>
+                    &lt;div class="article-controls"/&gt;</span>
 
-                <span style="color: #7d0094;">&lt;div class="article-subheader"&gt;
-                    &lt;div class="article-date"/&gt;
-                    &lt;div class="article-authors"/&gt;
-                    &lt;div class="feed-name"/&gt;
-                &lt;/div&gt;</span>
+                    <strong>&lt;!-- Shown only in collapsed articles (headlines view): --&gt;</strong>
+                    <span style="color: #7d0094;">&lt;div class="collapsed-article-subheader"&gt;
+                        &lt;div class="article-date"/&gt;
+                        &lt;div class="feed-name"/&gt;
+                    &lt;/div&gt;</span>
+
+                    <span style="color: blue;">&lt;a class="article-title-link"/&gt;</span>
+
+                    <strong>&lt;!-- Shown only in full articles: --&gt;</strong>
+                    <span style="color: #7d0094;">&lt;div class="article-subheader"&gt;
+                        &lt;div class="article-date"/&gt;
+                        &lt;div class="article-authors"/&gt;
+                        &lt;div class="feed-name"/&gt;
+                    &lt;/div&gt;</span>
+                <span style="color: blue;">&lt;/div&gt;</span>
 
                 <span style="color: #b68900;">&lt;div class="article-content"/&gt;</span>
-
-            <span style="color: #eb0000;">&lt;/div&gt;</span>
-
-            <strong>&lt;!-- Structure of a collapsed article: --&gt;</strong>
-            <span style="color: #eb0000;">&lt;div class="article-container"&gt;</span>
-
-                <span style="color: blue;">&lt;div class="article-header"&gt;
-                    &lt;div class="expand-button"/&gt;
-                    &lt;div class="star-container"/&gt;
-                    &lt;div class="article-controls"/&gt;
-                    &lt;div class="feed-name"/&gt;
-                    &lt;div class="article-date"/&gt;
-                    &lt;a class="article-title-link"/&gt;
-                &lt;/div&gt;</span>
-
-                <strong>&lt;!-- article-subheader and article-content are hidden --&gt;</strong>
 
             <span style="color: #eb0000;">&lt;/div&gt;</span>
 
@@ -89,9 +90,9 @@
 
     &lt;/div&gt;
 &lt;/body&gt;</span></pre>
-                <p>There are also some <a href="./common-style.css">common style rules</a> which are separated, because you rarely need to change them. You can still overwrite them using the <em>!important</em> rule if necessary.</p>
 
-                <p class="announcement" style="width: 450px;">Once you create your one style, please <a href="http://brief.mozdev.org/drupal/forum">share it with others!</a></p>
+
+                <p class="announcement" style="max-width: none;">Once you create your own style, please <a href="http://brief.mozdev.org/drupal/forum">share it with others!</a></p>
 
                 <div class="clear"></div>
             </div>
