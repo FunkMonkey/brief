@@ -81,14 +81,14 @@ h2 {
 #schedule-once-advert {
     border: 1px solid #a5acb0;
     -moz-border-radius: 3px;
-    padding: 10px;
-    width: 605px;
+    padding: 5px 20px 10px;
+    width: 595px;
     overflow: auto;
 }
 
 #schedule-once-screenshot {
     float: right;
-    margin-left: 10px;
+    margin-left: 20px;
     border: none;
 }
 
