@@ -1,4 +1,4 @@
-<!ENTITY optionsWindow.title "Brief - opcje">
+<!ENTITY optionsWindow.title "Brief – opcje">
 <!ENTITY mainPane.label "Ogólne">
 <!ENTITY updateGroup.caption "Aktualizacje">
 <!ENTITY checkForUpdatesBefore.label "Sprawdzaj kanały co">
@@ -22,30 +22,27 @@
 <!ENTITY storedEntriesBefore.label "Przechowuj do">
 <!ENTITY storedEntriesAfter.label "ostatnich wiadomości w kanale">
 <!ENTITY storedEntriesCheckbox.accesskey "P">
-<!ENTITY clearAllEntriesButton.label "Usuń wszystkie wiadomości...">
+<!ENTITY clearAllEntriesButton.label "Usuń wszystkie wiadomości…">
 <!ENTITY clearAllEntriesButton.accesskey "U">
 <!ENTITY feedsPane.label "Kanały">
 <!ENTITY folderTree.label "Folder zawierający dynamiczne zakładki:">
-<!ENTITY importOPML.label "Importuj...">
+<!ENTITY importOPML.label "Importuj…">
 <!ENTITY importOPML.accesskey "I">
-<!ENTITY exportOPML.label "Eksportuj...">
+<!ENTITY exportOPML.label "Eksportuj…">
 <!ENTITY exportOPML.accesskey "E">
 <!ENTITY displayPane.label "Widok">
-<!ENTITY entriesPerPageBefore.label "Wyświetlaj">
-<!ENTITY entriesPerPageAfter.label "wiadomości na jednej stronie">
-<!ENTITY entriesPerPage.accesskey "Y">
 <!ENTITY showStatusbarIcon.label "Wyświetlaj ikonę rozszerzenia na pasku stanu">
 <!ENTITY showStatusbarIcon.accesskey "A">
-<!ENTITY sortUnreadViewOldestFirst.label "W widoku nieprzeczytanych wyświetlaj najpierw najstarsze wiadomości">
-<!ENTITY sortUnreadViewOldestFirst.accesskey "D">
+<!ENTITY showUnreadCounter.label "Liczbę nieprzeczytanych wiadomości wyświetlaj za ikoną Briefa">
+<!ENTITY showUnreadCounter.accesskey "L">
+<!ENTITY sortUnreadViewOldestFirst.label "W nieprzeczytanych wyświetlaj najpierw najstarsze wiadomości">
+<!ENTITY sortUnreadViewOldestFirst.accesskey "S">
 <!ENTITY autoMarkRead.label "Oznaczaj wyświetlone wiadomości jako przeczytane">
 <!ENTITY autoMarkRead.accesskey "C">
-<!ENTITY shortcutsGroup.caption "Skróty">
 <!ENTITY enableItemHightlight.label "Wyróżniaj aktywną wiadomość">
 <!ENTITY enableItemHightlight.accesskey "W">
-<!ENTITY keyboardShortcuts.label "Skróty klawiaturowe">
-<!ENTITY keyboardShortcuts.accesskey "K">
 <!ENTITY customizeGroup.caption "Wygląd">
+<!ENTITY shortcutsPane.label "Skróty">
 <!ENTITY editStyleDescription.label "Dostosuj wygląd kanałów">
 <!ENTITY editStyleButton.label "Dostosuj">
 <!ENTITY editStyleButton.accesskey "D">
@@ -62,7 +59,7 @@
 <!ENTITY expireEntriesPerFeedAfter.label "dniach">
 <!ENTITY updatedEntries.label "Nie oznaczaj zmienionych wiadomości jako nieprzeczytanych">
 <!ENTITY updatedEntries.accesskey "D">
-<!ENTITY previousFeed.label "&lt; Poprzedni">
+<!ENTITY previousFeed.label "« Poprzedni">
 <!ENTITY previousFeed.accesskey "P">
-<!ENTITY nextFeed.label "Następny &gt;">
+<!ENTITY nextFeed.label "Następny »">
 <!ENTITY nextFeed.accesskey "N">
