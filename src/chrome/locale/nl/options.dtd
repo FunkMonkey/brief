@@ -1,4 +1,4 @@
-<!ENTITY optionsWindow.title "Brief opties">
+<!ENTITY optionsWindow.title "Brief-opties">
 <!ENTITY mainPane.label "Hoofdvenster">
 <!ENTITY updateGroup.caption "Bijwerken">
 <!ENTITY checkForUpdatesBefore.label "Elke">
@@ -22,30 +22,27 @@
 <!ENTITY storedEntriesBefore.label "Niet meer dan">
 <!ENTITY storedEntriesAfter.label "meest recente berichten in elke feed opslaan">
 <!ENTITY storedEntriesCheckbox.accesskey "n">
-<!ENTITY clearAllEntriesButton.label "Alle berichten wissen...">
+<!ENTITY clearAllEntriesButton.label "Alle berichten wissen…">
 <!ENTITY clearAllEntriesButton.accesskey "A">
 <!ENTITY feedsPane.label "Feeds">
 <!ENTITY folderTree.label "Map met mijn livebladwijzers:">
-<!ENTITY importOPML.label "Importeren...">
+<!ENTITY importOPML.label "Importeren…">
 <!ENTITY importOPML.accesskey "I">
-<!ENTITY exportOPML.label "Exporteren...">
+<!ENTITY exportOPML.label "Exporteren…">
 <!ENTITY exportOPML.accesskey "E">
 <!ENTITY displayPane.label "Weergave">
-<!ENTITY entriesPerPageBefore.label "Per pagina">
-<!ENTITY entriesPerPageAfter.label "onderwerpen weergeven">
-<!ENTITY entriesPerPage.accesskey "g">
 <!ENTITY showStatusbarIcon.label "Statusbalkpictogram weergeven">
 <!ENTITY showStatusbarIcon.accesskey "g">
+<!ENTITY showUnreadCounter.label "Aantal ongelezen berichten weergeven naast pictogram van Brief">
+<!ENTITY showUnreadCounter.accesskey "t">
 <!ENTITY sortUnreadViewOldestFirst.label "Oudste berichten bovenaan zetten bij weergave ongelezen berichten">
 <!ENTITY sortUnreadViewOldestFirst.accesskey "O">
 <!ENTITY autoMarkRead.label "Berichten als gelezen markeren als ik ze heb gezien">
 <!ENTITY autoMarkRead.accesskey "M">
-<!ENTITY shortcutsGroup.caption "Sneltoetsen">
 <!ENTITY enableItemHightlight.label "Altijd het huidige bericht accentueren">
 <!ENTITY enableItemHightlight.accesskey "H">
-<!ENTITY keyboardShortcuts.label "Sneltoetsen">
-<!ENTITY keyboardShortcuts.accesskey "t">
 <!ENTITY customizeGroup.caption "Weergave">
+<!ENTITY shortcutsPane.label "Snelkoppelingen">
 <!ENTITY editStyleDescription.label "Weergave van feeds aanpassen">
 <!ENTITY editStyleButton.label "Aanpassen">
 <!ENTITY editStyleButton.accesskey "A">

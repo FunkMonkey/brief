@@ -1,21 +1,17 @@
-<!ENTITY confirmHomeFolder.label "OK">
-<!ENTITY searchCurrentView.label "Zoeken in huidige weergave">
-<!ENTITY searchAllFeeds.label "Zoeken in alle feeds">
-<!ENTITY headlinesCheckbox.tooltip "Koptekstweergave gebruiken">
-<!ENTITY showAll.label "Alles bekijken">
-<!ENTITY showUnread.label "Ongelezen bekijken">
-<!ENTITY showStarred.label "Bladwijzers bekijken">
-<!ENTITY updateButton.tooltip "Alle feeds controleren op updates">
-<!ENTITY stopUpdatingButton.tooltip "Feeds niet meer op updates controleren">
-<!ENTITY searchScopeButton.tooltip "De zoekopdracht wijzigen">
-<!ENTITY showOptions.tooltip "Brief opties openen">
-<!ENTITY markViewRead.tooltip "Alle berichten als gelezen markeren (houd Ctrl ingedrukt om alleen de huidige pagina te markeren)">
-<!ENTITY viewConstraintList.tooltip "Kies welke berichten moeten worden weergegeven">
-<!ENTITY previousPage.tooltip "Nieuwere onderwerpen weergeven">
-<!ENTITY nextPage.tooltip "Oudere onderwerpen weergeven">
+<!ENTITY searchBox.label "Zoeken">
+<!ENTITY allItemsFolder.label "Alle berichten">
 <!ENTITY unreadFolder.label "Ongelezen">
 <!ENTITY starredFolder.label "Bladwijzers">
 <!ENTITY trashFolder.label "Prullenbak">
+<!ENTITY headlinesCheckbox.tooltip "Koptekstweergave gebruiken">
+<!ENTITY filterUnread.tooltip "Alleen ongelezen berichten bekijken (D)">
+<!ENTITY filterStarred.tooltip "Alleen bladwijzers bekijken (S)">
+<!ENTITY updateButton.tooltip "Alle feeds controleren op updates">
+<!ENTITY stopUpdatingButton.tooltip "Feeds niet meer op updates controleren">
+<!ENTITY showOptions.tooltip "Brief-opties openen">
+<!ENTITY sidebarSplitter.tooltip "Dubbelklik om de zijbalk te verbergen">
+<!ENTITY revealSidebar.tooltip "Zijbalk weergeven">
+<!ENTITY markViewRead.tooltip "Alle berichten als gelezen markeren (houd Ctrl ingedrukt om alleen de huidige pagina te markeren)">
 <!ENTITY ctxMarkFeedRead.label "Feed als gelezen markeren">
 <!ENTITY ctxMarkFeedUnread.label "Als ongelezen markeren">
 <!ENTITY ctxMarkFolderRead.label "Map als gelezen markeren">
@@ -33,7 +29,7 @@
 <!ENTITY ctxFeedProperties.label "Eigenschappen">
 <!ENTITY ctxUpdateFeeds.label "Feeds nu bijwerken">
 <!ENTITY ctxMarkFeedsAsRead.label "Alle feeds als gelezen markeren">
+<!ENTITY showUnreadCounter.label "Aantal ongelezen berichten weergeven">
+<!ENTITY ctxShowOptions.label "Opties">
 <!ENTITY compactingWindow.title "Feeds compacteren">
-<!ENTITY compactingInProgress.label "Brief compacteert opgeslagen feeds. Dit kan enkele minuten duren...">
-<!ENTITY migrationProgress.title "Feeds overzetten">
-<!ENTITY migrationProgress.description "Brief zet opgeslagen feeds over...">
+<!ENTITY compactingInProgress.label "Brief compacteert opgeslagen feeds. Dit kan enkele minuten duren…">
