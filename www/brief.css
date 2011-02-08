@@ -285,7 +285,8 @@ h4.see-more {
 }
 
 .version h4 {
-    font-size: 13px;
+    color: #00394f;
+    font-size: 14px;
     margin: 15px 5px 5px;
 }
 
@@ -316,6 +317,11 @@ h4.see-more {
 #shortcuts-link {
     display: block;
     margin-top: 5px;
+}
+
+#ads {
+    float: right;
+    padding: 0 0 0 10px;
 }
 
 /* ---------- Style page--------------- */
