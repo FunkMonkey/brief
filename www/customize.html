@@ -16,80 +16,80 @@
 
     <body>
         <div id="container">
-            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo">
-            <h1 id="brief-name">Brief</h1>
+            <a href="./index.html"><img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"></a>
+            <h1 id="brief-name">Brief <span id="dash">&mdash;</span><span id="brief-subname">a feed reading extension for Firefox</span></h1>
 
             <div id="nav-container">
                 <ul id="navigation">
                     <li><a href="./index.html">Home</a></li>
-                    <li><a href="./overview.html">Overview</a></li>
+                    <li><a href="./overview.html">Guide</a></li>
                     <li><a href="./drupal/forum">Forum</a></li>
-                    <li class="nav-selected"><a href="./customize.html">Customize</a></li>
+                    <li class="nav-selected">Customize</li>
                     <li><a href="./changelog.html">Changelog</a></li>
                 </ul>
             </div>
 
             <div id="styles" class="main-content">
 
-                <h2 style="width: 60%;">Customizing apperance of feeds</h2>
+                <h2>Customizing Brief's look</h2>
                 <p>
-                    Brief lets you change the appearance of feeds using CSS. To add custom style rules, open Brief's options,
-                    select the <strong>Display</strong> tab and click <strong>Customize</strong>.
-                    You can also edit the CSS file directly, it is stored under <em>/chrome/brief-custom-style.css</em> in your
-                    <a href="http://support.mozilla.com/en-US/kb/Profiles">profile</a>.
+                    You can change Brief's look using CSS. To add custom style rules
+                    open Brief's options and click <strong>Customize</strong>.
+                    You can also edit the CSS file directly, it is called <em>brief-custom-style.css</em> and you will find it
+                    in <em>\chrome</em> folder in your <a href="http://support.mozilla.com/en-US/kb/Profiles">profile</a>.
+                    Your modifications will be applied on top of the <a href="./default-style.css">default style</a>.
                 </p>
 
-                <p>
-                    Rules which you define are applied in addition to the <a href="./default-style.css">default style</a>.
-                </p>
-
-                <p>This is the structure of the page used to display feeds:</p>
+                <h3>Structure of the feed view page:</h3>
                 <pre>
-<span style="color: #009400;">&lt;body&gt;
+&lt;body&gt;
     &lt;div id="container"&gt;
-
-        &lt;div id="header"&gt;
-            &lt;img id="feed-image"/&gt;
-            &lt;a id="feed-title"/&gt;
-            &lt;div id="feed-subtitle"/&gt;
+        &lt;div id="message-box"&gt;
+            &lt;p id="main-message"&gt;&lt;/p&gt;
+            &lt;p id="secondary-message"&gt;&lt;/p&gt;
         &lt;/div&gt;
 
-        &lt;div id="feed-content"&gt;</span>
+        &lt;div id="feed-content"&gt;
 
-            <strong>&lt;!-- Articles go here. --&gt;</strong>
+            &lt;!-- Feed items go here. Structure of an item: --&gt;
 
-            <strong>&lt;!-- Structure of a single article: --&gt;</strong>
-            <span style="color: #eb0000;">&lt;div class="article-container"&gt;</span>
+            &lt;div class="article-container"&gt;
+                &lt;div class="article-header"&gt;
+                    &lt;div class="article-star"/&gt;
+                    &lt;div class="article-title-link-box"&gt;
+                        &lt;a class="article-title-link"/&gt;
+                    &lt;/div&gt;
 
-                <span style="color: blue;">&lt;div class="article-header"&gt;
-                    &lt;div class="expand-button"/&gt;
-                    &lt;div class="star-container"/&gt;
-                    &lt;div class="article-controls"/&gt;</span>
+                    &lt;div class="article-controls"&gt;
+                        &lt;div class="mark-read"/&gt;
+                        &lt;div class="delete-entry"/&gt;
+                        &lt;div class="restore-entry"/&gt;
+                    &lt;/div&gt;
 
-                    <strong>&lt;!-- Shown only in collapsed articles (headlines view): --&gt;</strong>
-                    <span style="color: #7d0094;">&lt;div class="collapsed-article-subheader"&gt;
+                    &lt;!-- Shown only for collapsed items (in headlines view): --&gt;
+                    &lt;div class="collapsed-article-subheader"&gt;
                         &lt;div class="article-date"/&gt;
                         &lt;div class="feed-name"/&gt;
-                    &lt;/div&gt;</span>
+                    &lt;/div&gt;
+                &lt;/div&gt;
 
-                    <span style="color: blue;">&lt;a class="article-title-link"/&gt;</span>
-
-                    <strong>&lt;!-- Shown only in full articles: --&gt;</strong>
-                    <span style="color: #7d0094;">&lt;div class="article-subheader"&gt;
-                        &lt;div class="article-date"/&gt;
+                &lt;!-- Shown for full view: --&gt;
+                &lt;div class="article-subheader"&gt;
+                    &lt;div class="article-subheader-left"&gt;
+                        &lt;div class="feed-name"/&gt;
+                        &lt;div class="article-tags"/&gt;
+                    &lt;/div&gt;
+                    &lt;div class="article-subheader-right"&gt;
                         &lt;div class="article-authors"/&gt;
-                        &lt;div class="feed-name"/&gt;
-                    &lt;/div&gt;</span>
-                <span style="color: blue;">&lt;/div&gt;</span>
+                        &lt;div class="article-date"/&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
 
-                <span style="color: #b68900;">&lt;div class="article-content"/&gt;</span>
-
-            <span style="color: #eb0000;">&lt;/div&gt;</span>
-
-        <span style="color: #009400;">&lt;/div&gt;
-
+                &lt;div class="article-content"/&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-&lt;/body&gt;</span></pre>
+&lt;/body&gt;</pre>
 
 
                 <p class="announcement" style="max-width: none;">Once you create your own style, please <a href="http://brief.mozdev.org/drupal/forum">share it with others!</a></p>

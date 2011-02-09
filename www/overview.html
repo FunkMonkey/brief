@@ -19,13 +19,13 @@
 
     <body>
         <div id="container">
-            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"/>
-            <h1 id="brief-name">Brief</h1>
+            <a href="./index.html"><img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"></a>
+            <h1 id="brief-name">Brief <span id="dash">&mdash;</span><span id="brief-subname">a feed reading extension for Firefox</span></h1>
 
             <div id="nav-container">
                 <ul id="navigation">
                     <li><a href="./index.html">Home</a></li>
-                    <li class="nav-selected"><a href="./overview.html">Overview</a></li>
+                    <li class="nav-selected">Guide</li>
                     <li><a href="./drupal/forum">Forum</a></li>
                     <li><a href="./customize.html">Customize</a></li>
                     <li><a href="./changelog.html">Changelog</a></li>
@@ -34,48 +34,67 @@
 
             <div id="overview" class="main-content">
 
-                <a href="./images/live-bookmarks-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/live-bookmarks.png" alt="Integration with Live Bookmarks">
-                    <p>Brief integrates with Live Bookmarks. All you need to do is to select the folder containing your feeds.</p>
-                </a>
-                <a href="./images/sidebar-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/sidebar.png" alt="Sidebar showing list of feeds">
-                    <p>The list of feeds is displayed in a sidebar. You can click on a single feed or on a whole folder to view it.</p>
-                </a>
-                <a href="./images/feedview-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/feedview.png" alt="View of feed's content">
-                    <p>The content is displayed on a seamless page. Unread items are highlighted and there are buttons on each item to mark it as read, bookmark it, or delete it.</p>
-                </a>
-                <a href="./images/feedview2-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/feedview2.png" alt="Headlines-only view">
-                    <p>Headlines view gives you a more compact display. You can also choose to view only the unread items, or the bookmarked ones. Clicking on the star brings up the familiar Edit Bookmark panel.</p>
-                </a>
-                <a href="./images/feedview3-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/feedview3.png" alt="Viewing a webpage">
-                    <p>Click on item's title to open the related webpage.</p>
-                </a>
-                <a href="./images/shortcuts-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/shortcuts.png" alt="Keyboard shortcuts">
-                    <p>Keyboard shortcuts make it browse the pile of news faster.</p>
-                </a>
-                <a href="./images/searchbar-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/searchbar.png" alt="Using searchbar">
-                    <p>Use the search box to quickly find a piece of news. Because items are stored in a database, you have a record of everything you've read.</p>
-                </a>
-                <a href="./images/statusbar-icon-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/statusbar-icon.png" alt="Statusbar icon with tooltip">
-                    <p>Brief checks feeds for updates in the background and notifies you about new items. The statusbar icon shows the number of unread items.</p>
-                </a>
-                <a href="./images/options-big.png" rel="lightbox[showcase]" class="showcase-item">
-                    <img src="./images/options.png" alt="Option window">
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 1.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 1 - small.jpg" alt="Integration with Live Bookmarks">
+                    </a>
+                    <p>Brief stores your subribed feeds as Live Bookmarks. You can arrange them in folders.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 2.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 2 - small.jpg" alt="Sidebar showing list of feeds">
+                    </a>
+                    <p>List of feeds is displayed in a sidebar. You can click on a single feed or on a whole folder to view it.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 3.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 3 - small.jpg" alt="View of feed's content">
+                    </a>
+                    <p>Feeds are displayed on a seamless page. Unread items are highlighted and there are buttons on each item to mark it as read or delete it.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 4.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 4 - small.jpg" alt="Headlines-only view">
+                    </a>
+                    <p>Headlines view gives you a more compact display. You can also choose to view only the unread items, or the bookmarked ones.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 5.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 5 - small.jpg" alt="Searching">
+                    </a>
+                    <p>Use the search box to quickly find a piece of news. All articles are stored kept permanently so you have a record of everything you've read.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 6.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 6 - small.jpg" alt="Bookmarking and tagging">
+                    </a>
+                    <p>You can bookmark and tag interesting articles with a single click.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 7.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 7 - small.jpg" alt="Updating feeds">
+                    </a>
+                    <p>Brief checks feeds for updates in the background and notifies you about new items.</p>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 8.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 8 - small.jpg" alt="Options window">
+                    </a>
                     <p>You can select how often to check for updates and how long to keep the downloaded items. You may even have separate settings for each feed, if you need.</p>
-                </a>
+                </div>
+                <div class="showcase-item">
+                    <a href="./images/overview/overview 9.jpg" rel="lightbox[showcase]">
+                        <img src="./images/overview/overview 9 - small.jpg" alt="Keyboard shortcuts">
+                    </a>
+                    <p>Keyboard shortcuts make it browse the pile of news faster.</p>
+                </div>
 
                 <div class="clear"></div>
             </div>
 
             <div id="footer">
                 <p>
+                    <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" style="float: right;"></a>
                     <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="float: left; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
                     Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>.<br/> <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2004. All rights reserved. <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a>.
                 </p>

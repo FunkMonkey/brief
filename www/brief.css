@@ -1,7 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
 body {
-    background: #ffffff;
+    background: -moz-linear-gradient(top, #c0e3f0, #eaf6fa 180px, #eaf6fa) no-repeat #eaf6fa;
     font-family: "Lucida Grande", Verdana, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 #container {
@@ -9,37 +15,27 @@ body {
     max-width: 870px;
 }
 
-img {
-    border: none;
+a, a:visited {
+    color: inherit;
+    text-decoration: inherit;
 }
 
 h2 {
-    background: #fdfdfd url('./images/header-background.png') repeat-x;
-    border-top: 1px solid #abb6b9;
-    color: #1d272d;
+    width: -moz-fit-content;
+    margin-bottom: 10px;
+    padding: 8px 100px 5px 5px;
+    border-bottom: 1px solid #154866;
+    color: #154866;
     font-family: Verdana, sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
-    margin: 0;
-    padding: 8px 6px 15px;
 }
 
 h3 {
-    font-family: Verdana, sans-serif;
+    margin: 10px 0;
+    color: #154866;
     font-size: 14px;
     font-weight: bold;
-}
-
-h4 {
-    font-family: "Lucida Grande", Verdana, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 0;
-}
-
-h4.see-more {
-    text-align: right;
-    padding-right: 1em;
 }
 
 .clear {
@@ -61,14 +57,18 @@ h4.see-more {
 
 .main-content {
     text-align: start;
+    margin-left: 75px;
+    padding-bottom: 70px;
 }
 
 .main-content p {
     line-height: 130%;
 }
 
-.main-content a, #footer a {
+.main-content a,
+#footer a {
     color: #f14e00;
+    text-decoration: underline;
 }
 
 .main-content a:visited {
@@ -89,61 +89,59 @@ h4.see-more {
 
 
 /* --------------- Navigation --------------- */
+
 #brief-icon {
     float: left;
+    padding-top: 5px;
 }
 
 #brief-name {
-    color: #f14e00;
+    color: #F15E18;
     font-family: Arial, sans-serif;
-    font-size: 27px;
+    font-size: 30px;
     font-weight: bold;
-    margin: 0;
-    padding: 0 0 0 70px;
+    margin: 0 0 3px 75px;
 }
 
-#nav-container {
-    font-family: Verdana, sans-serif;
-    border-bottom: 4px double #10364d;
-    margin: 0 0 2em 70px;
+#brief-subname {
+    font-size: 24px;
+}
+
+#dash {
+    padding: 0 7px 0 0;
+    font-size: 24px;
 }
 
 #navigation {
-    background: #10364d;
+    background: #154866;
     list-style: none;
-    margin: 0;
-    padding: 5px 1em;
+    margin: 0 0 30px 75px;
+    padding: 5px 12px 6px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
 }
 
-#navigation li {
-    display: inline;
-}
-
-#navigation a {
+#navigation > li {
+    display: inline-block;
     color: #eaeaea;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
     padding: 0 1em;
-    text-decoration: none;
 }
 
-#navigation a:visited {
-    color: #eaeaea;
-}
-
-#navigation a:hover {
+#navigation > li > a:hover {
     color: #ff8d54;
 }
 
-#navigation .nav-selected a {
+#navigation > li.nav-selected {
     color: #ff8d54;
+    cursor: default;
 }
 
 #footer {
     border-top: 1px dotted #1d272d;
     clear: both;
     line-height: 1.5em;
-    margin-top: 7em;
     opacity: 0.7;
     text-align: center;
 }
@@ -154,10 +152,11 @@ h4.see-more {
 
 
 /* --------------- Home page ------------------- */
-#home {
-    text-align: justify;
-}
 
+#home {
+    margin-left: 0;
+    padding-bottom: 30px;
+}
 
 .home-right-col {
     float: right;
@@ -170,94 +169,94 @@ h4.see-more {
 }
 
 #main-description {
-    font-size: 14px;
-}
-
-#get-brief-box {
-    margin: 1em 0 0 15px;
+    font-size: 15px;
+    text-align: justify;
 }
 
 #get-brief {
-    font-family: Verdana, sans-serif;
-    background: url("./images/download.png") no-repeat;
-    font-size: 20px;
+    font-family: helvetica,arial,sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid #3A7404;
+    border-radius: 0.95em 0.95em 0.95em 0.95em;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    display: block;
     font-weight: bold;
-    padding: 0 0 20px 40px;
+    line-height: 1.538;
+    width: -moz-fit-content;
+    padding: 0 0.95em;
+    margin: 50px auto;
+    font-size: 20px;
+    background: -moz-linear-gradient(center top , #93C85E 30%, #55A802 55%) repeat scroll 0 0 transparent;
+    text-shadow: 0 -1px 0 #3A7404;
 }
 
-#compatibility-info {
-    font-size: 11px;
-    padding-left: 40px;
+#get-brief > b {
+    background: url("./images/plus.png") no-repeat 5px 10px !important;
+    margin: 0 0 0 -0.5em;
+    padding: 0.3em 1em 0.2em 0.85em;
+    width: 16px;
 }
 
-#get-brief a {
-    border-bottom-width: 2px;
-    }
-
-#get-brief a:visited {
-    color: #f14e00;
+#get-brief > span {
+    border-left: 2px groove rgba(150, 150, 150, 0.35);
+    display: inline-block;
+    line-height: 1.2;
+    margin: 0 0.25em 0 -0.25em;
+    padding: 0 0.5em 0.2em 0.65em;
+    vertical-align: baseline;
 }
 
-#whats-new {
-    margin-top: 30px;
+#home-screenshot {
+    -moz-box-shadow: 5px 5px 10px #97b4be;
 }
 
 #more-info {
+    font-size: 13px;
+    padding-top: 70px;
     clear: both;
 }
 
-#feedback p {
-    line-height: 150%;
-}
-
-#feedback h3 {
-    margin-top: 0;
-}
 
 /* --------------- Overview page --------------- */
 
 #overview {
-    padding-top: 20px;
+    margin-left: 0;
 }
 
 .showcase-item {
-    display: block;
     float: left;
-    margin: 0 20px 10px 0;
-    padding: 10px 10px 0 10px;
     width: 250px;
     height: 300px;
+    margin: 0 20px 10px 0;
+    padding: 10px 10px 0 10px;
     text-decoration: none;
+    text-align: justify;
     color: #000000 !important;
-}
-
-.showcase-item img {
-    opacity: 0.8;
-}
-
-.showcase-item:hover img {
-    opacity: 1;
-}
-
-.showcase-item p {
-    margin-top: 0;
-    text-align: center;
 }
 
 .showcase-item img {
     display: block;
     margin: 0 auto 10px auto;
     border: 1px solid #abb6b9;
+    -moz-box-shadow: 5px 5px 10px #97b4be;
+}
+
+.showcase-item img:hover {
+    -moz-box-shadow: 5px 5px 10px #4C83BE;
 }
 
 
 /* -------------- Changelog page ----------------- */
+
 #changelog {
-    max-width: 60em;
+
 }
 
 .version {
     border-bottom: 1px solid #696969;
+    padding-bottom: 10px;
     margin-top: 1.5em;
 }
 
@@ -265,11 +264,7 @@ h4.see-more {
     text-align: justify;
 }
 
-.version h3 {
-    margin-left: 3px;
-}
-
-.version > h3:before {
+.version > h3.version-header:before {
     content: url('./images/brief-icon-16x16.png');
 }
 
@@ -284,88 +279,45 @@ h4.see-more {
     font-size: 13px;
 }
 
-.version h4 {
-    color: #00394f;
-    font-size: 14px;
+.version h3 {
     margin: 15px 5px 5px;
+}
+
+
+/* ---------- Customization page--------------- */
+
+#styles {
+    text-align: justify;
+}
+
+#styles p {
+    max-width: 600px;
+}
+
+#styles pre {
+    width: -moz-fit-content;
+    padding: 10px;
+    border: 1px dashed black;
+    font-family: Courier New, sans-serif;
+    background: #fafafc;
 }
 
 
 /* ------------ New version page ---------------- */
+
 #new-version {
-    max-width: 52em;
-    margin: 0 auto 0;
+    max-width: 600px;
 }
 
-#new-version h4 {
-    font-size: 13px;
+#new-version h3 {
     margin: 15px 5px 5px;
 }
 
-#new-version h4.see-more {
-    font-size: 14px;
-}
-
-#keyboard-shortcuts {
-    border: 1px lightgray solid;
-    font-size: 15px;
-    float: right;
-    margin: 0 10px 10px;
-    padding: 10px;
-}
-
-#shortcuts-link {
-    display: block;
-    margin-top: 5px;
+#new-version h3.see-more {
+    text-align: center;
 }
 
 #ads {
     float: right;
     padding: 0 0 0 10px;
-}
-
-/* ---------- Style page--------------- */
-#styles {
-    max-width: 800px;
-}
-
-#styles p {
-    font-size: 13px;
-    max-width: 600px;
-    text-align: justify;
-}
-
-#styles pre {
-    font-family: Courier New, sans-serif;
-    background: #fafafc;
-    font-size: 13px;
-    border: 1px dashed black;
-    padding: 5px;
-}
-
-/*-------- Shortcuts page ----------- */
-#shortcuts-table {
-    border-spacing: 0;
-    margin: 0 auto;
-}
-
-#shortcuts-table td {
-    padding: 3px 10px;
-    border-bottom: 1px solid lightgray;
-}
-
-.shortcut-key {
-    border-right: 1px solid lightgray;
-    font-weight: bold;
-    text-align: center;
-}
-
-.shortcuts-plain {
-    font-weight: normal;
-}
-
-.shortucts-header {
-    font-size: 14px;
-    text-align: center;
-    padding-top: 20px !important;
 }

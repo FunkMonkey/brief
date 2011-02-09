@@ -19,50 +19,38 @@
 
     <body>
         <div id="container">
-            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo">
-            <h1 id="brief-name">Brief</h1>
+            <a href="./index.html"><img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"></a>
+            <h1 id="brief-name">Brief <span id="dash">&mdash;</span><span id="brief-subname">a feed reading extension for Firefox</span></h1>
 
-            <div id="nav-container">
-                <ul id="navigation">
-                    <li class="nav-selected"><a href="./index.html">Home</a></li>
-                    <li><a href="./overview.html">Overview</a></li>
-                    <li><a href="./drupal/forum">Forum</a></li>
-                    <li><a href="./customize.html">Customize</a></li>
-                    <li><a href="./changelog.html">Changelog</a></li>
-                </ul>
-            </div>
+            <ul id="navigation">
+                <li class="nav-selected">Home</li>
+                <li><a href="./overview.html">Guide</a></li>
+                <li><a href="./drupal/forum">Forum</a></li>
+                <li><a href="./customize.html">Customize</a></li>
+                <li><a href="./changelog.html">Changelog</a></li>
+            </ul>
 
             <div id="home" class="main-content">
 
-                <div id="home-screenshot" class="home-right-col">
-                    <a href="./images/home-screenshot-big.png" rel="lightbox"><img src="./images/home-screenshot.png" alt="Screenshot of Brief main window"/></a>
-                    <h4 class="see-more"><a href="./overview.html">See more...</a></h4>
+                <div class="home-right-col">
+                    <a href="./images/general screenshot.jpg" rel="lightbox">
+                        <img id="home-screenshot"
+                             src="./images/general screenshot - small.jpg"
+                             alt="Screenshot of Brief main window"/>
+                    </a>
                 </div>
 
                 <div class="home-left-col">
                     <p id="main-description">
                         <strong>Brief</strong> is a light-weight feed reading extension for Firefox.
                         Designed to be easy to use and streamlined, with exactly the right set of features.
+                        <strong><a href="./overview.html">Learn more!</a></strong>
                     </p>
-                    <h4 class="see-more"><a href="./overview.html">Learn more...</a></h4>
 
-                    <div id="get-brief-box">
-                        <a id="get-brief" href="http://downloads.mozdev.org/brief/brief-1.2.5.xpi">Install Brief 1.2.5</a>
-                    </div>
-
-                    <div id="whats-new">
-                        <h2>What's new in Brief 1.2?</h2>
-                        <ul>
-                            <li>Integration with the new bookmarks system in Firefox 3.</li>
-                            <li>Search bar matches only full words and provides Google-like syntax, for example: mozilla OR "firefox extension" -tabs.</li>
-                            <li>Improved performance. Checking feeds for updates doesn't lock up Firefox and displaying feeds with a lot of items is snappier.</li>
-                            <li>Better keyboard shortcuts, current item can be highlighted automatically.</li>
-                            <li>Option to sort oldest items first in unread view.</li>
-                            <li>New, easier way of customizing appearance of feeds.</li>
-                            <li>Many other improvements and fixed bugs.</li>
-                        </ul>
-                        <h4 class="see-more"><a href="./changelog.html#1.2.5">See full changelog...</a></h4>
-                    </div>
+                    <a id="get-brief" href="http://downloads.mozdev.org/brief/brief-1.5.xpi">
+                        <b></b>
+                        <span>Install Brief 1.5</span>
+                    </a>
                 </div>
 
                 <div id="more-info">
@@ -73,11 +61,9 @@
                         </p>
                     </div>
 
-                    <div id="known-issues" class="home-left-col">
-                        <h3>Release notes</h3>
-                        <ul>
-                            <li>Supported languages: Czech, Danish, German, Greek, English, Spanish (Argentina), Finnish, French, Hungarian, Italian, Japanese, Norwegian, Dutch, Polish, Russian, Slovak, Turkish, Chinese (Simplified), Chinese (Traditional).</li>
-                        </ul>
+                    <div id="supported-languages" class="home-left-col">
+                        <h3>Supported languages</h3>
+                        <p>Chinese (Simplified), Czech, Danish, Dutch, English, French, Gallegan, German, Greek, Hungarian, Italian, Japanese, Polish, Portugese (Brazilian), Russian, Slovak, Swedish.</p>
                     </div>
                 </div>
 
@@ -88,8 +74,8 @@
                 <p>
                     <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" style="float: right;"></a>
                     <a href="http://www.mozdev.org" title="mozdev.org - free project hosting for the mozilla community"><img src="http://www.mozdev.org/sharedimages/mozdev37.png" style="float: left; border-bottom: none;" width="125" height="37" alt="mozdev.org"></a>
-                    <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2007 - 2008. All rights reserved.<br/>
-                    Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>. <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a>.
+                    <a href="http://www.mozdev.org/copyright.html">Copyright</a> &copy; 2007 - 2011. All rights reserved.<br/>
+                    Project hosted on <a href="http://www.mozdev.org/">mozdev.org</a>.
                 </p>
             </div>
 

@@ -12,12 +12,6 @@
         <script type="text/javascript">
             _uacct = "UA-2432918-1";
             urchinTracker();
-
-            function showShortcuts(aEvent) {
-                if (aEvent.charCode == '?'.charCodeAt(0))
-                    tb_show('Shortcut keys:', document.location + '#TB_inline?height=600&inlineId=keyboardSortcuts', false);
-            }
-            document.addEventListener('keypress', showShortcuts, false);
         </script>
         <script type="text/javascript" src="../jquery/jquery.js"></script>
         <script type="text/javascript" src="../jquery/thickbox.js"></script>
@@ -26,12 +20,12 @@
     <body>
         <div id="container">
             <img id="brief-icon" src="../images/brief-icon-64x64.png" alt="Brief logo">
-            <h1 id="brief-name">Brief</h1>
+            <h1 id="brief-name">Brief <span id="dash">&mdash;</span><span id="brief-subname">a feed reading extension for Firefox</span></h1>
 
             <div id="nav-container">
                 <ul id="navigation">
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="../overview.html">Overview</a></li>
+                    <li><a href="../overview.html">Guide</a></li>
                     <li><a href="./drupal/forum">Forum</a></li>
                     <li><a href="../customize.html">Customize</a></li>
                     <li><a href="../changelog.html">Changelog</a></li>
@@ -42,23 +36,13 @@
                 <div id="new-version-changes">
                     <h2>What's new in Brief 0.8?</h2>
                     <ul>
-                        <li>
-                            <div id="keyboard-shortcuts">
-                                <a href="#TB_inline?height=600&inlineId=keyboardSortcuts" class="thickbox">
-                                    <img src="../images/keys.png">
-                                </a><br>
-                                <a id="shortcuts-link" href="#TB_inline?height=600&inlineId=keyboardSortcuts" class="thickbox">
-                                    See shortcut keys
-                                </a>
-                            </div>
-                            <strong>Support for keyboard navigation and other shortcuts</strong> - you can press <strong style="font-size: 14px;">?</strong> to see the list of shortcuts at any time.
-                        </li>
+                        <li>Support for keyboard navigation and other shortcuts.</li>
                         <li>Searchbar now searches for separate words instead of the whole string.</li>
                         <li>When newer versions of entries are available (e.g. when blog posts are edited), Brief updates the entries.</li>
                         <li>Pressing Escape clears the searchbox and ends the search.</li>
                         <li>Improve the way the Live Bookmars folder is chosen on the first run, by allowing to select it straight from the sidebar.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Toolbar button doesn't stay pressed when opening Brief in a new tab.</li>
                         <li>Entries are sometimes duplicated when updating feeds.</li>

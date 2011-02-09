@@ -11,24 +11,35 @@
 
     <body>
         <div id="container">
-            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo">
-            <h1 id="brief-name">Brief</h1>
+            <a href="./index.html"><img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"></a>
+            <h1 id="brief-name">Brief <span id="dash">&mdash;</span><span id="brief-subname">a feed reading extension for Firefox</span></h1>
 
             <div id="nav-container">
                 <ul id="navigation">
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/overview.html">Overview</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./overview.html">Guide</a></li>
                     <li><a href="./customize.html">Customize</a></li>
                     <li><a href="./changelog.html">Changelog</a></li>
-                    <li><a href="/source.html">Source Code</a></li>
+                    <li><a href="./source.html">Source Code</a></li>
                 </ul>
             </div>
 
-            <div id="feedback" class="main-content" style="width: 600px;">
+            <div id="new-version" class="main-content">
+                <h2>What's new in Brief 0.6</h2>
+                <p class="announcement">Important: after this update some of the articles will initially get duplicated.</p>
+                <ul>
+                    <li>Ability to limit number of stored entries</li>
+                    <li>Preference to always open entry links in new tabs</li>
+                    <li>Context menu option to delete all entries from a feed or a folder</li>
+                    <li>Ability to hide the sidebar</li>
+                    <li>Favicon on the Brief's tab</li>
+                    <li>When viewing many feeds at once, labels are shown telling from which feed each entry comes</li>
+                    <li>Tooltips for the toolbar button and the status icon which showing detailed information about the unread feeds</li>
+                    <li>Important bugfixes</li>
+                </ul>
+                <h3><a href="./changelog.html">See full changelog</a></h3>
 
-                <h2 style="width: 70%;">Feedback</h2>
-                <p>For feedback, feature requests, and bug reports please use <a href="http://forums.mozillazine.org/viewtopic.php?t=524447">Brief's topic</a> on MozillaZine forums or the <a href="https://addons.mozilla.org/en-US/firefox/discussions/?AddOnID=4578">discussion board</a> on addons.mozilla.org; I try to follow them closely.</p>
-                <p>You can also drop me an e-mail at ancestor (at) o2.pl.</p>
+                <p class="announcement" style="width: 600px;">You can customize Brief's look. <a href="./customize.html">Create</a> you own style and <a href="./feedback">share it!</a></p>
 
                 <div class="clear"></div>
             </div>

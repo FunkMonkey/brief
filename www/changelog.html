@@ -16,33 +16,83 @@
 
     <body>
         <div id="container">
-            <img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo">
-            <h1 id="brief-name">Brief</h1>
+            <a href="./index.html"><img id="brief-icon" src="./images/brief-icon-64x64.png" alt="Brief logo"></a>
+            <h1 id="brief-name">Brief <span id="dash">&mdash;</span><span id="brief-subname">a feed reading extension for Firefox</span></h1>
 
             <div id="nav-container">
                 <ul id="navigation">
                     <li><a href="./index.html">Home</a></li>
-                    <li><a href="./overview.html">Overview</a></li>
+                    <li><a href="./overview.html">Guide</a></li>
                     <li><a href="./drupal/forum">Forum</a></li>
-                    <li><li><a href="./customize.html">Customize</a></li>
-                    <li class="nav-selected"><a href="./changelog.html">Changelog</a></li>
+                    <li><a href="./customize.html">Customize</a></li>
+                    <li class="nav-selected">Changelog</li>
                 </ul>
             </div>
 
             <div id="changelog" class="main-content">
 
                 <div class="version">
+                    <a name="1.5"></a>
+                    <h3 class="version-header">
+                        <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.5.xpi">Brief 1.5</a>
+                        <span class="version-date">9 February 2011</span>
+                    </h3>
+                    <h3>Brief is now compatible with Firefox 4</h3>
+                    <h3>Major changes to the user interface:</h3>
+                    <ul>
+                        <li>More web-like look and feel. Toolbars, buttons, and the other parts of the interface no longer use the native look of Firefox's theme.</li>
+                        <li><strong>All items</strong> folder at the top of the sidebar.</li>
+                        <li>Feeds are not paginated, items are loaded as the user scrolls down ("infinite scrolling").</li>
+                        <li>Rearranged and simplified toolbar:</li>
+                            <ul>
+                                <li>The buttons and the feed title form a single bar.</li>
+                                <li>View Unread and View Bookmarks drop-down menu removed in favour of separate buttons.</li>
+                                <li>Search bar moved to a more natural position on the far right, above the feed view which it filters.</li>
+                            </ul>
+                        <li>New shortcuts to mark all items on the screen as read (<strong>N</strong>)
+                            and to quickly scroll up or down by 10 items (<strong>I</strong> and <strong>U</strong>).
+                        <li>New first run page. A default feeds folder is created automatically.</li>
+                    </ul>
+
+                    <h3>Other changes and improvements:</h3>
+                    <ul>
+                        <li>In Firefox 4 the number of unread items can be shown on the toolbar button, now that the status bar is gone.</li>
+                        <li>Some keyboard shortcuts have been rearranged.</li>
+                        <li>Items are opened in new tabs by default.</li>
+                        <li>Reorganized options window.</li>
+                        <li>Brief's toolbar button doesn't stay pressed when Brief's tab is selected.</li>
+                        <li>Unread items counter has been removed from the Trash folder.</li>
+                        <li>Feed favicons are periodically refreshed, in case they have changed.</li>
+                        <li>When Bookmarks folder is selected, the list of tags is shown in a separate column to the right.</li>
+                        <li>Items opened in new tabs are treated as related to Brief's tab (i.e. be opened next to it)</li>
+                        <li>Checking feeds for updates has been improved, so that it doesn't slow down the browser.</li>
+                        <li>"Open items in new tabs" option always creates new tabs, not windows, regardless of Firefox's general options</li>
+                    </ul>
+                    <h3>Fixed bugs:</h3>
+                    <ul>
+                        <li>Sliding notification of new items doesn't work</li>
+                        <li>Favicon goes blank while a feed is being updated (no throbber).</li>
+                        <li>Status bar tooltip is empty in French and Spanish versions (thanks to el.Fakir for the patch!).</li>
+                        <li>Feed items aren't deleted properly when Trash is emptied and keep taking up space on disk.</li>
+                        <li>Feeds that have their own update interval specified are sometimes refreshed every minute.</li>
+                        <li>Sometimes feed refreshing gets stuck and fails to finish.</li>
+                        <li>Tearing Brief's tab off to a new window causes feed items to be opened in tabs in the old window.</li>
+                        <li>Feed goes blank if it contains script using document.writeln.</li>
+                    </ul>
+                </div>
+
+                <div class="version">
                     <a name="1.2.5"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.5.xpi">Brief 1.2.5</a>
                         <span class="version-date">11 December 2009</span>
                     </h3>
-                    <h4>Brief is now compatible with Firefox 3.6.</h4>
-                    <h4>Improvements:</h4>
+                    <h3>Brief is now compatible with Firefox 3.6.</h3>
+                    <h3>Improvements:</h3>
                     <ul>
                         <li>If a feed contains errors, Brief will try to retrieve as many items as possible instead of ignoring it.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Items with the same date aren't displayed in the order in which they appear in the feed.</li>
                         <li>Regression: unread items count no longer shown when a folder is closed.</li>
@@ -52,16 +102,16 @@
 
                 <div class="version">
                     <a name="1.2.4"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.4.xpi">Brief 1.2.4</a>
                         <span class="version-date">5 October 2009</span>
                     </h3>
-                    <h4>Improvements:</h4>
+                    <h3>Improvements:</h3>
                     <ul>
                         <li>Galician localization.</li>
                         <li>"Open items in new tabs" also applies to links in item's content.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Folders in the sidebar sometimes don't remember their open/closed state.</li>
                         <li>After opening Brief with sidebar hidden, the sidebar is empty.</li>
@@ -70,15 +120,15 @@
 
                 <div class="version">
                     <a name="1.2.3"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.3.xpi">Brief 1.2.3</a>
                         <span class="version-date">13 August 2009</span>
                     </h3>
-                    <h4>Improvements:</h4>
+                    <h3>Improvements:</h3>
                     <ul>
                         <li>If there is no home folder specified when importing OPML, set the Bookmarks Menu folder (into which the Live Bookmarks are inserted) as the home folder.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Option to "Store no more than X items of each feed" doesn't work.</li>
                         <li>Items are never physically deleted from the database after being removed from Trash.</li>
@@ -88,15 +138,15 @@
 
                 <div class="version">
                     <a name="1.2.2"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.2.xpi">Brief 1.2.2</a>
                         <span class="version-date">12 August 2009</span>
                     </h3>
-                    <h4>Improvements:</h4>
+                    <h3>Improvements:</h3>
                     <ul>
                         <li>A brief guide is displayed on first run.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Feed view is not refreshed when emptying a feed with a large amount of items</li>
                         <li>Item dates are not displayed when they contain military timezone codes. Thanks to Tiibiidii for the patch.</li>
@@ -106,12 +156,12 @@
 
                 <div class="version">
                     <a name="1.2.1"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.1.xpi">Brief 1.2.1</a>
                         <span class="version-date">24 June 2009</span>
                     </h3>
-                    <h4>Brief is now compatible with Firefox 3.5.</h4>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Brief is now compatible with Firefox 3.5.</h3>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Sort direction isn't updated when switching between All and Unread views (when "Sort oldest items first in unread view" turned on).</li>
                         <li>Turning on "Don't mark changed items as unread" causes unread items to be marked as read when they're changed.</li>
@@ -120,7 +170,7 @@
                         <li>OK button in the home folder picker should be disabled if an invalid item is selected.</li>
                         <li>Can't type in the search bar in Firefox 3.5.</li>
                     </ul>
-                    <h4>New localizations:</h4>
+                    <h3>New localizations:</h3>
                     <ul>
                         <li>Czech (cs-CZ), Danish (da-DK), French (fr-FR), Italian (it-IT), Russian (ru-RU), Turkish (tr-TR)</li>
                     </ul>
@@ -128,11 +178,11 @@
 
                 <div class="version">
                     <a name="1.2"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.2.xpi">Brief 1.2</a>
                         <span class="version-date">16 June 2008</span>
                     </h3>
-                    <h4>New features and improvements:</h4>
+                    <h3>New features and improvements:</h3>
                     <ul>
                         <li>Integration with the new bookmarks system in Firefox 3: starred items are now simply bookmarks.
                             The star in the left corner of an item brings up Edit Bookmark panel, just like the one in the Location Bar.
@@ -164,7 +214,7 @@
                         <li>Spinbuttons (these tiny arrows) were added to textboxes in options for entering numbers.</li>
                         <li>Smooth scrolling was tweaked, so that it doesn't take too much time to scroll past long items.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Brief works better with NoScript extension. You no longer have to add all file:// URLs to the whitelist, Brief has its own resource:// URL.</li>
                         <li>OPML importing was significantly improved. Brief handles more kinds of files and deals with errors better (thanks to DG for providing samples of various problematic OMPL files).</li>
@@ -185,11 +235,11 @@
 
                 <div class="version">
                     <a name="1.1"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.1.xpi">Brief 1.1</a>
                         <span class="version-date">17 December 2007</span>
                     </h3>
-                    <h4>New features and improvements:</h4>
+                    <h3>New features and improvements:</h3>
                     <ul>
                         <li>Brief is now compatible with Firefox 3 Beta 1 and 2.</li>
                         <li>Support for exporting and importing OPML (a format for exchanging feeds). Thanks to Christopher Finke, the author of <a href="https://addons.mozilla.org/en-US/firefox/addon/2625">OPML Support</a> extension.</li>
@@ -198,7 +248,7 @@
                         <li>The default style is a little more shiny and colorful.</li>
                         <li>Clicking on the feed's header in the feed content opens the website in a new tab instead of the current one.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Mac OS X: some issues with the Options window and various visual glitches.</li>
                         <li>List of feeds is empty when opening Brief after it was closed with the sidebar hidden.</li>
@@ -207,11 +257,11 @@
 
                 <div class="version">
                     <a name="1.0.3"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.0.3.xpi">Brief 1.0.3</a>
                         <span class="version-date">4 December 2007</span>
                     </h3>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Items are not expired according to the user's storing preferences.</li>
                     </ul>
@@ -219,11 +269,11 @@
 
                 <div class="version">
                     <a name="1.0.2"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.0.2.xpi">Brief 1.0.2</a>
                         <span class="version-date">21 November 2007</span>
                     </h3>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Migration from 0.8 sometimes fails, which causes various problems.</li>
                     </ul>
@@ -231,11 +281,11 @@
 
                 <div class="version">
                     <a name="1.0.1"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.0.1.xpi">Brief 1.0.1</a>
                         <span class="version-date">20 November 2007</span>
                     </h3>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>After bringing up the context menu in the sidebar, clicking on feeds doesn't display them</li>
                     </ul>
@@ -243,11 +293,11 @@
 
                 <div class="version">
                     <a name="1.0"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-1.0.xpi">Brief 1.0</a>
                         <span class="version-date">20 November 2007</span>
                     </h3>
-                    <h4>New features and improvements:</h4>
+                    <h3>New features and improvements:</h3>
                     <ul>
                         <li>Rearranged buttons on the main toolbar.</li>
                         <li>Item date displayed in a more friendly format - use Today, Yesterday, days of the week etc.</li>
@@ -263,7 +313,7 @@
                         <li>Changed naming of a few things and improved wording in various places.</li>
                         <li>Again improved performance of displaying feeds, especially with large amounts of items</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Brief's favicon sometimes isn't shown on the tab.</li>
                         <li>Scroll position and selected entry aren't remembered when refreshing the view.</li>
@@ -283,11 +333,11 @@
 
                 <div class="version">
                     <a name="0.8"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.8.xpi">Brief 0.8</a>
                         <span class="version-date">24 October 2007</span>
                     </h3>
-                    <h4>New features and improvements:</h4>
+                    <h3>New features and improvements:</h3>
                     <ul>
                         <li>Support for keyboard navigation and other shortcuts - you can press <strong style="font-size: 14px;">?</strong> to see the list of shortcuts at any time.</li>
                         <li>Searchbar now searches for separate words instead of the whole string.</li>
@@ -295,7 +345,7 @@
                         <li>Pressing Escape clears the searchbox and ends the search.</li>
                         <li>Improve the way the Live Bookmarks folder is chosen on the first run, by allowing to select it straight from the sidebar.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>Toolbar button doesn't stay pressed when opening Brief in a new tab.</li>
                         <li>Entries are sometimes duplicated when updating feeds.</li>
@@ -306,11 +356,11 @@
 
                 <div class="version">
                     <a name="0.7"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.7.xpi">Brief 0.7</a>
                         <span class="version-date">15 August 2007</span>
                     </h3>
-                    <h4>New features:</h4>
+                    <h3>New features:</h3>
                     <ul>
                         <li>Arrows next to folders in the sidebar to fold and expand their content</li>
                         <li><em>Delete feed</em>, <em>Delete Folder</em>, and <em>Update Folder</em> items in the sidebar context menu</li>
@@ -323,7 +373,7 @@
                         <li>Button in the options window to empty all feeds</li>
                         <li>Feed Properties dialog enabling per-feed preferences such as how often to check for updates and how many entries to remember</li>
                     </ul>
-                    <h4>Changes and improvements:</h4>
+                    <h3>Changes and improvements:</h3>
                     <ul>
                         <li>Improve performance, especially with a large number of entries (turn on database indexing, optimize refreshing of the feed content display)</li>
                         <li>When the user adds, modifies, or deletes Live Bookmarks, reflect the changes immediately (previously Brief had be reopened to pick up the changes)</li>
@@ -332,7 +382,7 @@
                         <li>Improved default style of the feed content view</li>
                         <li>Ability to pick the unit (minutes/hours/days) of how often to check for updates</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>The context menu in the feed content view is broken, doesn't include the right items for the element which was clicked</li>
                         <li>Entry titles sometimes contain garbage like &# 8217; (HTML entities not resolved)</li>
@@ -345,11 +395,11 @@
                 </div>
                 <div class="version">
                     <a name="0.6"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.6.xpi">Brief 0.6</a>
                         <span class="version-date">4 April 2007</span>
                     </h3>
-                    <h4>New features:</h4>
+                    <h3>New features:</h3>
                     <ul>
                         <li>Ability to limit number of stored entries per feed.</li>
                         <li>Context menu option to delete all entries from a feed or a folder.</li>
@@ -362,7 +412,7 @@
                         <li>Preference to open entry links in new tabs.</li>
                         <li>Hidden preference to specify the fetch delay (normally you shouldn't need to touch this).</li>
                     </ul>
-                    <h4>Changes and improvements:</h4>
+                    <h3>Changes and improvements:</h3>
                     <ul>
                         <li>Autoupdate interval is now counted since last update, not since startup.</li>
                         <li>Manually updating all feeds resets the autoupdate timer.</li>
@@ -371,7 +421,7 @@
                         <li>Rearranged the options window to accommodate the new preferences.</li>
                         <li>When entries are removed from the feed view refreshing is much smoother.</li>
                     </ul>
-                    <h4>Fixed bugs:</h4>
+                    <h3>Fixed bugs:</h3>
                     <ul>
                         <li>"Mark currently viewed entries as read" button affects all the entries, not only the filtered ones, when performing a search.</li>
                         <li>"Invalid Date" sometimes shown as the entry date.</li>
@@ -385,7 +435,7 @@
                 </div>
                 <div class="version">
                     <a name="0.5.2"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.2.xpi">Brief 0.5.2</a>
                         <span class="version-date">3 March 2007</span>
                     </h3>
@@ -395,7 +445,7 @@
                 </div>
                 <div class="version">
                     <a name="0.5.1"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.1.xpi">Brief 0.5.1</a>
                         <span class="version-date">27 February 2007</span>
                     </h3>
@@ -405,7 +455,7 @@
                 </div>
                 <div class="version">
                     <a name="0.5"></a>
-                    <h3>
+                    <h3 class="version-header">
                         <a class="version-number" href="http://downloads.mozdev.org/brief/brief-0.5.xpi">Brief 0.5</a>
                         <span class="version-date">25 February 2007 - first public release</span>
                     </h3>

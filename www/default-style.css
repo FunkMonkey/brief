@@ -1,84 +1,62 @@
 body {
-    background: #fafcff;
-    font-family: Verdana, Helvetica, Arial, sans-serif;
-    font-size: 10px;
     margin: 0;
     padding: 0;
-}
-
-
-
-/* ----------------------  Header  ---------------------- */
-
-#header {
-    background: url('chrome://brief/skin/header-bkg.png') repeat-x top right;
-    background-color: #203f4f;
-    padding: 5px 5% 5px;
-    border-bottom: 10px solid #acb5bf;
-    -moz-border-bottom-colors: #f6f9fc #f2f4f8 #eceff4 #e5eaee #dfe3e9 #d9dee3 #cdd3da #c1c8d0 #b5bec6 #acb5bf;
-    color: #cedbe0;
-    overflow: auto; /* Clears contained floats */
-}
-
-#feed-image {
-    border: none;
-    float: right;
-    margin: 0 10px 10px;
-}
-
-#feed-title {
-    color: #cedbe0;
-    font-size: 19px;
-    font-weight: bold;
-    text-decoration: none;
-    padding-bottom: 1px;
-}
-
-#feed-title.feed-link:hover {
-    text-decoration: underline;
-}
-
-#feed-subtitle {
-    font-size: 13px;
-    margin-top: 2px;
-    font-style: italic;
-}
-
-#feed-subtitle:empty {
-    display: none;
+    background: #fafcff;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+    font-size: 10px;
 }
 
 #feed-content {
     padding: 10px 10px 10px;
 }
 
-#message {
-    font-size: 19px;
-    color: #274b5d;
-    text-align: center;
-    display: none;
-    margin-top: 100px;
+#message-box {
+    -moz-user-select: none;
+    padding: 0 15px;
 }
 
+#main-message {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 19px;
+    color: #274b5d;
+}
+
+#secondary-message {
+    margin: 75px auto 0;
+    max-width: 500px;
+    text-align: center;
+    font-size: 14px;
+    color: #4b606c;
+}
 
 
 /* ---------------------------  Article  ------------------------ */
 
+#article-template {
+    display: none;
+}
+
 /* Article container can have "starred", "read", and "collapsed"
    attributes. The first two are self-explanatory while "collapsed"
-   means that the article's content is folded (headlines view) */
+   means that the article's content is folded (headlines view)
+
+   Relative position is needed only for selected articles in order
+   for the border to be drawn above other articles.
+   However, changing between static and relative positioning seems
+   to blow away the plugins which slows down scrolling. */
 .article-container {
-    background: url('chrome://brief/skin/unread-entry-bkg.png') repeat-x #ffffff;
-    border-right: 5px #e6e9ed solid;
-    -moz-border-right-colors: #fafcff #f7f9fc #f3f5f8 #eff0f3 #d8dadc;
-    border-left: 5px #e6e9ed solid;
-    -moz-border-left-colors: #fafcff #f7f9fc #f3f5f8 #eff0f3 #d8dadc;
-    overflow: visible;   /* This is for the the expand/collapse dropmarker which is
-                            taken outside the box using negative margins */
     position: relative;
-    margin: 0 auto;
-    min-width: -moz-min-content;
     max-width: 70em;
+    min-width: -moz-min-content;
+    margin: 0 auto;
+    background: -moz-linear-gradient(top, rgba(211, 231, 242, 1), rgba(211, 231, 242, 0.5) 24px, rgba(211, 231, 242, 0) 40px) #ffffff;
+    background-clip: padding-box;
+    -moz-background-clip: padding; /* Firefox 3.6 compatibility */
+    border-right: 6px #e6e9ed solid;
+    -moz-border-right-colors: #fafcff #fafcff #f7f9fc #f3f5f8 #eff0f3 #d8dadc;
+    border-left: 6px #e6e9ed solid;
+    -moz-border-left-colors: #fafcff #fafcff #f7f9fc #f3f5f8 #eff0f3 #d8dadc;
 }
 
 .article-container:last-child {
@@ -87,76 +65,98 @@ body {
 }
 
 
+/*  ----------------------  Read article  ---------------------- */
+
+.article-container[read] {
+    background-image: -moz-linear-gradient(top, rgba(235, 238, 243, 1), rgba(235, 238, 243, 0.5) 24px, rgba(235, 238, 243, 0) 40px);
+}
+
+.article-container[read] .article-title-link {
+    color: #404040;
+}
+
+
+/* ---------------------  Selected article  ------------------- */
+
+.article-container[selected] {
+    z-index: 1;
+    top: 6px;
+    margin-top: -12px;
+    border-width: 6px;
+    -moz-border-image: url(chrome://brief/skin/selected-entry-border.png) 6 stretch;
+}
+
+
 /* ----------------------  Article header  ---------------------- */
 
 .article-header {
-    border-top: 1px #abbfc9 solid;
-    padding: 5px 5px 0 24px;
+    display: -moz-box;
+    -moz-box-align: start;
+    width: -moz-available;
     margin-bottom: 5px;
+    padding: 5px 5px 0 24px;
+    border-top: 1px #abbfc9 solid;
+}
+
+.article-title-link-box {
+    -moz-box-flex: 1;
 }
 
 .article-title-link {
-    color: #00394f;
-    font-size: 13px;
+    color: #05447e;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
     font-weight: bold;
     text-decoration: none;
 }
 
-
-
-/* ----------------------  Article controls  ---------------------- */
-
 .article-controls {
-    float: right;
+    display: -moz-box;
     margin: -2px 0 0 5px;
 }
-
-.article-star {
-    float: left;
-    margin: -6px 2px 0 -24px;
-    width: 24px;
-    height: 24px;
-}
-
-.expand-button {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: -30px;
-    height: 6em;
-    width: 42px;
-    -moz-user-select: none; /* Prevent selecting the title when clicking the button */
-}
-
 
 
 /* ----------------------  Article subheader  ---------------------- */
 
 .article-subheader, .collapsed-article-subheader {
-    font-family: "Lucida Grande", Verdana, sans-serif;
     font-size: 12px;
     line-height: 17px; /* Make the height the same for both Lucida and Verdana */
 }
 
 .article-subheader {
-    color: #477900;
-    clear: both;
-    padding: 10px 10px 0 15px;
+    display: -moz-box;
+    width: -moz-available;
+    color: #2a7d00;
+    margin: 5px 10px 5px 40px;
 }
 
-.article-authors, .article-date {
-    text-align: right;
-    float: right;
+.article-subheader-right {
+    display: -moz-box;
+    -moz-box-flex: 1;
+    -moz-box-pack: end;
 }
 
-.article-authors {
-    clear: right;
+.article-subheader-left {
+    display: -moz-box;
+    -moz-box-flex: 1;
+    -moz-box-orient: vertical;
+}
+
+.article-date {
+    margin-left: 4px;
+}
+
+.article-authors:not(:empty):after {
+    content: " •";
 }
 
 .article-tags {
     padding-left: 20px;
+    background: url(chrome://brief/skin/icons/tag.png) 1px no-repeat;
+}
+
+.article-tags:not(:empty) {
     margin-top: 2px;
-    background: url(chrome://mozapps/skin/places/tagContainerIcon.png) 1px no-repeat;
 }
 
 .article-updated {
@@ -167,111 +167,224 @@ body {
 /* ----------------------  Article content area   ---------------------- */
 
 .article-content {
-    font-family: "Lucida Grande", Verdana, sans-serif;
-    font-size: 12px;
-    line-height: 1.4;
-    color: #272727;
     padding: 10px 25px 25px;
-    border-bottom: 1px solid #ffffff; /* Placeholder for selection border */
     overflow: auto;
-    clear: both;
+    color: #404040;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: justify;
 }
 
 .article-content:empty {
     padding: 0 0 10px !important;
 }
 
+/* Reset the top margin, so that the gap between
+   header and content is always the same */
+.article-content > *:first-child {
+    margin-top: 0 !important;
+}
+
 .article-content a {
-    color: #0a1f72;
+    color: #003b73;
 }
 
 .article-content a:visited {
-    color: #444b66;
+    color: #4b667e;
+}
+
+img {
+    margin: 0.75em;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+pre, code {
+    font-family: "Courier New", monospace;
+    font-size: 1em;
+    white-space: pre-wrap;
+    width: -moz-available;
+}
+
+.search-highlight {
+    border: 1px solid #45e500;
+    -moz-border-radius: 3px;
+    color: black;
+    background-color: #adff89;
 }
 
 
-
-/*  ----------------------  Adjustments for read articles  ---------------------- */
-
-.article-container[read] {
-    background-image: url('chrome://brief/skin/read-entry-bkg.png');
-}
-
-.article-container[read] .article-title-link {
-    font-weight: normal;
-}
-
-
-
-/* ----------------------  Adjustments for headlines view   ---------------------- */
+/* ----------------------  Headlines view   ---------------------- */
 
 .article-container[collapsed] {
-    background-image: none;
-    background-color: #ebf7ff;
+    position: relative;
     min-height: 50px;
 }
 
+.article-container[collapsed] {
+    background-image: none;
+    background-color: #edf8ff;
+}
+
 .article-container[collapsed][read] {
-    background-color: #f5faff;
+    background-color: #fcfeff;
+}
+
+.article-container[collapsed]:hover {
+    background-color: #d3eeff;
 }
 
 .article-container[collapsed] .article-title-link {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .article-container[collapsed] .article-controls {
-    background-color: #ebf7ff;
     position: absolute;
+    z-index: 1;
     top: 4px;
     right: 5px;
+    height: 30px; /* Hack */
     margin: 0;
     padding-left: 10px;
+    opacity: 0;
 }
 
-.article-container[collapsed][read] .article-controls {
-    background-color: #f5faff;
+.article-container[collapsed]:hover .article-controls {
+    opacity: 1;
 }
 
 .article-container[collapsed] .collapsed-article-subheader {
+    display: -moz-box;
+    -moz-box-orient: vertical;
     color: #5c7933;
     padding: 0 8px;
-    float: right;
     text-align: right;
+    cursor: default;
 }
 
 .article-container[collapsed] .article-date {
-    float: none;
     margin-bottom: 8px;
+}
+
+.article-container[collapsed]:hover .article-date {
+    opacity: 0;
 }
 
 /* Crop feed names longer than 170px */
 .article-container[collapsed] .feed-name {
-    max-width: 170px;
+    width: 170px;
     height: 1.3em; /* Height of a single line */
     overflow: hidden;
 }
 
-
-
-/* ---------------------  Adjustments for the selected article  ------------------- */
-
-.article-container[selected] {
-    -moz-border-left-colors: #fafcff #f7f9fc #d2e8ff #98cbff #1474d6;
-    -moz-border-right-colors: #fafcff #f7f9fc #d2e8ff #98cbff #1474d6;
+.article-container[collapsed] .article-subheader {
+    display: none;
 }
 
-.article-container[selected] > .article-header {
-    border-top-color: #1474d6;
+.article-container:not([collapsed]) .collapsed-article-subheader {
+    display: none;
 }
 
-.article-container[selected]:not(:last-child) > .article-content {
-    border-bottom-color: #1474d6;
+/* Hack */
+.article-container[collapsed] .delete-entry,
+.article-container[collapsed] .restore-entry {
+    position: relative;
+    top: -12px;
 }
 
-.article-container[selected][collapsed] + .article-container > .article-header {
-    border-top-color: #1474d6;
+
+/* ----------------------  Article controls ------------------- */
+
+.article-controls {
+    display: -moz-box;
 }
 
-.article-container[selected]:last-child {
-    -moz-border-bottom-colors: #fafcff #f7f9fc #d2e8ff #98cbff #1474d6;
+.article-controls > * {
+    display: -moz-box;
+}
+
+.mark-read {
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    height: 25px;
+    min-width: 84px;
+    margin-right: 3px;
+    border-width: 0 7px;
+    -moz-border-image: url(chrome://brief/skin/mark-read-button-normal.png) 0 6 stretch;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #326585;
+    cursor: default;
+    -moz-user-select: none;
+}
+
+.mark-read:hover {
+    -moz-border-image: url(chrome://brief/skin/mark-read-button-hover.png) 0 6 stretch;
+}
+
+.mark-read:active {
+    -moz-border-image: url(chrome://brief/skin/mark-read-button-active.png) 0 6 stretch;
+}
+
+
+#feed-content[trash] .delete-entry {
+    display: none;
+}
+
+#feed-content:not([trash]) .restore-entry {
+    display: none;
+}
+
+.delete-entry, .restore-entry {
+    width: 29px;
+    height: 25px;
+}
+
+.delete-entry {
+    background-image: url(chrome://brief/skin/delete-button.png);
+}
+
+.restore-entry {
+    background-image: url(chrome://brief/skin/restore-button.png);
+}
+
+.delete-entry:hover,
+.restore-entry:hover {
+    background-position: 0 -25px;
+}
+
+.delete-entry:active,
+.restore-entry:active {
+    background-position: 0 -50px;
+}
+
+
+.article-star {
+    width: 24px;
+    height: 24px;
+    margin: -6px 2px 0 -24px;
+    background: url(chrome://brief/skin/icons/entry-star.png) no-repeat;
+    background-position: 0 5px;
+}
+
+.article-container:not([starred]) .article-star:hover {
+    background-position: -24px 5px;
+}
+
+.article-container:not([starred]) .article-star:active:hover {
+    background-position: -48px 5px;
+}
+
+.article-container[starred] .article-star {
+    background-position: -48px 5px;
+}
+
+.article-container[starred] .article-star:hover {
+    background-position: -72px 5px;
+}
+
+.article-container[starred] .article-star:active:hover {
+    background-position: -96px 5px;
 }
