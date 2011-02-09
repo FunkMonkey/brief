@@ -77,33 +77,3 @@ h2 {
 .screenshot {
     display: block;
 }
-
-#schedule-once-advert {
-    border: 1px solid #a5acb0;
-    -moz-border-radius: 3px;
-    padding: 5px 10px 10px 20px;
-    width: 595px;
-    overflow: auto;
-}
-
-#schedule-once-screenshot {
-    float: right;
-    margin-left: 20px;
-    border: none;
-}
-
-#schedule-once-desc {
-    margin-top: 10px;
-    line-height: 18px;
-    text-align: justify;
-}
-
-#schedule-once-advert a {
-    color: #0a1f72;
-}
-
-#advert-info {
-    clear: right;
-    float: right;
-    color: grey;
-}
