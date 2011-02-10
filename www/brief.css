@@ -178,14 +178,14 @@ h3 {
     text-decoration: none;
     white-space: nowrap;
     border: 1px solid #3A7404;
-    border-radius: 0.95em 0.95em 0.95em 0.95em;
+    border-radius: 19px;
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.1) inset;
     color: #FFFFFF;
     display: block;
     font-weight: bold;
     line-height: 1.538;
     width: -moz-fit-content;
-    padding: 0 0.95em;
+    padding: 0 19px;
     margin: 50px auto;
     font-size: 20px;
     background: -moz-linear-gradient(center top , #93C85E 30%, #55A802 55%) repeat scroll 0 0 transparent;
@@ -193,9 +193,11 @@ h3 {
 }
 
 #get-brief > b {
-    background: url("./images/plus.png") no-repeat 5px 10px !important;
-    margin: 0 0 0 -0.5em;
-    padding: 0.3em 1em 0.2em 0.85em;
+    display: inline-block;
+    font-size: 12px;
+    background: url("./images/plus.png") no-repeat 5px !important;
+    margin: 0 0 0 -8px;
+    padding: 6px 10px 6px 6px;
     width: 16px;
 }
 
@@ -203,8 +205,8 @@ h3 {
     border-left: 2px groove rgba(150, 150, 150, 0.35);
     display: inline-block;
     line-height: 1.2;
-    margin: 0 0.25em 0 -0.25em;
-    padding: 0 0.5em 0.2em 0.65em;
+    margin: 0 5px 0 -5px;
+    padding: 0 10px 4px 13px;
     vertical-align: baseline;
 }
 
