@@ -380,6 +380,7 @@ const Brief = {
         }, 0)
 
         Brief.prefs.setBoolPref('firstRun', false);
+        Brief.prefs.setCharPref('lastVersion', Brief.VERSION);
     },
 
     QueryInterface: function Brief_QueryInterface(aIID) {
