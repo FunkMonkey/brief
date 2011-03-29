@@ -247,6 +247,7 @@ h3 {
 
 .showcase-item img:hover {
     -moz-box-shadow: 5px 5px 10px #4C83BE;
+    -moz-transition: -moz-box-shadow 300ms;
 }
 
 
