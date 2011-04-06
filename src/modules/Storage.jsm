@@ -7,7 +7,7 @@ const PURGE_ENTRIES_INTERVAL = 3600*24; // 1 day
 const DELETED_FEEDS_RETENTION_TIME = 3600*24*7; // 1 week
 const LIVEMARKS_SYNC_DELAY = 100;
 const BACKUP_FILE_EXPIRATION_AGE = 3600*24*14; // 2 weeks
-const DATABASE_VERSION = 13;
+const DATABASE_VERSION = 14;
 
 const FEEDS_TABLE_SCHEMA = [
     'feedID          TEXT UNIQUE',
@@ -447,7 +447,8 @@ var StorageInternal = {
             });
         }
         catch (ex) {
-            ReportError(ex);
+            Connection.rollbackTransaction();
+            throw ex;
         }
         finally {
             Connection.commitTransaction();
@@ -595,6 +596,9 @@ function FeedProcessor(aFeed, aCallback) {
     if (aFeed.entries.length && (!newDateModified || newDateModified > prevDateModified)) {
         this.remainingEntriesCount = aFeed.entries.length;
 
+        this.entriesToUpdateCount = 0;
+        this.entriesToInsertCount = 0;
+
         this.updatedEntries = [];
         this.insertedEntries = [];
 
@@ -632,9 +636,6 @@ function FeedProcessor(aFeed, aCallback) {
 }
 
 FeedProcessor.prototype = {
-
-    entriesToUpdateCount: 0,
-    entriesToInsertCount: 0,
 
     processEntry: function FeedProcessor_processEntry(aEntry) {
         if (aEntry.date && aEntry.date < this.oldestEntryDate)
@@ -767,6 +768,11 @@ FeedProcessor.prototype = {
         var self = this;
 
         if (this.entriesToInsertCount) {
+            if (this.insertEntry.paramSets.length != this.insertEntryText.paramSets.length) {
+                this.callback(0);
+                throw new Error('Mismatched parameteres between insertEntry and insertEntryText statements.');
+            }
+
             let getLastRowids = new Statement(Stm.getLastRowids);
             getLastRowids.params.count = this.entriesToInsertCount;
             let statements = [this.insertEntry, this.insertEntryText, getLastRowids];
@@ -2415,6 +2421,9 @@ var Migration = {
         // To 1.5.2
         // Correct out-of-sync rowids between entries and entries_text tables.
         case 12:
+
+        // To 1.5.4, same as above.
+        case 13:
             let sql = 'SELECT rowid FROM entries ORDER BY rowid DESC LIMIT 1';
             let topEntriesRowid = new Statement(sql).getSingleResult().rowid;
 
