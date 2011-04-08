@@ -381,6 +381,9 @@ const Brief = {
 
         Brief.prefs.setBoolPref('firstRun', false);
         Brief.prefs.setCharPref('lastVersion', Brief.VERSION);
+
+        if (Brief.firefox4)
+            Brief.prefs.setBoolPref('firefox4ToolbarbuttonMigrated', true);
     },
 
     QueryInterface: function Brief_QueryInterface(aIID) {
