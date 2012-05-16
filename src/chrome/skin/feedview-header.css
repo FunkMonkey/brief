@@ -33,6 +33,16 @@
     max-height: 36px !important;
 }
 
+/* 
+ * This style is to avoid warning: "XUL box for div element contained 
+ * an inline a child, forcing all its children to be wrapped in a block", 
+ * which is caused by the previous style.
+ */
+#feed-title-box > #feed-title {
+    display: inline-block;
+}
+
+
 #feed-title {
     color: #05447e;
     font-size: 18px;
@@ -108,7 +118,7 @@
     margin: 6px 0 6px 10px !important;
     padding: 0 3px 0 5px !important;
     border: 1px solid #7c909f !important;
-    -moz-border-radius: 4px;
+    border-radius: 4px;
     background-color: #ffffff !important;
     font-size: 12px;
     font-family: Verdana, Helvetica, Arial, sans-serif;
