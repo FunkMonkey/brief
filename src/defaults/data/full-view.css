@@ -81,11 +81,11 @@ article.read .title-link {
 }
 
 .subheader-left {
-    display: inline-block;
+    display: -moz-box;
 }
 
 .subheader-right {
-    display: inline-block;
+    display: -moz-box;
 }
 
 .feed-name {
