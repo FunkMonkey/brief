@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<overlay id="brief-overlay-button-win-14"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <toolbarbutton id="brief-button">
+        <hbox id="brief-button-inner-box">
+            <image class="toolbarbutton-icon"/>
+            <label id="brief-status-counter" hidden="true"/>
+        </hbox>
+        <label class="toolbarbutton-text" crop="right" flex="1"/>
+    </toolbarbutton>
+
+</overlay>

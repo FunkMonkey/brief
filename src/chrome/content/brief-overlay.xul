@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
+<?xul-overlay href="chrome://brief/content/brief-overlay-button.xul"?>
 <?xml-stylesheet href="chrome://brief/skin/overlay.css" type="text/css"?>
 <?xml-stylesheet href="chrome://brief-os/skin/overlay.css" type="text/css"?>
-
 <!DOCTYPE window SYSTEM "chrome://brief/locale/brief.dtd">
 
 <overlay id="brief-overlay"
@@ -99,12 +99,7 @@
                        tooltip="brief-tooltip"
                        context="brief-status-context"
                        onclick="if (event.button == 0 || event.button == 1) Brief.open()">
-            <vbox align="center">
-                <image class="toolbarbutton-icon"/>
-                <label class="toolbarbutton-text" crop="right" flex="1"/>
-            </vbox>
-            <label id="brief-status-counter"
-                   hidden="true"/>
+            <!-- More stuff here from overlay-button -->
         </toolbarbutton>
     </toolbarpalette>
 

@@ -8,6 +8,9 @@ skin     brief-os  classic  chrome/skin/pinstripe/     os=Darwin
 resource brief-content  defaults/data/
 resource brief          modules/
 
+override chrome://brief/content/brief-overlay-button.xul  chrome://brief/content/brief-overlay-button-win-14.xul    os=WINNT    appversion>=14.0a2
+override chrome://brief-os/skin/overlay.css               chrome://brief-os/skin/overlay-14.css                     os=WINNT    appversion>=14.0a2
+
 overlay  chrome://browser/content/browser.xul  chrome://brief/content/brief-overlay.xul
 
 style  chrome://global/content/customizeToolbar.xul  chrome://brief/skin/overlay.css

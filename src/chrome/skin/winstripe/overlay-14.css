@@ -1,0 +1,56 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
+#brief-button {
+    -moz-box-orient: vertical;
+}
+
+toolbar[mode="text"] #brief-button {
+    -moz-box-orient: horizontal;
+    -moz-box-direction: reverse;
+}
+
+#brief-button > .toolbarbutton-text {
+    text-align: center;
+}
+
+toolbar[mode="text"] > #brief-status-counter {
+    -moz-margin-end: 0;
+}
+
+#brief-button-inner-box {
+    -moz-margin-end: 0;
+}
+
+#navigator-toolbox[iconsize="large"][mode="icons"] > #nav-bar #brief-button-inner-box {
+    padding: 3px 7px;
+    background: hsla(210,32%,93%,0) padding-box;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: hsla(210,54%,20%,0) hsla(210,54%,20%,0) hsla(210,54%,20%,0);
+    box-shadow: 0 1px hsla(0,0%,100%,0) inset,
+                0 1px hsla(210,54%,20%,0),
+                0 0 2px hsla(210,54%,20%,0);
+    -moz-transition-property: background-color, border-color, box-shadow;
+    -moz-transition-duration: 150ms;
+}
+
+#navigator-toolbox[iconsize="large"][mode="icons"] > #nav-bar #brief-button:not([disabled]):not([checked]):not([open]):not(:active):hover > #brief-button-inner-box {
+    background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,.1));
+    border-color: hsla(210,54%,20%,.15) hsla(210,54%,20%,.2) hsla(210,54%,20%,.25);
+    box-shadow: 0 1px hsla(0,0%,100%,.3) inset,
+                0 1px hsla(210,54%,20%,.03),
+                0 0 2px hsla(210,54%,20%,.1);
+}
+
+#navigator-toolbox[iconsize="large"][mode="icons"] > #nav-bar #brief-button:not([disabled]):-moz-any([open],[checked],:hover:active) > #brief-button-inner-box {
+    background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,.1));
+    background-color: hsla(210,54%,20%,.15);
+    border-color: hsla(210,54%,20%,.3) hsla(210,54%,20%,.35) hsla(210,54%,20%,.4);
+    box-shadow: 0 1px 1px hsla(210,54%,20%,.1) inset,
+                0 0 1px hsla(210,54%,20%,.2) inset,
+                0 1px 0 hsla(210,54%,20%,0),
+                0 0 2px hsla(210,54%,20%,0);
+    text-shadow: none;
+    -moz-transition: none;
+}
