@@ -191,9 +191,9 @@
                     class="brief-button feed-header-button"
                     tooltiptext="&markViewRead.tooltip;"
                     onclick="onMarkViewReadClick(event)"/>
-            <html:div id="feed-title-box" flex="1">
+            <hbox id="feed-title-box" flex="1">
                 <html:a id="feed-title" target="_blank"/>
-            </html:div>
+            </hbox>
             <button id="headlines-checkbox"
                     class="brief-button view-button"
                     type="checkbox"
