@@ -1,2 +1,14 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+
+#brief-button > * > .toolbarbutton-icon {
+    -moz-margin-end: 0;
+}
+
+#navigator-toolbox[iconsize="large"][mode="icons"] > #nav-bar #brief-button > * > .toolbarbutton-icon {
+    margin: 1px;
+}
+
+#brief-button > * > .toolbarbutton-text {
+    text-align: center;
+}

@@ -11,6 +11,10 @@ toolbar[iconsize=small] #brief-button {
     list-style-image: url(chrome://brief/skin/feed-icon-16x16.png);
 }
 
+toolbar[mode="icons"] #brief-status-counter {
+    -moz-margin-end: 0;
+}
+
 #brief-tooltip-last-updated {
     margin-bottom: 0.75em;
 }
