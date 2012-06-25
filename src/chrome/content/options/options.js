@@ -2,6 +2,7 @@ var Ci = Components.interfaces;
 var Cc = Components.classes;
 
 Components.utils.import('resource://brief/Storage.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 
 function init() {
     gMainPane.setUpPlacesTree();
@@ -124,11 +125,7 @@ var gFeedsPane = {
     },
 
     onClearAllEntriesCmd: function(aEvent) {
-        var promptService = Cc['@mozilla.org/embedcomp/prompt-service;1'].
-                            getService(Ci.nsIPromptService);
-        var prefBranch = Cc['@mozilla.org/preferences-service;1'].
-                         getService(Ci.nsIPrefBranch);
-        var keepStarred = prefBranch.getBoolPref('extensions.brief.database.keepStarredWhenClearing');
+        var keepStarred = Services.prefs.getBoolPref('extensions.brief.database.keepStarredWhenClearing');
 
         var stringbundle = document.getElementById('options-bundle');
         var title = stringbundle.getString('confirmClearAllEntriesTitle');
@@ -136,7 +133,7 @@ var gFeedsPane = {
         var checkboxLabel = stringbundle.getString('confirmClearAllEntriesCheckbox');
         var checked = { value: keepStarred };
 
-        var result = promptService.confirmCheck(window, title, text, checkboxLabel, checked);
+        var result = Services.prompt.confirmCheck(window, title, text, checkboxLabel, checked);
         if (result) {
             var query = new Query({
                 starred: checked.value ? false : undefined,
@@ -144,7 +141,7 @@ var gFeedsPane = {
             });
             query.deleteEntries(Storage.ENTRY_STATE_DELETED);
 
-            prefBranch.setBoolPref('extensions.brief.database.keepStarredWhenClearing', checked.value)
+            Services.prefs.setBoolPref('extensions.brief.database.keepStarredWhenClearing', checked.value)
         }
     }
 

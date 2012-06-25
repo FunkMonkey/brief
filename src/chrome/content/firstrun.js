@@ -1,13 +1,13 @@
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
+Components.utils.import('resource://gre/modules/Services.jsm');
+
 document.addEventListener('DOMContentLoaded', onload, false);
 document.addEventListener('unload', onunload, false);
 
-var prefBranch = Cc['@mozilla.org/preferences-service;1'].
-                   getService(Ci.nsIPrefService).
-                   getBranch('extensions.brief.').
-                   QueryInterface(Ci.nsIPrefBranch2);
+var prefBranch = Services.prefs.getBranch('extensions.brief.')
+                               .QueryInterface(Ci.nsIPrefBranch2);
 var prefObserver = {
     observe: function(aSubject, aTopic, aData) {
         if (aTopic == 'nsPref:changed' && aData == 'homeFolder')
@@ -33,9 +33,7 @@ function onunload() {
 function buildHeader() {
     var bookmarks = Cc['@mozilla.org/browser/nav-bookmarks-service;1'].
                     getService(Ci.nsINavBookmarksService);
-    var bundle = Cc['@mozilla.org/intl/stringbundle;1'].
-                 getService(Ci.nsIStringBundleService).
-                 createBundle('chrome://brief/locale/brief.properties');
+    var bundle = Services.strings.createBundle('chrome://brief/locale/brief.properties');
 
     var folderID = prefBranch.getIntPref('homeFolder');
     var folderName = '<span id="home-folder">' + bookmarks.getItemTitle(folderID) +
@@ -53,9 +51,7 @@ function openOptions() {
     if (optionsWindow && !optionsWindow.closed)
         optionsWindow.focus();
     else {
-        var instantApply = Cc['@mozilla.org/preferences-service;1'].
-                           getService(Ci.nsIPrefBranch).
-                           getBoolPref('browser.preferences.instantApply');
+        var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
         var modality = instantApply ? 'modal=no,dialog=no' : 'modal';
         var features = 'chrome,titlebar,toolbar,centerscreen,resizable,' + modality;
 

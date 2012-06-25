@@ -2,6 +2,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 
 function BriefService() {
     Components.utils.import('resource://brief/Storage.jsm');
@@ -12,15 +13,12 @@ BriefService.prototype = {
 
     // Registers %profile%/chrome directory under a resource URI.
     registerCustomStyle: function Brief_registerCustomStyle() {
-        var ioService = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
-        var resourceProtocolHandler = ioService.getProtocolHandler('resource').
-                                                QueryInterface(Ci.nsIResProtocolHandler);
+        var resourceProtocolHandler = Services.io.getProtocolHandler('resource')
+                                                 .QueryInterface(Ci.nsIResProtocolHandler);
         if (!resourceProtocolHandler.hasSubstitution('profile-chrome-dir')) {
-            let chromeDir = Cc['@mozilla.org/file/directory_service;1'].
-                            getService(Ci.nsIProperties).
-                            get('ProfD', Ci.nsIFile);
+            let chromeDir = Services.dirsvc.get('ProfD', Ci.nsIFile);
             chromeDir.append('chrome');
-            let chromeDirURI = ioService.newFileURI(chromeDir);
+            let chromeDirURI = Services.io.newFileURI(chromeDir);
             resourceProtocolHandler.setSubstitution('profile-chrome-dir', chromeDirURI);
         }
     },

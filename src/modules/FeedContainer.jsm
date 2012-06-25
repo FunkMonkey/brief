@@ -3,6 +3,8 @@ var EXPORTED_SYMBOLS = ['Feed', 'Entry', 'EntryList'];
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
+Components.utils.import('resource://gre/modules/Services.jsm');
+
 /**
  * Container for feed properties. You can pass an instance of nsIFeed to wrap
  * and map some of its selected properties for easier access.
@@ -329,7 +331,5 @@ __defineGetter__('Query', function() {
 });
 
 function log(aMessage) {
-  var consoleService = Cc['@mozilla.org/consoleservice;1'].
-                       getService(Ci.nsIConsoleService);
-  consoleService.logStringMessage(aMessage);
+    Services.console.logStringMessage(aMessage);
 }

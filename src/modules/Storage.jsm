@@ -69,15 +69,14 @@ const REASON_ERROR = Ci.mozIStorageStatementCallback.REASON_ERROR;
 Components.utils.import('resource://brief/FeedContainer.jsm');
 Components.utils.import('resource://brief/FeedUpdateService.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 
-XPCOMUtils.defineLazyServiceGetter(this, 'ObserverService', '@mozilla.org/observer-service;1', 'nsIObserverService');
 XPCOMUtils.defineLazyServiceGetter(this, 'Bookmarks', '@mozilla.org/browser/nav-bookmarks-service;1', 'nsINavBookmarksService');
 
-XPCOMUtils.defineLazyGetter(this, 'Prefs', function()
-    Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefService).
-                                             getBranch('extensions.brief.').
-                                             QueryInterface(Ci.nsIPrefBranch2)
-);
+XPCOMUtils.defineLazyGetter(this, 'Prefs', function() {
+    return Services.prefs.getBranch('extensions.brief.')
+                         .QueryInterface(Ci.nsIPrefBranch2);
+});
 XPCOMUtils.defineLazyGetter(this, 'Places', function() {
     Components.utils.import('resource://gre/modules/PlacesUtils.jsm');
     return PlacesUtils;
@@ -221,16 +220,12 @@ var StorageInternal = {
 
 
     init: function StorageInternal_init() {
-        var profileDir = Cc['@mozilla.org/file/directory_service;1'].
-                         getService(Ci.nsIProperties).
-                         get('ProfD', Ci.nsIFile);
+        var profileDir = Services.dirsvc.get('ProfD', Ci.nsIFile);
         var databaseFile = profileDir.clone();
         databaseFile.append('brief.sqlite');
         var databaseIsNew = !databaseFile.exists();
 
-        var storageService = Cc['@mozilla.org/storage/service;1'].
-                             getService(Ci.mozIStorageService);
-        Connection = storageService.openUnsharedDatabase(databaseFile);
+        Connection = Services.storage.openUnsharedDatabase(databaseFile);
         var schemaVersion = Connection.schemaVersion;
 
         // Remove the backup file after certain amount of time.
@@ -241,10 +236,10 @@ var StorageInternal = {
 
         if (!Connection.connectionReady) {
             // The database was corrupted, back it up and create a new one.
-            storageService.backupDatabaseFile(databaseFile, 'brief-backup.sqlite');
+            Services.storage.backupDatabaseFile(databaseFile, 'brief-backup.sqlite');
             Connection.close();
             databaseFile.remove(false);
-            Connection = storageService.openUnsharedDatabase(databaseFile);
+            Connection = Services.storage.openUnsharedDatabase(databaseFile);
             this.setupDatabase();
         }
         else if (databaseIsNew) {
@@ -260,14 +255,14 @@ var StorageInternal = {
             var filename = 'brief-backup-' + schemaVersion + '.sqlite';
             newBackupFile.append(filename);
             if (!newBackupFile.exists())
-                storageService.backupDatabaseFile(databaseFile, filename);
+                Services.storage.backupDatabaseFile(databaseFile, filename);
 
             Migration.upgradeDatabase();
         }
 
         this.homeFolderID = Prefs.getIntPref('homeFolder');
         Prefs.addObserver('', this, false);
-        ObserverService.addObserver(this, 'quit-application', false);
+        Services.obs.addObserver(this, 'quit-application', false);
 
         // This has to be on the end, in case getting bookmarks service throws.
         Bookmarks.addObserver(BookmarkObserver, false);
@@ -465,7 +460,7 @@ var StorageInternal = {
 
                 Bookmarks.removeObserver(BookmarkObserver);
                 Prefs.removeObserver('', this);
-                ObserverService.removeObserver(this, 'quit-application');
+                Services.obs.removeObserver(this, 'quit-application');
 
                 BookmarkObserver.syncDelayTimer = null;
                 break;
@@ -1739,7 +1734,7 @@ var BookmarkObserver = {
                 Stm.setFeedTitle.execute({ 'title': aNewValue, 'feedID': feed.feedID });
                 feed.title = aNewValue; // Update the cache.
 
-                ObserverService.notifyObservers(null, 'brief:feed-title-changed', feed.feedID);
+                Services.obs.notifyObservers(null, 'brief:feed-title-changed', feed.feedID);
             }
             else if (Utils.isTagFolder(aItemID)) {
                 this.renameTag(aItemID, aNewValue);
@@ -1903,7 +1898,7 @@ function LivemarksSync() {
 
     if (this.feedListChanged) {
         StorageInternal.feedsCache = StorageInternal.feedsAndFoldersCache = null;
-        ObserverService.notifyObservers(null, 'brief:invalidate-feedlist', '');
+        Services.obs.notifyObservers(null, 'brief:invalidate-feedlist', '');
     }
 
     // Update the newly added feeds.
@@ -1927,7 +1922,7 @@ LivemarksSync.prototype = {
             hideAllFeeds.execute({ 'hidden': Date.now() });
 
             StorageInternal.feedsCache = StorageInternal.feedsAndFoldersCache = null;
-            ObserverService.notifyObservers(null, 'brief:invalidate-feedlist', '');
+            Services.obs.notifyObservers(null, 'brief:invalidate-feedlist', '');
             folderValid = false;
         }
         else {
@@ -1987,7 +1982,7 @@ LivemarksSync.prototype = {
         else {
             // Invalidate feeds cache.
             StorageInternal.feedsCache = StorageInternal.feedsAndFoldersCache = null;
-            ObserverService.notifyObservers(null, 'brief:feed-title-changed', aItem.feedID);
+            Services.obs.notifyObservers(null, 'brief:feed-title-changed', aItem.feedID);
         }
     },
 
@@ -2662,11 +2657,8 @@ var Utils = {
     },
 
     newURI: function(aSpec) {
-        if (!this.ioService)
-            this.ioService = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
-
         try {
-            var uri = this.ioService.newURI(aSpec, null, null);
+            var uri = Services.io.newURI(aSpec, null, null);
         }
         catch (ex) {
             uri = null;
@@ -2757,9 +2749,7 @@ function ReportError(aException, aRethrow) {
 
 
 function log(aMessage) {
-  var consoleService = Cc['@mozilla.org/consoleservice;1'].
-                       getService(Ci.nsIConsoleService);
-  consoleService.logStringMessage('Brief:\n' + aMessage);
+    Services.console.logStringMessage('Brief:\n' + aMessage);
 }
 
 StorageInternal.init();
