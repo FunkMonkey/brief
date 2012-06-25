@@ -455,7 +455,7 @@ FeedView.prototype = {
         // Checking if default action has been prevented helps Brief play nicely with
         // other extensions. In Gecko <1.9.2 getPreventDefault() is available only
         // for UI events.
-        if (aEvent instanceof Ci.nsIDOMNSUIEvent && aEvent.getPreventDefault())
+        if (aEvent instanceof Ci.nsIDOMUIEvent && aEvent.getPreventDefault())
             return;
 
         switch (aEvent.type) {
