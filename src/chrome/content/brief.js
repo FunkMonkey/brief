@@ -8,6 +8,8 @@ Components.utils.import('resource://gre/modules/NetUtil.jsm');
 var gTemplateURI = NetUtil.newURI('resource://brief-content/feedview-template.html');
 var gStringBundle;
 
+// We save a reference to the Options window for reusing it
+var optionsWindow = null;
 
 function init() {
     PrefObserver.register();
@@ -122,14 +124,18 @@ var Commands = {
     },
 
     openOptions: function cmd_openOptions(aPaneID) {
-        var prefBranch = Cc['@mozilla.org/preferences-service;1']
-                         .getService(Ci.nsIPrefBranch);
-        var instantApply = prefBranch.getBoolPref('browser.preferences.instantApply');
-        var features = 'chrome,titlebar,toolbar,centerscreen,resizable,';
-        features += instantApply ? 'modal=no,dialog=no' : 'modal';
+        if (optionsWindow && !optionsWindow.closed)
+            optionsWindow.focus();
+        else {
+            var prefBranch = Cc['@mozilla.org/preferences-service;1']
+                             .getService(Ci.nsIPrefBranch);
+            var instantApply = prefBranch.getBoolPref('browser.preferences.instantApply');
+            var features = 'chrome,titlebar,toolbar,centerscreen,resizable,';
+            features += instantApply ? 'modal=no,dialog=no' : 'modal';
 
-        window.openDialog('chrome://brief/content/options/options.xul', 'Brief options',
-                          features, aPaneID);
+            optionsWindow = window.openDialog('chrome://brief/content/options/options.xul',
+                                              'Brief options', features, aPaneID);
+        }
     },
 
     markViewRead: function cmd_markViewRead() {

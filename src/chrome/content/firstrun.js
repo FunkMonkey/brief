@@ -16,6 +16,9 @@ var prefObserver = {
 }
 prefBranch.addObserver('', prefObserver, false);
 
+// We save a reference to the Options window for reusing it
+var optionsWindow = null;
+
 
 function onload() {
     buildHeader();
@@ -47,14 +50,18 @@ function buildHeader() {
 }
 
 function openOptions() {
-    var instantApply = Cc['@mozilla.org/preferences-service;1'].
-                       getService(Ci.nsIPrefBranch).
-                       getBoolPref('browser.preferences.instantApply');
-    var modality = instantApply ? 'modal=no,dialog=no' : 'modal';
-    var features = 'chrome,titlebar,toolbar,centerscreen,resizable,' + modality;
+    if (optionsWindow && !optionsWindow.closed)
+        optionsWindow.focus();
+    else {
+        var instantApply = Cc['@mozilla.org/preferences-service;1'].
+                           getService(Ci.nsIPrefBranch).
+                           getBoolPref('browser.preferences.instantApply');
+        var modality = instantApply ? 'modal=no,dialog=no' : 'modal';
+        var features = 'chrome,titlebar,toolbar,centerscreen,resizable,' + modality;
 
-    window.openDialog('chrome://brief/content/options/options.xul', 'Brief options',
-                      features, 'feeds-pane');
+        optionsWindow = window.openDialog('chrome://brief/content/options/options.xul',
+                                          'Brief options', features, 'feeds-pane');
+    }
 }
 
 function openBrief() {
