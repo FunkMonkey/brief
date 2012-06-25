@@ -1,5 +1,9 @@
 content  brief  chrome/content/  contentaccessible=yes
-skin  brief  classic  chrome/skin/
+
+skin     brief     classic  chrome/skin/
+skin     brief-os  classic  chrome/skin/gnomestripe/
+skin     brief-os  classic  chrome/skin/winstripe/     os=WINNT
+skin     brief-os  classic  chrome/skin/pinstripe/     os=Darwin
 
 resource brief-content  defaults/data/
 resource brief          modules/
@@ -10,7 +14,6 @@ style  chrome://global/content/customizeToolbar.xul  chrome://brief/skin/overlay
 
 component  {943b2280-6457-11df-a08a-0800200c9a66}  components/Service.js
 contract  @brief.mozdev.org/briefservice;1  {943b2280-6457-11df-a08a-0800200c9a66}
-
 category  profile-after-change  BriefService  @brief.mozdev.org/briefservice;1
 
 locale  brief   en-US  chrome/locale/en-US/

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://brief/skin/overlay.css" type="text/css"?>
+<?xml-stylesheet href="chrome://brief-os/skin/overlay.css" type="text/css"?>
 
 <!DOCTYPE window SYSTEM "chrome://brief/locale/brief.dtd">
 

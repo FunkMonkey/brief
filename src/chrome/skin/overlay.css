@@ -1,3 +1,6 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
 #brief-button {
     -moz-box-align: center;
     -moz-box-orient: horizontal;
