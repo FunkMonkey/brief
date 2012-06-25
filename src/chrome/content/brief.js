@@ -67,7 +67,11 @@ function init() {
 function unload() {
     var viewList = getElement('view-list');
     var id = viewList.selectedItem && viewList.selectedItem.id;
-    var startView = (id == 'unread-folder') ? 'unread-folder' : 'all-items-folder';
+
+    var preferUnreadView = PrefCache.preferUnreadViewOnLoad;
+    var preferredView = (preferUnreadView) ? 'unread-folder' : 'all-items-folder';
+    var startView = (id == 'unread-folder' || id == 'all-items-folder') ? id : preferredView;
+
     viewList.setAttribute('startview', startView);
 
     Services.obs.removeObserver(FeedList, 'brief:feed-updated');
@@ -412,6 +416,7 @@ var PrefObserver = {
         filterUnread:              'feedview.filterUnread',
         filterStarred:             'feedview.filterStarred',
         sortUnreadViewOldestFirst: 'feedview.sortUnreadViewOldestFirst',
+        preferUnreadViewOnLoad:    'feedview.preferUnreadViewOnLoad',
         showFavicons:              'showFavicons',
         homeFolder:                'homeFolder'
     },
