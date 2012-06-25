@@ -2017,9 +2017,12 @@ LivemarksSync.prototype = {
 
             let item = {};
             item.title = Bookmarks.getItemTitle(node.itemId);
-            item.bookmarkID = node.itemId;
             item.rowIndex = aLivemarks.length;
-            item.parent = aContainer.itemId.toFixed().toString();
+
+            // Convert the ids to strings ourselves, because when database does
+            // it includes a decimal point in the string representation (e.g. 43523.0).
+            item.bookmarkID = node.itemId.toString();
+            item.parent = aContainer.itemId.toString();
 
             if (Utils.isLivemark(node.itemId)) {
                 let feedURL = Places.livemarks.getFeedURI(node.itemId).spec;
