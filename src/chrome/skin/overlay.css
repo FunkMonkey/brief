@@ -8,27 +8,19 @@ toolbar[iconsize=small] #brief-button {
     list-style-image: url(chrome://brief/skin/feed-icon-16x16.png);
 }
 
-#brief-button .toolbarbutton-icon {
-    -moz-margin-end: 0;
-}
-
-.brief-status-counter {
-    margin: 0;
-}
-
 #brief-tooltip-last-updated {
-  margin-bottom: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 #brief-tooltip-no-unread {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #brief-tooltip-feed-name {
-  max-width: 15em;
+    max-width: 15em;
 }
 
 .unread-entries-count {
-  font-weight: bold;
-  margin-right: 0px;
+    font-weight: bold;
+    margin-right: 0px;
 }
