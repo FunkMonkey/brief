@@ -1078,7 +1078,7 @@ var FeedListContextMenu = {
 
 
     _deleteBookmarks: function FeedListContextMenu__deleteBookmarks(aFeeds) {
-        Components.utils.import('resource://gre/modules/PlacesUIUtils.jsm');
+        Components.utils.import('resource:///modules/PlacesUIUtils.jsm');
         transSrv = PlacesUIUtils.ptm;
 
         var transactions = [];

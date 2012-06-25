@@ -1158,7 +1158,7 @@ Query.prototype = {
      * observer.
      */
     bookmarkEntries: function Query_bookmarkEntries(aState) {
-        Components.utils.import('resource://gre/modules/PlacesUIUtils.jsm');
+        Components.utils.import('resource:///modules/PlacesUIUtils.jsm');
         transSrv = PlacesUIUtils.ptm;
 
         var transactions = [];
