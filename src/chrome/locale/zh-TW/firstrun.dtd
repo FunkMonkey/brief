@@ -1,0 +1,16 @@
+<!--
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   -
+   - This Source Code Form is "Incompatible With Secondary Licenses", as
+   - defined by the Mozilla Public License, v. 2.0.
+   -->
+
+<!ENTITY pageTitle "Brief">
+<!ENTITY thankYou.header "感謝安裝 Brief">
+<!ENTITY subscribingStep1.description "點擊地址欄圖標預覽消息來源。">
+<!ENTITY subscribingStep1firefox4.description "開啟<strong>書籤</strong>選單，選擇<strong>訂閱此頁面</strong>。">
+<!ENTITY subscribingStep2.description "選中<strong>即時書籤</strong>，點擊<strong>立刻訂閱</strong>。">
+<!ENTITY subscribingStep3.description "在書籤選單中選擇<strong>已訂閱的消息來源</strong>資料夾。">
+<!ENTITY getStartedButton.label "開始">
