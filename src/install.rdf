@@ -13,7 +13,7 @@
 
   <rdf:Description about="urn:mozilla:install-manifest">
     <id>brief@mozdev.org</id>
-    <version>1.5.4</version>
+    <version>1.5.5a1</version>
     <type>2</type>
     <name>Brief</name>
     <description>A feed reading extension.</description>
@@ -22,6 +22,12 @@
     <optionsURL>chrome://brief/content/options/options.xul</optionsURL>
     <iconURL>chrome://brief/skin/icon.png</iconURL>
     <icon64URL>chrome://brief/skin/icon64.png</icon64URL>
+
+    <updateURL>http://kersp66zqax.github.com/brief/update.rdf</updateURL>
+    <updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2CCqVYb/9VxAgVdus1BuGI634
+               qY6/atBQLBOWy1MX5GtvHez79jv8Ki5RGBQ3lMvuj3qas3lRxRNNVEopugylklaI
+               y/2RtVSAVAbbhuhNipzgYytfNHC/frkjPWoBTuewJpohoqXJIxkUGAmiZmLDS5wE
+               lVEQf1iZqNu4HPh0XQIDAQAB</updateKey>
 
     <targetApplication>
       <rdf:Description>
