@@ -14,18 +14,6 @@ To keep Brief 1.5 compatible with the latest Firefox releases. Some minor enhanc
 It's all shared under the [MPL 2.0].
 
 
-Get
----
-
-[latest]: https://github.com/downloads/KerSp66zQAx/brief/Brief-1.5.4.10.7.xpi
-
-[Brief 1.5.4.10.7] [latest] *(for Firefox 10 and later)*
-
-It has been tested (briefly in some platforms) until Firefox 15.
-
-Use "*Save link as...*" from the context menu for to download.
-
-
 Repository
 ----------
 
