@@ -24,7 +24,7 @@ The latest work is in the branch "dev-1.5". While branches with the source code 
 [1]: https://addons.mozilla.org/firefox/addon/brief/
 [2]: https://addons.mozilla.org/firefox/compatibility/reporter/brief@mozdev.org
 [3]: http://brief.mozdev.org/drupal/node/912
-[4]: http://brief.mozdev.org/drupal/node/1500
+[4]: http://brief.mozdev.org/drupal/node/3852
 [5]: http://brief.mozdev.org/drupal/node/1775
 
 [MPL 1.1]: http://www.mozilla.org/MPL/1.1/      "Mozilla Public License, version 1.1"
