@@ -26,6 +26,7 @@ pref("extensions.brief.feedview.autoMarkRead", false);
 pref("extensions.brief.feedview.entrySelectionEnabled", true);
 pref("extensions.brief.feedview.sortUnreadViewOldestFirst", false);
 pref("extensions.brief.feedview.preferUnreadViewOnLoad", false);
+pref("extensions.brief.feedview.autoCompactAfterEmptyTrash", false);
 
 pref("extensions.brief.update.interval", 3600);
 pref("extensions.brief.update.lastUpdateTime", 0);

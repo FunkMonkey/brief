@@ -862,18 +862,22 @@ var ViewListContextMenu = {
         })
         query.deleteEntries(Storage.ENTRY_STATE_DELETED);
 
-        var dialogTitle = gStringBundle.getString('compactPromptTitle');
-        var dialogText = gStringBundle.getString('compactPromptText');
-        var dialogConfirmLabel = gStringBundle.getString('compactPromptConfirmButton');
+        var shouldCompact;
+        if (PrefCache.autoCompactAfterEmptyTrash)
+            shouldCompact = 0;
+        else {
+            var dialogTitle = gStringBundle.getString('compactPromptTitle');
+            var dialogText = gStringBundle.getString('compactPromptText');
+            var dialogConfirmLabel = gStringBundle.getString('compactPromptConfirmButton');
 
-        var buttonFlags = Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING +
-                          Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_NO +
-                          Services.prompt.BUTTON_POS_0_DEFAULT;
+            var buttonFlags = Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING +
+                              Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_NO +
+                              Services.prompt.BUTTON_POS_0_DEFAULT;
 
-        var shouldCompact = Services.prompt.confirmEx(window, dialogTitle, dialogText,
-                                                      buttonFlags, dialogConfirmLabel,
-                                                      null, null, null, {value:0});
-
+            shouldCompact = Services.prompt.confirmEx(window, dialogTitle, dialogText,
+                                                          buttonFlags, dialogConfirmLabel,
+                                                          null, null, null, {value:0});
+        }
         if (shouldCompact === 0) {
             window.openDialog('chrome://brief/content/compacting-progress.xul', 'Brief',
                               'chrome,titlebar,centerscreen');

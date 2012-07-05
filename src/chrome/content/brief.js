@@ -418,16 +418,17 @@ var PrefObserver = {
     // Hash table of prefs which are cached and available as properties
     // of PrefCache.
     _cachedPrefs: {
-        doubleClickMarks:          'feedview.doubleClickMarks',
-        showHeadlinesOnly:         'feedview.showHeadlinesOnly',
-        entrySelectionEnabled:     'feedview.entrySelectionEnabled',
-        autoMarkRead:              'feedview.autoMarkRead',
-        filterUnread:              'feedview.filterUnread',
-        filterStarred:             'feedview.filterStarred',
-        sortUnreadViewOldestFirst: 'feedview.sortUnreadViewOldestFirst',
-        preferUnreadViewOnLoad:    'feedview.preferUnreadViewOnLoad',
-        showFavicons:              'showFavicons',
-        homeFolder:                'homeFolder'
+        doubleClickMarks:            'feedview.doubleClickMarks',
+        showHeadlinesOnly:           'feedview.showHeadlinesOnly',
+        entrySelectionEnabled:       'feedview.entrySelectionEnabled',
+        autoMarkRead:                'feedview.autoMarkRead',
+        filterUnread:                'feedview.filterUnread',
+        filterStarred:               'feedview.filterStarred',
+        sortUnreadViewOldestFirst:   'feedview.sortUnreadViewOldestFirst',
+        preferUnreadViewOnLoad:      'feedview.preferUnreadViewOnLoad',
+        autoCompactAfterEmptyTrash:  'feedview.autoCompactAfterEmptyTrash',
+        showFavicons:                'showFavicons',
+        homeFolder:                  'homeFolder'
     },
 
     _updateCachedPref: function PrefObserver__updateCachedPref(aKey) {
