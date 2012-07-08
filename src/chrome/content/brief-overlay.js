@@ -254,6 +254,9 @@ const Brief = {
             break;
 
         case 'unload':
+            window.removeEventListener('unload', this, false);
+
+            gBrowser.removeEventListener('pageshow', this.onTabLoad, false);
             this.prefs.removeObserver('', this);
             this.storage.removeObserver(this);
             Services.obs.removeObserver(this, 'brief:invalidate-feedlist');
