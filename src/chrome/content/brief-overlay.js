@@ -198,6 +198,11 @@ const Brief = {
             gBrowser.setIcon(Brief.getBriefTab(), Brief.BRIEF_FAVICON_URL);
     },
 
+    onButtonDropped: function Brief_onButtonDropped(aEvent) {
+        if (aEvent.dataTransfer.mozSourceNode.id == 'wrapper-brief-button')
+            Brief.updateStatus();
+    },
+
     handleEvent: function Brief_handleEvent(aEvent) {
         switch (aEvent.type) {
         case 'load':
@@ -244,6 +249,8 @@ const Brief = {
                 XULBrowserWindow.inContentWhitelist.push(this.BRIEF_URL);
 
             gBrowser.addEventListener('pageshow', this.onTabLoad, false);
+            document.getElementById('navigator-toolbox').addEventListener('drop', this.onButtonDropped, false);
+            document.getElementById('addon-bar').addEventListener('drop', this.onButtonDropped, false);
 
             this.prefs.addObserver('', this, false);
             this.storage.addObserver(this);
@@ -256,6 +263,9 @@ const Brief = {
             window.removeEventListener('unload', this, false);
 
             gBrowser.removeEventListener('pageshow', this.onTabLoad, false);
+            document.getElementById('navigator-toolbox').removeEventListener('drop', this.onButtonDropped, false);
+            document.getElementById('addon-bar').removeEventListener('drop', this.onButtonDropped, false);
+
             this.prefs.removeObserver('', this);
             this.storage.removeObserver(this);
             Services.obs.removeObserver(this, 'brief:invalidate-feedlist');
