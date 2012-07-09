@@ -13,11 +13,11 @@
 #brief-button {
     -moz-box-align: center;
     -moz-box-orient: horizontal;
-    list-style-image: url(chrome://brief/skin/toolbarbutton.png);
+    list-style-image: url("chrome://brief/skin/toolbarbutton.png");
 }
 
-toolbar[iconsize=small] #brief-button {
-    list-style-image: url(chrome://brief/skin/feed-icon-16x16.png);
+toolbar[iconsize="small"] #brief-button {
+    list-style-image: url("chrome://brief/skin/feed-icon-16x16.png");
 }
 
 toolbar[mode="icons"] #brief-status-counter {
