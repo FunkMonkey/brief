@@ -1,13 +1,25 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
 Components.utils.import('resource://brief/Storage.jsm');
 Components.utils.import('resource://brief/FeedUpdateService.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/NetUtil.jsm');
 
 var gTemplateURI = NetUtil.newURI('resource://brief-content/feedview-template.html');
 var gStringBundle;
 
+// We save a reference to the Options window for reusing it
+var optionsWindow = null;
 
 function init() {
     PrefObserver.register();
@@ -28,17 +40,14 @@ function init() {
     // click event before the folder is actually collapsed.
     FeedList.tree.addEventListener('click', FeedList.onClick, true);
 
-    var observerService = Cc['@mozilla.org/observer-service;1']
-                          .getService(Ci.nsIObserverService);
-
-    observerService.addObserver(FeedList, 'brief:feed-update-queued', false);
-    observerService.addObserver(FeedList, 'brief:feed-update-canceled', false);
-    observerService.addObserver(FeedList, 'brief:feed-updated', false);
-    observerService.addObserver(FeedList, 'brief:feed-loading', false);
-    observerService.addObserver(FeedList, 'brief:feed-error', false);
-    observerService.addObserver(FeedList, 'brief:invalidate-feedlist', false);
-    observerService.addObserver(FeedList, 'brief:feed-title-changed', false);
-    observerService.addObserver(FeedList, 'brief:custom-style-changed', false);
+    Services.obs.addObserver(FeedList, 'brief:feed-update-queued', false);
+    Services.obs.addObserver(FeedList, 'brief:feed-update-canceled', false);
+    Services.obs.addObserver(FeedList, 'brief:feed-updated', false);
+    Services.obs.addObserver(FeedList, 'brief:feed-loading', false);
+    Services.obs.addObserver(FeedList, 'brief:feed-error', false);
+    Services.obs.addObserver(FeedList, 'brief:invalidate-feedlist', false);
+    Services.obs.addObserver(FeedList, 'brief:feed-title-changed', false);
+    Services.obs.addObserver(FeedList, 'brief:custom-style-changed', false);
 
     Storage.addObserver(FeedList);
 
@@ -67,19 +76,21 @@ function init() {
 function unload() {
     var viewList = getElement('view-list');
     var id = viewList.selectedItem && viewList.selectedItem.id;
-    var startView = (id == 'unread-folder') ? 'unread-folder' : 'all-items-folder';
+
+    var preferUnreadView = PrefCache.preferUnreadViewOnLoad;
+    var preferredView = (preferUnreadView) ? 'unread-folder' : 'all-items-folder';
+    var startView = (id == 'unread-folder' || id == 'all-items-folder') ? id : preferredView;
+
     viewList.setAttribute('startview', startView);
 
-    var observerService = Cc['@mozilla.org/observer-service;1']
-                          .getService(Ci.nsIObserverService);
-    observerService.removeObserver(FeedList, 'brief:feed-updated');
-    observerService.removeObserver(FeedList, 'brief:feed-loading');
-    observerService.removeObserver(FeedList, 'brief:feed-error');
-    observerService.removeObserver(FeedList, 'brief:feed-update-queued');
-    observerService.removeObserver(FeedList, 'brief:feed-update-canceled');
-    observerService.removeObserver(FeedList, 'brief:invalidate-feedlist');
-    observerService.removeObserver(FeedList, 'brief:feed-title-changed');
-    observerService.removeObserver(FeedList, 'brief:custom-style-changed');
+    Services.obs.removeObserver(FeedList, 'brief:feed-updated');
+    Services.obs.removeObserver(FeedList, 'brief:feed-loading');
+    Services.obs.removeObserver(FeedList, 'brief:feed-error');
+    Services.obs.removeObserver(FeedList, 'brief:feed-update-queued');
+    Services.obs.removeObserver(FeedList, 'brief:feed-update-canceled');
+    Services.obs.removeObserver(FeedList, 'brief:invalidate-feedlist');
+    Services.obs.removeObserver(FeedList, 'brief:feed-title-changed');
+    Services.obs.removeObserver(FeedList, 'brief:custom-style-changed');
 
     PrefObserver.unregister();
     Storage.removeObserver(FeedList);
@@ -122,14 +133,16 @@ var Commands = {
     },
 
     openOptions: function cmd_openOptions(aPaneID) {
-        var prefBranch = Cc['@mozilla.org/preferences-service;1']
-                         .getService(Ci.nsIPrefBranch);
-        var instantApply = prefBranch.getBoolPref('browser.preferences.instantApply');
-        var features = 'chrome,titlebar,toolbar,centerscreen,resizable,';
-        features += instantApply ? 'modal=no,dialog=no' : 'modal';
+        if (optionsWindow && !optionsWindow.closed)
+            optionsWindow.focus();
+        else {
+            var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+            var features = 'chrome,titlebar,toolbar,centerscreen,resizable,';
+            features += instantApply ? 'modal=no,dialog=no' : 'modal';
 
-        window.openDialog('chrome://brief/content/options/options.xul', 'Brief options',
-                          features, aPaneID);
+            optionsWindow = window.openDialog('chrome://brief/content/options/options.xul',
+                                              'Brief options', features, aPaneID);
+        }
     },
 
     markViewRead: function cmd_markViewRead() {
@@ -383,10 +396,8 @@ function getTopWindow() {
 }
 
 
-var Prefs = Cc['@mozilla.org/preferences-service;1']
-            .getService(Ci.nsIPrefService)
-            .getBranch('extensions.brief.')
-            .QueryInterface(Ci.nsIPrefBranch2);
+var Prefs = Services.prefs.getBranch('extensions.brief.')
+                          .QueryInterface(Ci.nsIPrefBranch2);
 
 var PrefCache = {};
 
@@ -407,15 +418,17 @@ var PrefObserver = {
     // Hash table of prefs which are cached and available as properties
     // of PrefCache.
     _cachedPrefs: {
-        doubleClickMarks:          'feedview.doubleClickMarks',
-        showHeadlinesOnly:         'feedview.showHeadlinesOnly',
-        entrySelectionEnabled:     'feedview.entrySelectionEnabled',
-        autoMarkRead:              'feedview.autoMarkRead',
-        filterUnread:              'feedview.filterUnread',
-        filterStarred:             'feedview.filterStarred',
-        sortUnreadViewOldestFirst: 'feedview.sortUnreadViewOldestFirst',
-        showFavicons:              'showFavicons',
-        homeFolder:                'homeFolder'
+        doubleClickMarks:            'feedview.doubleClickMarks',
+        showHeadlinesOnly:           'feedview.showHeadlinesOnly',
+        entrySelectionEnabled:       'feedview.entrySelectionEnabled',
+        autoMarkRead:                'feedview.autoMarkRead',
+        filterUnread:                'feedview.filterUnread',
+        filterStarred:               'feedview.filterStarred',
+        sortUnreadViewOldestFirst:   'feedview.sortUnreadViewOldestFirst',
+        preferUnreadViewOnLoad:      'feedview.preferUnreadViewOnLoad',
+        autoCompactAfterEmptyTrash:  'feedview.autoCompactAfterEmptyTrash',
+        showFavicons:                'showFavicons',
+        homeFolder:                  'homeFolder'
     },
 
     _updateCachedPref: function PrefObserver__updateCachedPref(aKey) {
@@ -494,7 +507,5 @@ function intersect(arr1, arr2) {
 }
 
 function log(aMessage) {
-  var consoleService = Cc['@mozilla.org/consoleservice;1'].
-                       getService(Ci.nsIConsoleService);
-  consoleService.logStringMessage(aMessage);
+    Services.console.logStringMessage(aMessage);
 }

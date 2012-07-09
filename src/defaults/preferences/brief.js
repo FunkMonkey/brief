@@ -1,5 +1,13 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 pref("extensions.brief.homeFolder", -1);
-pref("extensions.brief.showStatusbarIcon", true);
 pref("extensions.brief.showUnreadCounter", true);
 pref("extensions.brief.firstRun", true);
 pref("extensions.brief.lastVersion", "0");
@@ -17,6 +25,8 @@ pref("extensions.brief.feedview.doubleClickMarks", true);
 pref("extensions.brief.feedview.autoMarkRead", false);
 pref("extensions.brief.feedview.entrySelectionEnabled", true);
 pref("extensions.brief.feedview.sortUnreadViewOldestFirst", false);
+pref("extensions.brief.feedview.preferUnreadViewOnLoad", false);
+pref("extensions.brief.feedview.autoCompactAfterEmptyTrash", false);
 
 pref("extensions.brief.update.interval", 3600);
 pref("extensions.brief.update.lastUpdateTime", 0);

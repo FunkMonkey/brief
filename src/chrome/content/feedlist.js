@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 const THROBBER_URL = 'chrome://brief/skin/throbber.gif';
 const ERROR_ICON_URL = 'chrome://brief/skin/icons/error.png';
 
@@ -853,21 +862,22 @@ var ViewListContextMenu = {
         })
         query.deleteEntries(Storage.ENTRY_STATE_DELETED);
 
-        var promptService = Cc['@mozilla.org/embedcomp/prompt-service;1']
-                            .getService(Ci.nsIPromptService);
+        var shouldCompact;
+        if (PrefCache.autoCompactAfterEmptyTrash)
+            shouldCompact = 0;
+        else {
+            var dialogTitle = gStringBundle.getString('compactPromptTitle');
+            var dialogText = gStringBundle.getString('compactPromptText');
+            var dialogConfirmLabel = gStringBundle.getString('compactPromptConfirmButton');
 
-        var dialogTitle = gStringBundle.getString('compactPromptTitle');
-        var dialogText = gStringBundle.getString('compactPromptText');
-        var dialogConfirmLabel = gStringBundle.getString('compactPromptConfirmButton');
+            var buttonFlags = Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING +
+                              Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_NO +
+                              Services.prompt.BUTTON_POS_0_DEFAULT;
 
-        var buttonFlags = promptService.BUTTON_POS_0 * promptService.BUTTON_TITLE_IS_STRING +
-                          promptService.BUTTON_POS_1 * promptService.BUTTON_TITLE_NO +
-                          promptService.BUTTON_POS_0_DEFAULT;
-
-        var shouldCompact = promptService.confirmEx(window, dialogTitle, dialogText,
-                                                    buttonFlags, dialogConfirmLabel,
-                                                    null, null, null, {value:0});
-
+            shouldCompact = Services.prompt.confirmEx(window, dialogTitle, dialogText,
+                                                          buttonFlags, dialogConfirmLabel,
+                                                          null, null, null, {value:0});
+        }
         if (shouldCompact === 0) {
             window.openDialog('chrome://brief/content/compacting-progress.xul', 'Brief',
                               'chrome,titlebar,centerscreen');
@@ -890,8 +900,6 @@ var TagListContextMenu = {
     },
 
     deleteTag: function TagListContextMenu_deleteTag() {
-        var promptService = Cc['@mozilla.org/embedcomp/prompt-service;1'].
-                            getService(Ci.nsIPromptService);
         var taggingService = Cc['@mozilla.org/browser/tagging-service;1'].
                              getService(Ci.nsITaggingService);
 
@@ -900,7 +908,7 @@ var TagListContextMenu = {
         var dialogTitle = gStringBundle.getString('confirmTagDeletionTitle');
         var dialogText = gStringBundle.getFormattedString('confirmTagDeletionText', [tag]);
 
-        var weHaveAGo = promptService.confirm(window, dialogTitle, dialogText);
+        var weHaveAGo = Services.prompt.confirm(window, dialogTitle, dialogText);
 
         if (weHaveAGo) {
             var urls = new Query({ tags: [tag] }).getProperty('entryURL', true)
@@ -1021,12 +1029,10 @@ var FeedListContextMenu = {
 
 
     deleteFeed: function FeedListContextMenu_deleteFeed() {
-        var promptService = Cc['@mozilla.org/embedcomp/prompt-service;1'].
-                            getService(Ci.nsIPromptService);
         var title = gStringBundle.getString('confirmFeedDeletionTitle');
         var text = gStringBundle.getFormattedString('confirmFeedDeletionText',
                                                    [this.targetFeed.title]);
-        var weHaveAGo = promptService.confirm(window, title, text);
+        var weHaveAGo = Services.prompt.confirm(window, title, text);
 
         if (weHaveAGo) {
             this._removeTreeitem(this.targetItem);
@@ -1036,12 +1042,10 @@ var FeedListContextMenu = {
 
 
     deleteFolder: function FeedListContextMenu_deleteFolder() {
-        var promptService = Cc['@mozilla.org/embedcomp/prompt-service;1'].
-                            getService(Ci.nsIPromptService);
         var title = gStringBundle.getString('confirmFolderDeletionTitle');
         var text = gStringBundle.getFormattedString('confirmFolderDeletionText',
                                                    [this.targetFeed.title]);
-        var weHaveAGo = promptService.confirm(window, title, text);
+        var weHaveAGo = Services.prompt.confirm(window, title, text);
 
         if (weHaveAGo) {
             this._removeTreeitem(this.targetItem);
@@ -1078,15 +1082,8 @@ var FeedListContextMenu = {
 
 
     _deleteBookmarks: function FeedListContextMenu__deleteBookmarks(aFeeds) {
-        // Firefox 3.6 compatibility.
-        if ('@mozilla.org/browser/placesTransactionsService;1' in Cc) {
-            var transSrv = Cc['@mozilla.org/browser/placesTransactionsService;1']
-                             .getService(Ci.nsIPlacesTransactionsService);
-        }
-        else {
-            Components.utils.import('resource://gre/modules/PlacesUIUtils.jsm');
-            transSrv = PlacesUIUtils.ptm;
-        }
+        Components.utils.import('resource:///modules/PlacesUIUtils.jsm');
+        transSrv = PlacesUIUtils.ptm;
 
         var transactions = [];
         for (let i = aFeeds.length - 1; i >= 0; i--)

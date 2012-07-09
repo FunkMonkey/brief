@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 // Minimal number of window heights worth of entries loaded ahead of the
 // current scrolling position at any given time.
 const MIN_LOADED_WINDOW_HEIGHTS = 1;
@@ -455,7 +464,7 @@ FeedView.prototype = {
         // Checking if default action has been prevented helps Brief play nicely with
         // other extensions. In Gecko <1.9.2 getPreventDefault() is available only
         // for UI events.
-        if (aEvent instanceof Ci.nsIDOMNSUIEvent && aEvent.getPreventDefault())
+        if (aEvent instanceof Ci.nsIDOMUIEvent && aEvent.getPreventDefault())
             return;
 
         switch (aEvent.type) {

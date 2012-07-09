@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 const Brief = {
 
     VERSION: '1.5.4',
@@ -7,26 +16,16 @@ const Brief = {
     BRIEF_URL: 'chrome://brief/content/brief.xul',
     BRIEF_FAVICON_URL: 'chrome://brief/skin/feed-icon-16x16.png',
 
-    get firefox4() {
-        var verComparator = Cc['@mozilla.org/xpcom/version-comparator;1']
-                            .getService(Ci.nsIVersionComparator);
-        delete this.firefox4;
-        return this.firefox4 = verComparator.compare(Application.version, '4.0b7') >= 0;
-    },
-
-    // Firefox 3.6 compatibility.
-    get statusPanel() document.getElementById('brief-status'),
-
     get statusCounter() document.getElementById('brief-status-counter'),
+
+    get statusCounterMenuitem() document.getElementById('brief-show-unread-counter'),
 
     get toolbarbutton() document.getElementById('brief-button'),
 
     get prefs() {
         delete this.prefs;
-        return this.prefs = Cc['@mozilla.org/preferences-service;1'].
-                            getService(Ci.nsIPrefService).
-                            getBranch('extensions.brief.').
-                            QueryInterface(Ci.nsIPrefBranch2);
+        return this.prefs = Services.prefs.getBranch('extensions.brief.')
+                                          .QueryInterface(Ci.nsIPrefBranch2);
     },
 
     get storage() {
@@ -46,21 +45,23 @@ const Brief = {
     },
 
     open: function Brief_open(aInCurrentTab) {
+        var reusableURLs = [ 'about:blank',
+                             'about:newtab',
+                             'about:privatebrowsing' ];
         var loading = gBrowser.webProgress.isLoadingDocument;
-        var blank = (gBrowser.currentURI.spec == 'about:blank');
+        var reusable = reusableURLs.indexOf(gBrowser.currentURI.spec) != -1;
         var briefTab = this.getBriefTab();
 
         if (briefTab)
             gBrowser.selectedTab = briefTab;
-        else if (blank && !loading || aInCurrentTab)
+        else if (reusable && !loading || aInCurrentTab)
             gBrowser.loadURI(this.BRIEF_URL, null, null);
         else
             gBrowser.loadOneTab(this.BRIEF_URL, { inBackground: false });
     },
 
     getBriefTab: function Brief_getBriefTab() {
-        // Firefox 3.6 compatibility. Use gBrowser.tabs
-        var tabs = gBrowser.mTabs;
+        var tabs = gBrowser.tabs;
         for (let i = 0; i < tabs.length; i++) {
             if (gBrowser.getBrowserForTab(tabs[i]).currentURI.spec == this.BRIEF_URL)
                 return tabs[i];
@@ -89,15 +90,12 @@ const Brief = {
     },
 
     toggleUnreadCounter: function Brief_toggleUnreadCounter() {
-        var menuitem = document.getElementById('brief-show-unread-counter');
-        var checked = menuitem.getAttribute('checked') == 'true';
-        Brief.prefs.setBoolPref('showUnreadCounter', !checked);
+        var checked = this.statusCounterMenuitem.getAttribute('checked') == 'true';
+        this.prefs.setBoolPref('showUnreadCounter', !checked);
     },
 
     showOptions: function cmd_showOptions() {
-        var prefBranch = Cc['@mozilla.org/preferences-service;1'].
-                         getService(Ci.nsIPrefBranch);
-        var instantApply = prefBranch.getBoolPref('browser.preferences.instantApply');
+        var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
         var features = 'chrome,titlebar,toolbar,centerscreen,resizable,';
         features += instantApply ? 'modal=no,dialog=no' : 'modal';
 
@@ -105,32 +103,25 @@ const Brief = {
                           features);
     },
 
-
     updateStatus: function Brief_updateStatus() {
-        if (Brief.firefox4 && (!Brief.toolbarbutton || !Brief.prefs.getBoolPref('showUnreadCounter')))
+        if (!Brief.toolbarbutton)
             return;
 
-        if (!Brief.firefox4 && !Brief.prefs.getBoolPref('showStatusbarIcon'))
-            return;
+        var showCounter = Brief.prefs.getBoolPref('showUnreadCounter');
+        Brief.statusCounterMenuitem.setAttribute('checked', showCounter);
 
-        var query = new Brief.query({
-            deleted: Brief.storage.ENTRY_STATE_NORMAL,
-            read: false
-        });
-        var unreadEntriesCount = query.getEntryCount();
+        if (showCounter) {
+            var query = new Brief.query({
+                deleted: Brief.storage.ENTRY_STATE_NORMAL,
+                read: false
+            });
+            var unreadEntriesCount = query.getEntryCount();
 
-        Brief.statusCounter.value = unreadEntriesCount;
-
-        if (!Brief.firefox4) {
-            let panel = document.getElementById('brief-status');
-            panel.setAttribute('unread', unreadEntriesCount > 0);
+            Brief.statusCounter.value = unreadEntriesCount;
+            showCounter = unreadEntriesCount != 0;
         }
-        else {
-            Brief.statusCounter.hidden = unreadEntriesCount == 0;
-        }
-
+        Brief.statusCounter.hidden = !showCounter;
     },
-
 
     constructTooltip: function Brief_constructTooltip(aEvent) {
         var bundle = document.getElementById('brief-bundle');
@@ -207,6 +198,11 @@ const Brief = {
             gBrowser.setIcon(Brief.getBriefTab(), Brief.BRIEF_FAVICON_URL);
     },
 
+    onButtonDropped: function Brief_onButtonDropped(aEvent) {
+        if (aEvent.dataTransfer.mozSourceNode.id == 'wrapper-brief-button')
+            Brief.updateStatus();
+    },
+
     handleEvent: function Brief_handleEvent(aEvent) {
         switch (aEvent.type) {
         case 'load':
@@ -217,11 +213,9 @@ const Brief = {
             }
             else {
                 let prevVersion = this.prefs.getCharPref('lastVersion');
-                let verComparator = Cc['@mozilla.org/xpcom/version-comparator;1']
-                                    .getService(Ci.nsIVersionComparator);
 
                 // If Brief has been updated, load the new version info page.
-                if (verComparator.compare(prevVersion, this.VERSION) < 0) {
+                if (Services.vc.compare(prevVersion, this.VERSION) < 0) {
                     setTimeout(function() {
                         gBrowser.loadOneTab(Brief.RELEASE_NOTES_URL, {
                             relatedToCurrent: false,
@@ -233,63 +227,48 @@ const Brief = {
                 }
             }
 
-            if (this.firefox4) {
-                if (!this.toolbarbutton && !this.prefs.getBoolPref('firefox4ToolbarbuttonMigrated')) {
-                    let navbar = document.getElementById('nav-bar');
-                    navbar.insertItem('brief-button', null, null, false);
-                    navbar.setAttribute('currentset', navbar.currentSet);
-                    document.persist('nav-bar', 'currentset');
-                }
-
-                this.prefs.setBoolPref('firefox4ToolbarbuttonMigrated', true);
-
-                if (this.toolbarbutton) {
-                    let showCounter = this.prefs.getBoolPref('showUnreadCounter');
-                    this.statusCounter.hidden = !showCounter;
-
-                    let menuitem = document.getElementById('brief-show-unread-counter');
-                    menuitem.setAttribute('checked', showCounter);
-
-                    // Because Brief's toolbarbutton doesn't use toolbarbutton's binding content,
-                    // we must manually set the label in "icons and text" toolbar mode.
-                    let label = this.toolbarbutton.getElementsByClassName('toolbarbutton-text')[0];
-                    label.value = this.toolbarbutton.label;
-                }
-            }
-            else {
-                document.getElementById('brief-show-unread-counter-separator').hidden = true;
-                document.getElementById('brief-show-unread-counter').hidden = true;
-
-                if (this.prefs.getBoolPref('showStatusbarIcon'))
-                    this.statusPanel.hidden = false;
+            if (!this.toolbarbutton && !this.prefs.getBoolPref('firefox4ToolbarbuttonMigrated')) {
+                let navbar = document.getElementById('nav-bar');
+                navbar.insertItem('brief-button', null, null, false);
+                navbar.setAttribute('currentset', navbar.currentSet);
+                document.persist('nav-bar', 'currentset');
             }
 
-            this.updateStatus();
+            this.prefs.setBoolPref('firefox4ToolbarbuttonMigrated', true);
+
+            if (this.toolbarbutton) {
+                this.updateStatus();
+
+                // Because Brief's toolbarbutton doesn't use toolbarbutton's binding content,
+                // we must manually set the label in "icons and text" toolbar mode.
+                let label = this.toolbarbutton.getElementsByClassName('toolbarbutton-text')[0];
+                label.value = this.toolbarbutton.label;
+            }
 
             if (this.prefs.getBoolPref('hideChrome'))
                 XULBrowserWindow.inContentWhitelist.push(this.BRIEF_URL);
 
-            // Observe changes to the feed database in order to keep
-            // the status panel up-to-date.
-            var observerService = Cc['@mozilla.org/observer-service;1']
-                                  .getService(Ci.nsIObserverService);
-            observerService.addObserver(this, 'brief:invalidate-feedlist', false);
-
             gBrowser.addEventListener('pageshow', this.onTabLoad, false);
+            document.getElementById('navigator-toolbox').addEventListener('drop', this.onButtonDropped, false);
+            document.getElementById('addon-bar').addEventListener('drop', this.onButtonDropped, false);
 
             this.prefs.addObserver('', this, false);
             this.storage.addObserver(this);
+            Services.obs.addObserver(this, 'brief:invalidate-feedlist', false);
 
             window.addEventListener('unload', this, false);
             break;
 
         case 'unload':
+            window.removeEventListener('unload', this, false);
+
+            gBrowser.removeEventListener('pageshow', this.onTabLoad, false);
+            document.getElementById('navigator-toolbox').removeEventListener('drop', this.onButtonDropped, false);
+            document.getElementById('addon-bar').removeEventListener('drop', this.onButtonDropped, false);
+
             this.prefs.removeObserver('', this);
             this.storage.removeObserver(this);
-
-            var observerService = Cc['@mozilla.org/observer-service;1']
-                                  .getService(Ci.nsIObserverService);
-            observerService.removeObserver(this, 'brief:invalidate-feedlist');
+            Services.obs.removeObserver(this, 'brief:invalidate-feedlist');
             break;
         }
     },
@@ -302,30 +281,8 @@ const Brief = {
             break;
 
         case 'nsPref:changed':
-            switch (aData) {
-                // Firefox 3.6 compatibility.
-                case 'showStatusbarIcon':
-                    let newValue = this.prefs.getBoolPref('showStatusbarIcon');
-                    this.statusPanel.hidden = !newValue;
-
-                    let menuitem = document.getElementById('brief-show-unread-counter');
-                    menuitem.setAttribute('checked', newValue);
-
-                    if (newValue)
-                        this.updateStatus();
-                    break;
-
-                case 'showUnreadCounter':
-                    newValue = this.prefs.getBoolPref('showUnreadCounter');
-                    this.statusCounter.hidden = !newValue;
-
-                    menuitem = document.getElementById('brief-show-unread-counter');
-                    menuitem.setAttribute('checked', newValue);
-
-                    if (newValue)
-                        this.updateStatus();
-                    break;
-            }
+            if (aData == 'showUnreadCounter')
+                this.updateStatus();
             break;
         }
     },
@@ -362,10 +319,8 @@ const Brief = {
         }
 
         // Create the default feeds folder.
-        var name = Cc['@mozilla.org/intl/stringbundle;1']
-                   .getService(Ci.nsIStringBundleService)
-                   .createBundle('chrome://brief/locale/brief.properties')
-                   .GetStringFromName('defaultFeedsFolderName');
+        var name = Services.strings.createBundle('chrome://brief/locale/brief.properties')
+                                   .GetStringFromName('defaultFeedsFolderName');
         var bookmarks = PlacesUtils.bookmarks;
         var folderID = bookmarks.createFolder(bookmarks.bookmarksMenuFolder, name,
                                               bookmarks.DEFAULT_INDEX);
@@ -381,9 +336,7 @@ const Brief = {
 
         Brief.prefs.setBoolPref('firstRun', false);
         Brief.prefs.setCharPref('lastVersion', Brief.VERSION);
-
-        if (Brief.firefox4)
-            Brief.prefs.setBoolPref('firefox4ToolbarbuttonMigrated', true);
+        Brief.prefs.setBoolPref('firefox4ToolbarbuttonMigrated', true);
     },
 
     QueryInterface: function Brief_QueryInterface(aIID) {

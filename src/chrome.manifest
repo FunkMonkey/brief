@@ -1,25 +1,37 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# This Source Code Form is "Incompatible With Secondary Licenses", as
+# defined by the Mozilla Public License, v. 2.0.
+
+
 content  brief  chrome/content/  contentaccessible=yes
-skin  brief  classic  chrome/skin/
+
+skin     brief     classic  chrome/skin/
+skin     brief-os  classic  chrome/skin/gnomestripe/
+skin     brief-os  classic  chrome/skin/winstripe/     os=WINNT
+skin     brief-os  classic  chrome/skin/pinstripe/     os=Darwin
 
 resource brief-content  defaults/data/
 resource brief          modules/
 
-overlay  chrome://browser/content/browser.xul  chrome://brief/content/brief-overlay.xul
-overlay  chrome://browser/content/browser.xul  chrome://brief/content/brief-overlay-pre-firefox4.xul appversion<4.0b7
-overlay  chrome://browser/content/browser.xul  chrome://brief/content/brief-overlay-firefox4.xul appversion>=4.0b7
+override chrome://brief/content/brief-overlay-button.xul  chrome://brief/content/brief-overlay-button-win-14.xul    os=WINNT    appversion>=14.0a2
+override chrome://brief-os/skin/overlay.css               chrome://brief-os/skin/overlay-14.css                     os=WINNT    appversion>=14.0a2
 
-style  chrome://global/content/customizeToolbar.xul  chrome://brief/skin/overlay.css
+overlay  chrome://browser/content/browser.xul  chrome://brief/content/brief-overlay.xul
+
+style    chrome://global/content/customizeToolbar.xul     chrome://brief/skin/customizeToolbar.css
 
 component  {943b2280-6457-11df-a08a-0800200c9a66}  components/Service.js
 contract  @brief.mozdev.org/briefservice;1  {943b2280-6457-11df-a08a-0800200c9a66}
-
 category  profile-after-change  BriefService  @brief.mozdev.org/briefservice;1
 
-locale  brief   en-US  chrome/locale/en-US/
 locale  brief   cs     chrome/locale/cs/
 locale  brief   da     chrome/locale/da/
 locale  brief   de     chrome/locale/de/
 locale  brief   el     chrome/locale/el/
+locale  brief   en-US  chrome/locale/en-US/
 locale  brief   es-ES  chrome/locale/es-ES/
 locale  brief   fr     chrome/locale/fr/
 locale  brief   gl     chrome/locale/gl/
@@ -35,3 +47,4 @@ locale  brief   ru-RU  chrome/locale/ru-RU/
 locale  brief   sk-SK  chrome/locale/sk-SK/
 locale  brief   sv-SE  chrome/locale/sv-SE/
 locale  brief   zh-CN  chrome/locale/zh-CN/
+locale  brief   zh-TW  chrome/locale/zh-TW/

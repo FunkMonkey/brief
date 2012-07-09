@@ -1,7 +1,17 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 var Ci = Components.interfaces;
 var Cc = Components.classes;
 
 Components.utils.import('resource://brief/Storage.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 
 function init() {
     gMainPane.setUpPlacesTree();
@@ -11,16 +21,6 @@ function init() {
     gFeedsPane.initUpdateIntervalControls();
     gFeedsPane.updateExpirationDisabledState();
     gFeedsPane.updateStoredEntriesDisabledState();
-
-    // Firefox 3.6 compatibility.
-    var versionComparator = Cc['@mozilla.org/xpcom/version-comparator;1']
-                            .getService(Ci.nsIVersionComparator);
-    if (versionComparator.compare(Application.version, '4.0b7') >= 0) {
-        document.getElementById('show-statusbar-icon').hidden = true;
-    }
-    else {
-        document.getElementById('show-unread-counter').hidden = true;
-    }
 
     opml.init();
 }
@@ -134,11 +134,7 @@ var gFeedsPane = {
     },
 
     onClearAllEntriesCmd: function(aEvent) {
-        var promptService = Cc['@mozilla.org/embedcomp/prompt-service;1'].
-                            getService(Ci.nsIPromptService);
-        var prefBranch = Cc['@mozilla.org/preferences-service;1'].
-                         getService(Ci.nsIPrefBranch);
-        var keepStarred = prefBranch.getBoolPref('extensions.brief.database.keepStarredWhenClearing');
+        var keepStarred = Services.prefs.getBoolPref('extensions.brief.database.keepStarredWhenClearing');
 
         var stringbundle = document.getElementById('options-bundle');
         var title = stringbundle.getString('confirmClearAllEntriesTitle');
@@ -146,7 +142,7 @@ var gFeedsPane = {
         var checkboxLabel = stringbundle.getString('confirmClearAllEntriesCheckbox');
         var checked = { value: keepStarred };
 
-        var result = promptService.confirmCheck(window, title, text, checkboxLabel, checked);
+        var result = Services.prompt.confirmCheck(window, title, text, checkboxLabel, checked);
         if (result) {
             var query = new Query({
                 starred: checked.value ? false : undefined,
@@ -154,7 +150,7 @@ var gFeedsPane = {
             });
             query.deleteEntries(Storage.ENTRY_STATE_DELETED);
 
-            prefBranch.setBoolPref('extensions.brief.database.keepStarredWhenClearing', checked.value)
+            Services.prefs.setBoolPref('extensions.brief.database.keepStarredWhenClearing', checked.value)
         }
     }
 

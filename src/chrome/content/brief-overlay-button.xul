@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   -
+   - This Source Code Form is "Incompatible With Secondary Licenses", as
+   - defined by the Mozilla Public License, v. 2.0.
+   -->
+
+<overlay id="brief-overlay-button"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <toolbarbutton id="brief-button">
+        <vbox align="center">
+            <image class="toolbarbutton-icon"/>
+            <label class="toolbarbutton-text" crop="right" flex="1"/>
+        </vbox>
+        <label id="brief-status-counter" hidden="true"/>
+    </toolbarbutton>
+
+</overlay>

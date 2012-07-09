@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 body {
     margin: 0;
     padding: 0;
@@ -52,7 +61,6 @@ body {
     margin: 0 auto;
     background: -moz-linear-gradient(top, rgba(211, 231, 242, 1), rgba(211, 231, 242, 0.5) 24px, rgba(211, 231, 242, 0) 40px) #ffffff;
     background-clip: padding-box;
-    -moz-background-clip: padding; /* Firefox 3.6 compatibility */
     border-right: 6px #e6e9ed solid;
     -moz-border-right-colors: #fafcff #fafcff #f7f9fc #f3f5f8 #eff0f3 #d8dadc;
     border-left: 6px #e6e9ed solid;
@@ -83,7 +91,10 @@ body {
     top: 6px;
     margin-top: -12px;
     border-width: 6px;
+    border-style: solid;
+    border-color: transparent;
     -moz-border-image: url(chrome://brief/skin/selected-entry-border.png) 6 stretch;
+    border-image: url(chrome://brief/skin/selected-entry-border.png) 6 fill stretch;    /* Firefox 15 and later */
 }
 
 
@@ -210,7 +221,7 @@ pre, code {
 
 .search-highlight {
     border: 1px solid #45e500;
-    -moz-border-radius: 3px;
+    border-radius: 3px;
     color: black;
     background-color: #adff89;
 }
@@ -316,7 +327,10 @@ pre, code {
     min-width: 84px;
     margin-right: 3px;
     border-width: 0 7px;
+    border-style: solid;
+    border-color: transparent;
     -moz-border-image: url(chrome://brief/skin/mark-read-button-normal.png) 0 6 stretch;
+    border-image: url(chrome://brief/skin/mark-read-button-normal.png) 0 6 fill stretch;    /* Firefox 15 and later */
     font-family: Arial, sans-serif;
     font-size: 12px;
     color: #326585;
@@ -326,10 +340,12 @@ pre, code {
 
 .mark-read:hover {
     -moz-border-image: url(chrome://brief/skin/mark-read-button-hover.png) 0 6 stretch;
+    border-image: url(chrome://brief/skin/mark-read-button-hover.png) 0 6 fill stretch;    /* Firefox 15 and later */
 }
 
 .mark-read:active {
     -moz-border-image: url(chrome://brief/skin/mark-read-button-active.png) 0 6 stretch;
+    border-image: url(chrome://brief/skin/mark-read-button-active.png) 0 6 fill stretch;    /* Firefox 15 and later */
 }
 
 

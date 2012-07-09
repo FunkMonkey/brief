@@ -1,24 +1,42 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
 #brief-button {
-    list-style-image: url(chrome://brief/skin/toolbarbutton.png);
+    -moz-box-align: center;
+    -moz-box-orient: horizontal;
+    list-style-image: url("chrome://brief/skin/toolbarbutton.png");
 }
 
-toolbar[iconsize=small] #brief-button {
-    list-style-image: url(chrome://brief/skin/feed-icon-16x16.png);
+toolbar[iconsize="small"] #brief-button {
+    list-style-image: url("chrome://brief/skin/feed-icon-16x16.png");
+}
+
+toolbar[mode="icons"] #brief-status-counter {
+    -moz-margin-end: 0;
 }
 
 #brief-tooltip-last-updated {
-  margin-bottom: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 #brief-tooltip-no-unread {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #brief-tooltip-feed-name {
-  max-width: 15em;
+    max-width: 15em;
 }
 
 .unread-entries-count {
-  font-weight: bold;
-  margin-right: 0px;
+    font-weight: bold;
+    margin-right: 0px;
 }

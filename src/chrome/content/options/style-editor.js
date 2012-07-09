@@ -1,7 +1,17 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
 Components.utils.import('resource://gre/modules/AddonManager.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 
 var gCustomStyleFile = null;
 var gTextbox = null;
@@ -11,44 +21,24 @@ function init() {
 
     gTextbox = document.getElementById('custom-style-textbox');
 
-    var chromeDir = Cc['@mozilla.org/file/directory_service;1'].
-                    getService(Ci.nsIProperties).
-                    get('ProfD', Ci.nsIFile);
+    var chromeDir = Services.dirsvc.get('ProfD', Ci.nsIFile);
     chromeDir.append('chrome');
 
     gCustomStyleFile = chromeDir.clone();
     gCustomStyleFile.append('brief-custom-style.css');
 
-    // Firefox 3.6 compatibility.
-    if ('@mozilla.org/extensions/manager;1' in Cc) {
-        // If the custom CSS file doesn't exist, create it by copying the example file.
-        if (!gCustomStyleFile.exists()) {
-            let exampleCustomStyle = Cc['@mozilla.org/extensions/manager;1']
-                                     .getService(Ci.nsIExtensionManager)
-                                     .getInstallLocation('brief@mozdev.org')
-                                     .getItemLocation('brief@mozdev.org');
-            exampleCustomStyle.append('defaults');
-            exampleCustomStyle.append('data');
-            exampleCustomStyle.append('example-custom-style.css');
-            exampleCustomStyle.copyTo(chromeDir, 'brief-custom-style.css');
-        }
+    if (!gCustomStyleFile.exists()) {
+        gCustomStyleFile.create(Ci.nsIFile.NORMAL_FILE_TYPE, 777);
 
-        populateTextbox();
+        AddonManager.getAddonByID('brief@mozdev.org', function(addon) {
+            let uri = addon.getResourceURI('/defaults/data/example-custom-style.css');
+            let cssText = fetchCSSText(uri);
+            writeCustomCSSFile(cssText);
+            gTextbox.value = cssText;
+        })
     }
     else {
-        if (!gCustomStyleFile.exists()) {
-            gCustomStyleFile.create(Ci.nsIFile.NORMAL_FILE_TYPE, 777);
-
-            AddonManager.getAddonByID('brief@mozdev.org', function(addon) {
-                let uri = addon.getResourceURI('/defaults/data/example-custom-style.css');
-                let cssText = fetchCSSText(uri);
-                writeCustomCSSFile(cssText);
-                gTextbox.value = cssText;
-            })
-        }
-        else {
-            populateTextbox();
-        }
+        populateTextbox();
     }
 }
 
@@ -83,7 +73,5 @@ function writeCustomCSSFile(aData) {
 function onAccept() {
     writeCustomCSSFile(gTextbox.value, gTextbox.value.length);
 
-    var observerService = Cc['@mozilla.org/observer-service;1'].
-                          getService(Ci.nsIObserverService);
-    observerService.notifyObservers(null, 'brief:custom-style-changed', '');
+    Services.obs.notifyObservers(null, 'brief:custom-style-changed', '');
 }

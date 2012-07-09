@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 #feed-view-header {
     -moz-box-align: center;
     height: 38px !important;
@@ -26,7 +35,6 @@
 
 
 #feed-title-box {
-    display: -moz-box;
     margin-right: 10px !important;
     /* These are to cut off the later lines when the title wraps. */
     overflow: hidden;
@@ -35,6 +43,13 @@
 }
 
 #feed-title {
+    /*
+     * The next declaration is to avoid warning: "XUL box for div element
+     * contained an inline a child, forcing all its children to be wrapped
+     * in a block", which is caused by the previous rule.
+     */
+    display: inline-block;
+
     color: #05447e;
     font-family: Arial, sans-serif;
     font-size: 18px;
@@ -110,7 +125,7 @@
     margin: 6px 0 6px 10px !important;
     padding: 0 3px 0 5px !important;
     border: 1px solid #7c909f !important;
-    -moz-border-radius: 4px;
+    border-radius: 4px;
     background-color: #ffffff !important;
     font-size: 12px;
 }

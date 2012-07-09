@@ -1,7 +1,18 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 var EXPORTED_SYMBOLS = ['Feed', 'Entry', 'EntryList'];
 
 const Cc = Components.classes;
 const Ci = Components.interfaces;
+
+Components.utils.import('resource://gre/modules/Services.jsm');
 
 /**
  * Container for feed properties. You can pass an instance of nsIFeed to wrap
@@ -329,7 +340,5 @@ __defineGetter__('Query', function() {
 });
 
 function log(aMessage) {
-  var consoleService = Cc['@mozilla.org/consoleservice;1'].
-                       getService(Ci.nsIConsoleService);
-  consoleService.logStringMessage(aMessage);
+    Services.console.logStringMessage(aMessage);
 }

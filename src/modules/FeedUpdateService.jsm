@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 var EXPORTED_SYMBOLS = ['FeedUpdateService'];
 
 const Cc = Components.classes;
@@ -15,14 +24,12 @@ const TIMER_TYPE_SLACK    = Ci.nsITimer.TYPE_REPEATING_SLACK;
 
 Components.utils.import('resource://brief/FeedContainer.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('resource://gre/modules/Services.jsm');
 
-XPCOMUtils.defineLazyServiceGetter(this, 'ObserverService', '@mozilla.org/observer-service;1', 'nsIObserverService');
-XPCOMUtils.defineLazyServiceGetter(this, 'IOService', '@mozilla.org/network/io-service;1', 'nsIIOService');
-XPCOMUtils.defineLazyGetter(this, 'Prefs', function()
-    Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefService)
-                                            .getBranch('extensions.brief.')
-                                            .QueryInterface(Ci.nsIPrefBranch2)
-);
+XPCOMUtils.defineLazyGetter(this, 'Prefs', function() {
+    return Services.prefs.getBranch('extensions.brief.')
+                   .QueryInterface(Ci.nsIPrefBranch2);
+});
 XPCOMUtils.defineLazyGetter(this, 'Storage', function() {
     var tempScope = {};
     Components.utils.import('resource://brief/Storage.jsm', tempScope);
@@ -115,8 +122,8 @@ var FeedUpdateServiceInternal = {
 
 
     init: function FeedUpdateServiceInternal_init() {
-        ObserverService.addObserver(this, 'brief:feed-updated', false);
-        ObserverService.addObserver(this, 'quit-application', false);
+        Services.obs.addObserver(this, 'brief:feed-updated', false);
+        Services.obs.addObserver(this, 'quit-application', false);
         Prefs.addObserver('', this, false);
 
         XPCOMUtils.defineLazyGetter(this, 'updateTimer', function()
@@ -169,12 +176,12 @@ var FeedUpdateServiceInternal = {
         }
 
         if (newFeeds.length)
-            ObserverService.notifyObservers(null, 'brief:feed-update-queued', '');
+            Services.obs.notifyObservers(null, 'brief:feed-update-queued', '');
     },
 
     // See FeedUpdateService.
     stopUpdating: function FeedUpdateServiceInternal_stopUpdating() {
-        ObserverService.notifyObservers(null, 'brief:feed-update-canceled', '');
+        Services.obs.notifyObservers(null, 'brief:feed-update-canceled', '');
         this.finishUpdate();
     },
 
@@ -235,9 +242,9 @@ var FeedUpdateServiceInternal = {
         if (aNewEntriesCount > 0)
             this.feedsWithNewEntriesCount++;
 
-        ObserverService.notifyObservers(null, 'brief:feed-updated', aFeed.feedID);
+        Services.obs.notifyObservers(null, 'brief:feed-updated', aFeed.feedID);
         if (aError)
-            ObserverService.notifyObservers(null, 'brief:feed-error', aFeed.feedID);
+            Services.obs.notifyObservers(null, 'brief:feed-error', aFeed.feedID);
 
         if (this.completedFeeds.length == this.scheduledFeeds.length)
             this.finishUpdate();
@@ -250,9 +257,7 @@ var FeedUpdateServiceInternal = {
 
         var showNotification = Prefs.getBoolPref('update.showNotification');
         if (this.feedsWithNewEntriesCount > 0 && showNotification) {
-            let bundle = Cc['@mozilla.org/intl/stringbundle;1']
-                         .getService(Ci.nsIStringBundleService)
-                         .createBundle('chrome://brief/locale/brief.properties');
+            let bundle = Services.strings.createBundle('chrome://brief/locale/brief.properties');
             let title = bundle.GetStringFromName('feedsUpdatedAlertTitle');
             let params = [this.newEntriesCount, this.feedsWithNewEntriesCount];
             let text = bundle.formatStringFromName('updateAlertText', params, 2);
@@ -282,9 +287,7 @@ var FeedUpdateServiceInternal = {
         // Notification from nsIAlertsService that user has clicked the link in
         // the alert.
         case 'alertclickcallback':
-            var window = Cc['@mozilla.org/appshell/window-mediator;1']
-                         .getService(Ci.nsIWindowMediator)
-                         .getMostRecentWindow('navigator:browser');
+            let window = Services.wm.getMostRecentWindow('navigator:browser');
             if (window) {
                 window.Brief.open();
                 window.focus();
@@ -297,8 +300,8 @@ var FeedUpdateServiceInternal = {
             break;
 
         case 'quit-application':
-            ObserverService.removeObserver(this, 'brief:feed-updated');
-            ObserverService.removeObserver(this, 'quit-application');
+            Services.obs.removeObserver(this, 'brief:feed-updated');
+            Services.obs.removeObserver(this, 'quit-application');
             Prefs.removeObserver('', this);
             break;
 
@@ -324,8 +327,8 @@ function FeedFetcher(aFeed) {
 
     this.timeoutTimer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
 
-    ObserverService.notifyObservers(null, 'brief:feed-loading', this.feed.feedID);
-    ObserverService.addObserver(this, 'brief:feed-update-canceled', false);
+    Services.obs.notifyObservers(null, 'brief:feed-loading', this.feed.feedID);
+    Services.obs.addObserver(this, 'brief:feed-update-canceled', false);
 
     this.requestFeed();
 }
@@ -376,7 +379,7 @@ FeedFetcher.prototype = {
         function onRequestLoad() {
             self.timeoutTimer.cancel();
             try {
-                let uri = IOService.newURI(self.feed.feedURL, null, null);
+                let uri = Services.io.newURI(self.feed.feedURL, null, null);
                 self.parser.parseFromString(self.request.responseText, uri);
             }
             catch (ex) {
@@ -457,7 +460,7 @@ FeedFetcher.prototype = {
     },
 
     cleanup: function FeedFetcher_cleanup() {
-        ObserverService.removeObserver(this, 'brief:feed-update-canceled');
+        Services.obs.removeObserver(this, 'brief:feed-update-canceled');
         this.request = null;
         this.timeoutTimer.cancel();
         this.timeoutTimer = null;
@@ -477,10 +480,10 @@ FeedFetcher.prototype = {
  *        Callback to use when finished.
  */
 function FaviconFetcher(aWebsiteURL, aCallback) {
-    var websiteURI = IOService.newURI(aWebsiteURL, null, null)
-    var faviconURI = IOService.newURI(websiteURI.prePath + '/favicon.ico', null, null);
+    var websiteURI = Services.io.newURI(aWebsiteURL, null, null)
+    var faviconURI = Services.io.newURI(websiteURI.prePath + '/favicon.ico', null, null);
 
-    var chan = IOService.newChannelFromURI(faviconURI);
+    var chan = Services.io.newChannelFromURI(faviconURI);
     chan.notificationCallbacks = this;
     chan.asyncOpen(this, null);
 
@@ -559,9 +562,7 @@ FaviconFetcher.prototype = {
 
 
 function log(aMessage) {
-  var consoleService = Cc['@mozilla.org/consoleservice;1']
-                       .getService(Ci.nsIConsoleService);
-  consoleService.logStringMessage(aMessage);
+    Services.console.logStringMessage(aMessage);
 }
 
 

@@ -1,3 +1,12 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This Source Code Form is "Incompatible With Secondary Licenses", as
+ * defined by the Mozilla Public License, v. 2.0.
+ */
+
 * {
     padding: 0;
 	margin: 0;
@@ -87,7 +96,7 @@ div {
     }
 
 .screenshot {
-    -moz-box-shadow: 5px 5px 5px #97b4be;
+    box-shadow: 5px 5px 5px #97b4be;
     }
 
 #open-brief {
@@ -101,7 +110,7 @@ div {
     color: #FFFFFF;
     text-shadow: -1px -1px 1px #7BAB29;
     border: 1px solid #488F03;
-    -moz-border-radius: 10px;
+    border-radius: 10px;
     background: url(chrome://brief/skin/get-started-button.png) repeat-x center;
     }
 
